@@ -26,7 +26,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
   };
 
   return (
-    <div className="pt-12 h-full">
+    <div className="pt-24 h-full">
       <Typography variant="h2" component="div" align="center" gutterBottom>
         Login
       </Typography>
