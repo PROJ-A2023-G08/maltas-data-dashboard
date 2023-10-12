@@ -1,33 +1,38 @@
+import React from "react";
 import HomeIcon from "@mui/icons-material/Home";
 import GridViewIcon from "@mui/icons-material/GridView";
 import SettingsIcon from "@mui/icons-material/Settings";
 import HelpIcon from "@mui/icons-material/Help";
 import LogoutIcon from "@mui/icons-material/Logout";
 
-const menuItems = [
-  {
-    name: "Home",
-    icon: <HomeIcon />,
-    path: "/",
-  },
-  {
-    name: "Dashboard",
-    icon: <GridViewIcon />,
-    path: "/Dashboard",
-  },
-  {
-    name: "Settings",
-    icon: <SettingsIcon />,
-    path: "/settings",
-  },
-  {
-    name: "Help",
-    icon: <HelpIcon />,
-    path: "/help",
-  },
-];
+interface SidebarProps {
+  setActiveComponent: (componentName: string) => void;
+}
 
-const Sidebar = () => {
+const Sidebar: React.FC<SidebarProps> = ({ setActiveComponent }) => {
+  const handleSidebarItemClick = (componentName: string) => {
+    setActiveComponent(componentName);
+  };
+
+  const menuItems = [
+    {
+      name: "Home",
+      icon: <HomeIcon />,
+    },
+    {
+      name: "Dashboard",
+      icon: <GridViewIcon />,
+    },
+    {
+      name: "Settings",
+      icon: <SettingsIcon />,
+    },
+    {
+      name: "Help",
+      icon: <HelpIcon />,
+    },
+  ];
+
   return (
     <div className="bg-gray-800 text-white w-60 min-h-screen">
       <div className="flex flex-col items-start justify-between h-full">
@@ -45,6 +50,7 @@ const Sidebar = () => {
               <div
                 className="flex flex-row items-center justify-start w-full h-12 pl-5 cursor-pointer hover:bg-gray-700"
                 key={item.name}
+                onClick={() => handleSidebarItemClick(item.name)}
               >
                 <div className="mr-4">{item.icon}</div>
                 <div>{item.name}</div>
