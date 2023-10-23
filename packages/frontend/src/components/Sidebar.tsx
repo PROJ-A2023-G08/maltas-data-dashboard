@@ -1,4 +1,9 @@
 import React from "react";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
 import HomeIcon from "@mui/icons-material/Home";
 import GridViewIcon from "@mui/icons-material/GridView";
 import SettingsIcon from "@mui/icons-material/Settings";
@@ -46,16 +51,18 @@ const Sidebar: React.FC<SidebarProps> = ({ setActiveComponent }) => {
             <h3 className="text-lg font-bold">LOGO HERE</h3>
           </div>
           <div className="flex flex-col items-start justify-start w-full">
-            {menuItems.map((item) => (
-              <div
-                className="flex flex-row items-center justify-start w-full h-12 pl-5 cursor-pointer hover:bg-gray-700"
-                key={item.name}
-                onClick={() => handleSidebarItemClick(item.name)}
-              >
-                <div className="mr-4">{item.icon}</div>
-                <div>{item.name}</div>
-              </div>
-            ))}
+            <List component="nav" aria-label="main mailbox folders">
+              {menuItems.map((item) => (
+                <ListItem key={item.name}>
+                  <ListItemButton
+                    onClick={() => handleSidebarItemClick(item.name)}
+                  >
+                    <ListItemIcon>{item.icon}</ListItemIcon>
+                    <ListItemText primary={item.name} />
+                  </ListItemButton>
+                </ListItem>
+              ))}
+            </List>
           </div>
         </div>
         <div className="flex flex-row items-center justify-start w-full h-12 pl-5 cursor-pointer hover:bg-gray-700">
