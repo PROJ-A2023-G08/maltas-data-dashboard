@@ -12,7 +12,8 @@
     "@typescript-eslint/parser": "^6.7.4",
     "eslint": "^8.50.0",
     "eslint-plugin-react": "^7.33.2",
-    "lerna": "^7.3.0"
+    "lerna": "^7.3.0",
+    "prettier": "^3.0.3"
   },
   "scripts": {
     "frontend:dev": "npm run dev --workspace=frontend",
