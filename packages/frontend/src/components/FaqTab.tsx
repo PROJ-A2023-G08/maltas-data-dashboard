@@ -46,8 +46,8 @@ const FaqTab = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 w-1/2">
-      <h1 className="text-4xl font-bold mb-4 text-center">FAQ</h1>
+    <div className="container mx-auto p-4 w-1/2 pt-20">
+      <h1 className="text-4xl font-bold mb-4 text-start ml-20">FAQ</h1>
       <ul>
         {faqData.map((faq, index) => (
           <ul key={index} className="mb-4">
@@ -59,7 +59,11 @@ const FaqTab = () => {
               <span className="ml-2">{openQuestion === index ? "▲" : "▼"}</span>
             </button>
             {openQuestion === index && (
-              <p className="mt-2 p-2 bg-gray-100 rounded-md">{faq.answer}</p>
+              <div className="flex mt-2">
+                <div className="w-full">
+                  <p className="p-2 bg-gray-100 rounded-md">{faq.answer}</p>
+                </div>
+              </div>
             )}
           </ul>
         ))}
