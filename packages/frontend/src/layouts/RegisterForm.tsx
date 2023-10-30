@@ -34,7 +34,7 @@ interface RegisterProps {
   onRegister: (values: RegisterBasics) => void;
 }
 
-const RegisterForm: React.FC<RegisterProps> = async ({ onRegister }) => {
+const RegisterForm: React.FC<RegisterProps> = ({ onRegister }) => {
   
   const onSubmit = async (values: RegisterBasics) => {
     onRegister(values);
@@ -42,12 +42,13 @@ const RegisterForm: React.FC<RegisterProps> = async ({ onRegister }) => {
     try {
       const data =  { firstName, lastName, email, password }
       const response = await axios.post("http://localhost:5000/api/auth/register", data)
-      //console.log(response.data)
-    }catch(error)  { 
+      console.log(response.data)
 
+    }catch(error)  { 
+      //console.log(error.message)
     }
   };
-  
+
   return (
     <div className="pt-12">
       <Typography variant="h2" component="div" align="center" gutterBottom>
