@@ -2,6 +2,7 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Button, TextField, Typography } from '@mui/material';
+import axios from 'axios';
 
 
 const initialValues = {
@@ -33,12 +34,20 @@ interface RegisterProps {
   onRegister: (values: RegisterBasics) => void;
 }
 
-const RegisterForm: React.FC<RegisterProps> = ({ onRegister }) => {
+const RegisterForm: React.FC<RegisterProps> = async ({ onRegister }) => {
   
-  const onSubmit = (values: RegisterBasics) => {
+  const onSubmit = async (values: RegisterBasics) => {
     onRegister(values);
-  };
+    const { firstName, lastName, email, password } = values;
+    try {
+      const data =  { firstName, lastName, email, password }
+      const response = await axios.post("http://localhost:5000/api/auth/register", data)
+      //console.log(response.data)
+    }catch(error)  { 
 
+    }
+  };
+  
   return (
     <div className="pt-12">
       <Typography variant="h2" component="div" align="center" gutterBottom>
