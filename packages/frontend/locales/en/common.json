@@ -1,0 +1,13 @@
+{
+  "greeting": "Hello!",
+  "welcome": "Welcome to our website.",
+  "aboutUs": "About Us",
+  "contactUs": "Contact Us",
+  "services": "Our Services",
+  "learnMore": "Learn More",
+  "email": "Email",
+  "name": "Name",
+  "message": "Message",
+  "send": "Send",
+  "error": "An error occurred. Please try again later."
+}
