@@ -1,7 +1,9 @@
-import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Button, TextField, Typography } from '@mui/material';
+import axios, { AxiosError} from 'axios';
+import { useState, ChangeEvent  } from 'react';
+import { useRouter } from 'next/navigation';
 
 const initialValues = {
   email: '',
@@ -20,11 +22,24 @@ interface LoginFormProps {
 }
 
 const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
-
-  const onSubmit = (values: LoginBasic) => {
-    onLogin(values);
+  const router = useRouter();
+  const onSubmit = async (values: LoginBasic) => {
+    //onLogin(values);
+    const { email, password } = values;
+    try {
+      const data =  {  email, password }
+      const response = await axios.post("http://localhost:5000/api/auth/login", data)
+      console.log(response.data)
+      if (response.status === 200) {
+        console.log("Success")
+        router.push("/");
+      }
+    }catch(error)  { 
+      console.log(error)
+    }
+ 
+ 
   };
-
   return (
     <div className="pt-24 h-full">
       <Typography variant="h2" component="div" align="center" gutterBottom>
