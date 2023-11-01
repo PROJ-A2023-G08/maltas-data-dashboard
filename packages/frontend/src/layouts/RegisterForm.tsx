@@ -3,6 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Button, TextField, Typography } from '@mui/material';
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 
 const initialValues = {
@@ -35,14 +36,18 @@ interface RegisterProps {
 }
 
 const RegisterForm: React.FC<RegisterProps> = ({ onRegister }) => {
-  
+  const router = useRouter();
   const onSubmit = async (values: RegisterBasics) => {
-    onRegister(values);
+    //onRegister(values);
     const { firstName, lastName, email, password } = values;
     try {
       const data =  { firstName, lastName, email, password }
       const response = await axios.post("http://localhost:5000/api/auth/register", data)
       console.log(response.data)
+      if (response.status === 200) {
+        console.log("Success")
+        router.push("/");
+      }
 
     }catch(error)  { 
       //console.log(error.message)
