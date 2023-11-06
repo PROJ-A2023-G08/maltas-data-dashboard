@@ -1,11 +1,8 @@
-/** @type {import('next').NextConfig} */
+const { i18n } = require('./next-i18next.config')
+ 
 const nextConfig = {
+  i18n,
   reactStrictMode: true,
-};
+}
 
-const { nextI18NextRewrites } = require("next-i18next/rewrites");
-
-module.exports = {
-  nextConfig,
-  rewrites: async () => nextI18NextRewrites(localePath),
-};
+module.exports = nextConfig
