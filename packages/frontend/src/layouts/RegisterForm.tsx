@@ -1,9 +1,24 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { FieldProps } from 'formik';
 import * as Yup from 'yup';
 import { Button, TextField, Typography } from '@mui/material';
+import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
+import { alpha, styled } from '@mui/material/styles';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+
+export const StyledField = styled(Field)< FieldProps>(({ theme }) => ({
+  background: "white",
+  '& .MuiOutlinedInput-root': {
+    '&.Mui-focused fieldset': {
+      borderColor: theme.palette.success.main,
+    },
+  },
+  '& label.Mui-focused': {
+    color: theme.palette.success.main,
+  },
+}));
 
 
 const initialValues = {
@@ -56,9 +71,14 @@ const RegisterForm: React.FC<RegisterProps> = ({ onRegister }) => {
 
   return (
     <div className="pt-12">
-      <Typography variant="h2" component="div" align="center" gutterBottom>
-        Register
-      </Typography>
+      <section className="flex items-center mb-8">
+        <span className="pr-4">
+          <DoubleArrowIcon sx={{ fontSize: 30 }} color="success" />
+        </span>
+        <Typography variant="h3" color="green" component="div" align="center" gutterBottom>
+          Register
+        </Typography>
+      </section>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -66,18 +86,20 @@ const RegisterForm: React.FC<RegisterProps> = ({ onRegister }) => {
       >
         <Form>
           <div className="pb-4">
-            <Field
+            <StyledField
               as={TextField}
               type="text"
               label="First Name"
               name="firstName"
+              sx={{ borderRadius: 1}}
               fullWidth
               variant="outlined"
             />
             <ErrorMessage className="text-red-500" name="firstName" component="div" />
           </div>
           <div className="pb-4">
-            <Field
+            <StyledField
+              sx={{ borderRadius: 1}}
               as={TextField}
               type="text"
               label="Last Name"
@@ -88,39 +110,42 @@ const RegisterForm: React.FC<RegisterProps> = ({ onRegister }) => {
             <ErrorMessage className="text-red-500" name="lastName" component="div" />
           </div>
           <div className="pb-4">
-            <Field
+            <StyledField
               as={TextField}
               type="text"
               label="Email"
               name="email"
+              sx={{ borderRadius: 1}}
               fullWidth
               variant="outlined"
             />
             <ErrorMessage className="text-red-500" name="email" component="div" />
           </div>
           <div className="pb-4">
-            <Field
+            <StyledField
               as={TextField}
               type="password"
               label="Password"
               name="password"
               fullWidth
+              sx={{ borderRadius: 1}}
               variant="outlined"
             />
             <ErrorMessage className="text-red-500" name="password" component="div" />
           </div>
           <div className="pb-4">
-            <Field
+            <StyledField
               as={TextField}
               type="password"
               label="Confirm Password"
               name="confirmPassword"
               fullWidth
+              sx={{ borderRadius: 1}}
               variant="outlined"
             />
             <ErrorMessage className="text-red-500" name="confirmPassword" component="div" />
           </div>
-          <Button size="large" type="submit" variant="contained" color="primary">
+          <Button fullWidth  size="large" type="submit" variant="contained" color="success">
             Register
           </Button>
         </Form>
