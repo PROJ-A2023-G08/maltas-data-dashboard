@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Sidebar from "./Sidebar";
 import Home from "./Home";
 import Dashboard from "./Dashboard";
-import Settings from "./Settings";
+import SettingsPage from "@/layouts/Settings";
 import Help from "./Help";
 
 const Layout = () => {
@@ -15,7 +15,7 @@ const Layout = () => {
       case "Dashboard":
         return <Dashboard />;
       case "Settings":
-        return <Settings />;
+        return <SettingsPage />;
       case "Help":
         return <Help />;
       default:
@@ -24,7 +24,7 @@ const Layout = () => {
   };
 
   return (
-    <div className="h-screen flex flex-row justify-start">
+    <div className="flex flex-row justify-start h-full">
       <Sidebar setActiveComponent={setActiveComponent} />
       <div className="bg-white flex-1 p-4 text-black">{renderComponent()}</div>
     </div>
