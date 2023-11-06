@@ -1,0 +1,14 @@
+[
+  {
+    "id": 0,
+    "value": 150,
+    "status": "INTERUPTED",
+    "label": "INTERUPTED"
+  },
+  {
+    "id": 1,
+    "value": 223,
+    "label": "COMPLETE",
+    "status": "COMPLETE"
+  }
+]
