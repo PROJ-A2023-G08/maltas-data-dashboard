@@ -23,6 +23,7 @@ interface LoginFormProps {
 
 const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
   const router = useRouter();
+  const [error, setErrMsg] = useState('');
   const onSubmit = async (values: LoginBasic) => {
     //onLogin(values);
     const { email, password } = values;
@@ -35,10 +36,8 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
         router.push("/");
       }
     }catch(error)  { 
-      console.log(error)
+      console.log(error);
     }
- 
- 
   };
   return (
     <div className="pt-24 h-full">
