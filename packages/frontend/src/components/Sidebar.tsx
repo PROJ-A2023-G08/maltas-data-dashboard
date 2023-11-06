@@ -9,6 +9,7 @@ import GridViewIcon from "@mui/icons-material/GridView";
 import SettingsIcon from "@mui/icons-material/Settings";
 import HelpIcon from "@mui/icons-material/Help";
 import LogoutIcon from "@mui/icons-material/Logout";
+import Image from 'next/image'
 
 interface SidebarProps {
   setActiveComponent: (componentName: string) => void;
@@ -42,28 +43,27 @@ const Sidebar: React.FC<SidebarProps> = ({ setActiveComponent }) => {
     <div className="bg-gray-800 text-white w-60 min-h-screen">
       <div className="flex flex-col items-start justify-between h-full">
         <div className="flex flex-col items-start justify-start w-full">
-          <div className="flex flex-col items-center justify-center w-full h-40">
-            <img
-              className="w-8 h-8 rounded-full"
-              src="https://avatars.githubusercontent.com/u/10491406?v=4"
-              alt="avatar"
+          <div className="flex flex-col items-center justify-center w-full h-40 pt-10">
+            <Image
+              priority
+              src="/Malta_logo.svg"
+              width={180}
+              height={180}
+              alt="Maltas logo"
             />
-            <h3 className="text-lg font-bold">LOGO HERE</h3>
           </div>
           <div className="flex flex-col items-start justify-start w-full">
-            <List component="nav" aria-label="main mailbox folders">
-              {menuItems.map((item) => (
-                <ListItem key={item.name}>
-                  <ListItemButton
-                    onClick={() => handleSidebarItemClick(item.name)}
-                  >
-                    <ListItemIcon>{item.icon}</ListItemIcon>
-                    <ListItemText primary={item.name} />
-                  </ListItemButton>
-                </ListItem>
-              ))}
-            </List>
-          </div>
+           <List component="nav" aria-label="main mailbox folders">
+             {menuItems.map((item) => (
+               <ListItem key={item.name}>
+                 <ListItemButton onClick={() => handleSidebarItemClick(item.name)}>
+                   <ListItemIcon>{item.icon}</ListItemIcon>
+                   <ListItemText primary={item.name} className="text"/>
+                 </ListItemButton>
+               </ListItem>
+             ))}
+           </List>
+    </div>
         </div>
         <div className="flex flex-row items-center justify-start w-full h-12 pl-5 cursor-pointer hover:bg-gray-700">
           <div className="mr-4">
@@ -77,3 +77,4 @@ const Sidebar: React.FC<SidebarProps> = ({ setActiveComponent }) => {
 };
 
 export default Sidebar;
+
