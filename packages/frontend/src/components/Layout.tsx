@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Sidebar from "./Sidebar";
 import Home from "./Home";
 import Dashboard from "./Dashboard";
-import SettingsPage from "@/layouts/Settings";
+import SettingsPage from "@/layouts/Settings/Settings";
 import Help from "./Help";
 
 const Layout = () => {
