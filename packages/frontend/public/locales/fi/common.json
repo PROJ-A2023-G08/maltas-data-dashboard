@@ -7,9 +7,24 @@
     "LogOut": "Kirjaudu ulos"
   },
   "settings": {
+    "ProfilePhoto": "Profiilikuva",
+    "PersonalInfo" : "Käyttäjän tiedot",
     "ChangePicture": "Vaihda kuva",
     "ChangePassword": "Vaihda salasana",
-    "ChangeLanguage": "Valitse kieli"
+    "ChangeLanguage": "Valitse kieli",
+    "EmailField" : "Sähköposti",
+    "NameField" : "Nimi",
+    "CurrentPassword" : "Nykyinen salasana",
+    "NewPassword" : "Uusi salasana",
+    "ConfirmPassword" : "Uusi salasana uudelleen",
+    "UpdatePassword" : "Päivitä salasana",
+    "Language" : "Kieli",
+    "Notifications" : "Ilmoitukset",
+    "Save" : "Tallenna",
+    "Cancel" : "Peruuta",
+    "English" : "Enlanti",
+    "Finnish" : "Suomi",
+    "Swedish" : "Ruotsi"
   },
   "contact": {
     "Header": "Ota yhteyttä!",

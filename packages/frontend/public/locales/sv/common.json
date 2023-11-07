@@ -7,9 +7,24 @@
     "LogOut": "Logga ut"
   },
   "settings": {
-    "ChangePicture": "Byt bild",
+    "ProfilePhoto": "Profilbild",
+    "PersonalInfo" : "Personlig information",
+    "ChangePicture": "Ändra bild",
     "ChangePassword": "Ändra lösenord",
-    "ChangeLanguage": "Ändra språk"
+    "ChangeLanguage": "Ändra språk",
+    "EmailField" : "E-postadress",
+    "NameField" : "Namn",
+    "CurrentPassword" : "Nuvarande lösenord",
+    "NewPassword" : "Nytt lösenord",
+    "ConfirmPassword" : "Bekräfta lösenord",
+    "UpdatePassword" : "Uppdatera lösenord",
+    "Language" : "Språk",
+    "Notifications" : "Notifikationer",
+    "Save" : "Spara",
+    "Cancel" : "Avbryt",
+    "English" : "Engelska",
+    "Finnish" : "Finska",
+    "Swedish" : "Svenska"
   },
   "contact": {
     "Header": "Kontakta oss",

@@ -12,6 +12,7 @@ import {
   MenuItem,
 } from "@mui/material";
 import { useDropzone, Accept } from "react-dropzone";
+import { useTranslation } from "next-i18next";
 
 const acceptedFileTypes: unknown = 'image/*';
 
@@ -73,6 +74,7 @@ const ImageUpload: React.FC<{
 };
 
 const SettingsPage: React.FC = () => {
+  const { t } = useTranslation("common");
   const initialValues = {
     displayName: "",
     email: "",
@@ -100,7 +102,7 @@ const SettingsPage: React.FC = () => {
           <Card>
             <CardContent>
               <div className="flex ">
-                <Typography variant="h5">Profile Photo</Typography>
+                <Typography variant="h5">{t("settings.ProfilePhoto")}</Typography>
 
                 <Field name="profilePhoto" label="Profile Photo">
                   {({ field }: FieldProps<string>) => (
@@ -114,21 +116,21 @@ const SettingsPage: React.FC = () => {
               <hr className="text-gray-300 m-6 ml-12 mr-12" />
               <div>
                 <Typography className="mb-4 mt-4" variant="h5">
-                  Personal Information
+                {t("settings.PersonalInfo")}
                 </Typography>
                 <div className="ml-12 md:ml-28 lg:ml-32 max-w-xl">
                   <Field
                     className="mb-4"
                     as={TextField}
                     name="displayName"
-                    label="Display Name"
+                    label={t("settings.NameField")}
                     fullWidth
                   />
                   <Field
                     className="mb-4"
                     as={TextField}
                     name="email"
-                    label="Email Address"
+                    label={t("settings.EmailField")}
                     fullWidth
                   />
                 </div>
@@ -136,7 +138,7 @@ const SettingsPage: React.FC = () => {
               <hr className="text-gray-300 m-6 ml-12 mr-12" />
 
               <Typography className="mb-4" variant="h5">
-                Change Password
+              {t("settings.ChangePassword")}
               </Typography>
               <div className="ml-12 md:ml-28 lg:ml-32 max-w-xl">
                 <Field
@@ -144,7 +146,7 @@ const SettingsPage: React.FC = () => {
                   as={TextField}
                   type="password"
                   name="currentPassword"
-                  label="Current Password"
+                  label={t("settings.CurrentPassword")}
                   fullWidth
                 />
                 <Field
@@ -152,7 +154,7 @@ const SettingsPage: React.FC = () => {
                   as={TextField}
                   type="password"
                   name="newPassword"
-                  label="New Password"
+                  label={t("settings.NewPassword")}
                   fullWidth
                 />
                 <Field
@@ -160,7 +162,7 @@ const SettingsPage: React.FC = () => {
                   as={TextField}
                   type="password"
                   name="confirmPassword"
-                  label="Confirm Password"
+                  label={t("settings.ConfirmPassword")}
                   fullWidth
                 />
                 <Button
@@ -170,13 +172,13 @@ const SettingsPage: React.FC = () => {
                   color="primary"
                   disabled={isSubmitting}
                 >
-                  Update Password
+                  {t("settings.UpdatePassword")}
                 </Button>
               </div>
               <hr className="text-gray-300 m-6 ml-12 mr-12" />
 
               <Typography className="mb-4" variant="h5">
-                Language
+              {t("settings.Language")}
               </Typography>
               <div className="ml-12 md:ml-28 lg:ml-32 max-w-xl">
                 <Field
@@ -184,16 +186,17 @@ const SettingsPage: React.FC = () => {
                   as={TextField}
                   select
                   name="language"
-                  label="Language"
+                  label={t("settings.Language")}
                   fullWidth
                 >
-                  <MenuItem value="en">English</MenuItem>
-                  <MenuItem value="fi">Finnish</MenuItem>
+                  <MenuItem value="en">{t("settings.English")}</MenuItem>
+                  <MenuItem value="fi">{t("settings.Finnish")}</MenuItem>
+                  <MenuItem value="sv">{t("settings.Swedish")}</MenuItem>
                 </Field>
               </div>
               <hr className="text-gray-300 m-6 ml-12 mr-12" />
               <Typography className="mb-4" variant="h5">
-                Notifications
+              {t("settings.Notifications")}
               </Typography>
               <div className="ml-12 md:ml-28 lg:ml-32 max-w-xl">
                 <Field
@@ -213,10 +216,10 @@ const SettingsPage: React.FC = () => {
                   color="primary"
                   disabled={isSubmitting}
                 >
-                  Save
+                  {t("settings.Save")}
                 </Button>
                 <Button className="mb-4 ml-4" type="button" variant="outlined">
-                  Cancel
+                {t("settings.Cancel")}
                 </Button>
               </div>
             </CardContent>
