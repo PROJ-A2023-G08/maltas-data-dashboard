@@ -4,9 +4,9 @@ module.exports = {
         "es2021": true
     },
     "extends": [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:react/recommended"
+        'plugin:@typescript-eslint/recommended',
+        'prettier/@typescript-eslint',
+        'prettier/react',
     ],
     "overrides": [
         {
@@ -31,5 +31,9 @@ module.exports = {
         "react"
     ],
     "rules": {
+        "unused-imports/no-unused-imports": "error",
+        "unused-imports/no-unused-vars": "off",
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": "off",
     }
 }

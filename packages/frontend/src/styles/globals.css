@@ -19,5 +19,9 @@
 body {
   color: rgb(var(--foreground-rgb));
   background: #f5f6fa;
-  min-height: 100vh;
+  min-height: 100%;
+}
+
+html {
+  height: 100%;
 }

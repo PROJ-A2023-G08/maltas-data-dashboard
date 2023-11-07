@@ -4,7 +4,7 @@ import type { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 export default function Home() {
   return (
-    <main>
+    <main >
       {/*<PrimarySearchAppBar />*/}
       <Layout />
     </main>
