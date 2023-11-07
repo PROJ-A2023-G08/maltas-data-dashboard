@@ -1,0 +1,24 @@
+{
+  "sidebar": {
+    "Dashboard": "Instrumentpanel",
+    "Home": "Hem",
+    "Settings": "Inställningar",
+    "Help": "Hjälp",
+    "LogOut": "Logga ut"
+  },
+  "settings": {
+    "ChangePicture": "Byt bild",
+    "ChangePassword": "Ändra lösenord",
+    "ChangeLanguage": "Ändra språk"
+  },
+  "contact": {
+    "Header": "Kontakta oss",
+    "Subtext": "Har du några frågor? Skicka ett meddelande till oss!",
+    "Message": "Meddelande",
+    "Send": "Skicka"
+  },
+  "uiElements": {
+    "FAQ": "FAQ",
+    "Contact": "Kontakt"
+  }
+}

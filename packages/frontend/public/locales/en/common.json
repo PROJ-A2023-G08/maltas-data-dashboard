@@ -1,3 +1,24 @@
 {
-  "dashboard": "Dashboard English!"
+  "sidebar": {
+    "Dashboard": "Dashboard",
+    "Home": "Home",
+    "Settings": "Settings",
+    "Help": "Help",
+    "LogOut": "Log out"
+  },
+  "settings": {
+    "ChangePicture": "Change picture",
+    "ChangePassword": "Change password",
+    "ChangeLanguage": "Change language"
+  },
+  "contact": {
+    "Header": "Get in touch!",
+    "Subtext": "Please explain the problem, and we'll get back to you",
+    "Message": "Message",
+    "Send": "Send"
+  },
+  "uiElements": {
+    "FAQ": "FAQ",
+    "Contact": "Contact"
+  }
 }

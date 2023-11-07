@@ -1,3 +1,24 @@
 {
-  "dashboard": "Dashboard Finnish!"
+  "sidebar": {
+    "Dashboard": "Yleisnäkymä",
+    "Home": "Koti",
+    "Settings": "Asetukset",
+    "Help": "Ohje",
+    "LogOut": "Kirjaudu ulos"
+  },
+  "settings": {
+    "ChangePicture": "Vaihda kuva",
+    "ChangePassword": "Vaihda salasana",
+    "ChangeLanguage": "Valitse kieli"
+  },
+  "contact": {
+    "Header": "Ota yhteyttä!",
+    "Subtext": "Jos sinulla on kysyttävää, ota yhteyttä alla olevalla lomakkeella.",
+    "Message": "Viesti",
+    "Send": "Lähetä"
+  },
+  "uiElements": {
+    "FAQ": "UKK",
+    "Contact": "Ota yhteyttä"
+  }
 }

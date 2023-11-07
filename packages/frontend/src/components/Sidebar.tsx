@@ -9,12 +9,15 @@ import GridViewIcon from "@mui/icons-material/GridView";
 import SettingsIcon from "@mui/icons-material/Settings";
 import HelpIcon from "@mui/icons-material/Help";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { useTranslation } from "next-i18next";
 
 interface SidebarProps {
   setActiveComponent: (componentName: string) => void;
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ setActiveComponent }) => {
+  const { t } = useTranslation("common");
+
   const handleSidebarItemClick = (componentName: string) => {
     setActiveComponent(componentName);
   };
@@ -58,7 +61,7 @@ const Sidebar: React.FC<SidebarProps> = ({ setActiveComponent }) => {
                     onClick={() => handleSidebarItemClick(item.name)}
                   >
                     <ListItemIcon>{item.icon}</ListItemIcon>
-                    <ListItemText primary={item.name} />
+                    <ListItemText primary={t("sidebar." + item.name)} />
                   </ListItemButton>
                 </ListItem>
               ))}
@@ -69,7 +72,7 @@ const Sidebar: React.FC<SidebarProps> = ({ setActiveComponent }) => {
           <div className="mr-4">
             <LogoutIcon />
           </div>
-          <div>Log out here?</div>
+          <div>{t("sidebar.LogOut")}</div>
         </div>
       </div>
     </div>

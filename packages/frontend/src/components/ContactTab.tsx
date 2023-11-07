@@ -6,8 +6,10 @@ import HomeIcon from "@mui/icons-material/Home";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import { useTranslation } from "next-i18next";
 
 const ContactTab = () => {
+  const { t } = useTranslation("common");
   const [formData, setFormData] = useState({
     //name: "", Use if needed
     //email: "", Use if needed
@@ -26,15 +28,17 @@ const ContactTab = () => {
 
   return (
     <div className="container mx-auto p-4 w-1/2 pt-20">
-      <h1 className="text-4xl font-bold mb-4 text-start">Get in touch!</h1>
+      <h1 className="text-4xl font-bold mb-4 text-start">
+        {t("contact.Header")}
+      </h1>
       <h1 className="text-xl font-bold mb-4 text-start text-gray-600">
-        Please explain the problem, and we'll get back to you
+        {t("contact.Subtext")}
       </h1>
       <div className="flex">
         <form onSubmit={handleSubmit} className="w-2/3 pr-4">
           <div className="mb-6">
             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
-              Message
+              {t("contact.Message")}
             </label>
             <textarea
               id="large-input"
@@ -46,7 +50,7 @@ const ContactTab = () => {
             type="submit"
             className="w-1/4 h-12 px-6 text-indigo-100 transition-colors duration-150 border-hidden	 bg-blue-500 rounded-lg focus:shadow-outline hover:bg-blue-800"
           >
-            Send
+            {t("contact.Send")}
           </button>
         </form>
 
