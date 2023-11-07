@@ -86,7 +86,7 @@ const RegisterForm: React.FC<RegisterProps> = ({ onRegister }) => {
       >
         <Form>
           <div className="pb-4">
-            <StyledField
+            <Field
               as={TextField}
               type="text"
               label="First Name"
@@ -98,7 +98,7 @@ const RegisterForm: React.FC<RegisterProps> = ({ onRegister }) => {
             <ErrorMessage className="text-red-500" name="firstName" component="div" />
           </div>
           <div className="pb-4">
-            <StyledField
+            <Field
               sx={{ borderRadius: 1}}
               as={TextField}
               type="text"
@@ -110,7 +110,7 @@ const RegisterForm: React.FC<RegisterProps> = ({ onRegister }) => {
             <ErrorMessage className="text-red-500" name="lastName" component="div" />
           </div>
           <div className="pb-4">
-            <StyledField
+            <Field
               as={TextField}
               type="text"
               label="Email"
@@ -122,7 +122,7 @@ const RegisterForm: React.FC<RegisterProps> = ({ onRegister }) => {
             <ErrorMessage className="text-red-500" name="email" component="div" />
           </div>
           <div className="pb-4">
-            <StyledField
+            <Field
               as={TextField}
               type="password"
               label="Password"
@@ -134,7 +134,7 @@ const RegisterForm: React.FC<RegisterProps> = ({ onRegister }) => {
             <ErrorMessage className="text-red-500" name="password" component="div" />
           </div>
           <div className="pb-4">
-            <StyledField
+            <Field
               as={TextField}
               type="password"
               label="Confirm Password"
