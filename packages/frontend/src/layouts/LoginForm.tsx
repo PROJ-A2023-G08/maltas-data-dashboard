@@ -60,7 +60,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
       >
         <Form>
           <div className="pb-4">
-            <StyledField
+            <Field
               as={TextField}
               type="text"
               label="Email"
@@ -76,7 +76,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
             />
           </div>
           <div className="pb-4">
-            <StyledField
+            <Field
               as={TextField}
               type="password"
               label="Password"
