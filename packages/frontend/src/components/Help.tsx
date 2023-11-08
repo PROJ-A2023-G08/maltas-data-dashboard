@@ -13,11 +13,11 @@ const Help = () => {
 
   return (
     <div>
-      <div className="flex justify-center mb-4 mt-20">
+      <div className="flex justify-center -mb-12 mt-40">
         <button
           onClick={() => toggleTab("faq")}
           className={`mr-2 pt-2 pb-2 pl-20 pr-20 ${
-            activeTab === "faq" ? "bg-black text-white" : "bg-white"
+            activeTab === "faq" ? "bg-black text-white " : "bg-white"
           } rounded-md hover:bg-gray-600 focus:outline-none`}
         >
           {t("uiElements.FAQ")}
