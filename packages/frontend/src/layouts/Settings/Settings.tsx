@@ -1,36 +1,34 @@
+import { ErrorMessage, Field, FieldProps, Form, Formik } from "formik";
 import React, { useState } from "react";
-import { Formik, Form, Field, ErrorMessage, FieldProps } from "formik";
 
 import {
+  Avatar,
   Button,
   Card,
   CardContent,
+  MenuItem,
   Switch,
   TextField,
   Typography,
-  Avatar,
-  MenuItem,
 } from "@mui/material";
-import { useDropzone, Accept } from "react-dropzone";
+import { useTranslation } from "next-i18next";
+import { useDropzone } from "react-dropzone";
 import {
-  validationSchemaPersonalInfo,
-  validationSchemaUpdatePassword,
-  validationSchemaUserSettings,
-  validationSchemaUploadImage,
+  PersonalInfo,
+  ProfilePhoto,
   UpdatePassword,
   UpdateUserSettings,
-  PersonalInfo,
-  ProfilePhoto
+  validationSchemaPersonalInfo,
+  validationSchemaUpdatePassword,
+  validationSchemaUploadImage,
+  validationSchemaUserSettings,
 } from "./helpers";
-
 
 const ImageUpload: React.FC<{
   image: string;
-  onImageChange: (image: string | ArrayBuffer| null) => void;
+  onImageChange: (image: string | ArrayBuffer | null) => void;
   name: string;
 }> = ({ image, onImageChange, name }) => {
-
-
   const [file, setFile] = useState<File | null>(null);
 
   const onDrop = (acceptedFiles: File[]) => {
@@ -39,7 +37,7 @@ const ImageUpload: React.FC<{
       setFile(acceptedFiles[0]);
       const reader = new FileReader();
       reader.onload = () => {
-        const binaryStr = reader.result
+        const binaryStr = reader.result;
         onImageChange(binaryStr);
       };
       reader.readAsDataURL(acceptedFiles[0]);
@@ -100,18 +98,18 @@ const SettingsPage: React.FC = () => {
     console.log(values);
   };
 
-  const handleSubmitPersonalInfo=(values: PersonalInfo)=>{
+  const handleSubmitPersonalInfo = (values: PersonalInfo) => {
     console.log(values);
-  }
+  };
 
-  const handleSubmitUpdatePassword=(values: UpdatePassword)=>{
+  const handleSubmitUpdatePassword = (values: UpdatePassword) => {
     console.log(values);
-  }
+  };
 
-  const handleSubmitUserSettings=(values: UpdateUserSettings)=>{
+  const handleSubmitUserSettings = (values: UpdateUserSettings) => {
     console.log(values);
-  }
-
+  };
+  const { t } = useTranslation("common");
   return (
     <>
       <Formik
@@ -119,44 +117,45 @@ const SettingsPage: React.FC = () => {
         validationSchema={validationSchemaUploadImage}
         onSubmit={handleSubmitPhoto}
       >
-        {({ values, isSubmitting }) =>{ 
+        {({ values, isSubmitting }) => {
           console.log(values);
-          return(
-          <Form>
-            <Card>
-              <CardContent>
-                <div>
-                  <Typography variant="h5">Profile Photo</Typography>
-                  <div className="ml-12 md:ml-28 lg:ml-32 max-w-xl">
-                    <Field name="profilePhoto" label="Profile Photo">
-                      {({ field }: FieldProps<string>) => (
-                        <ImageUpload
-                          name={field.name}
-                          image={field.value}
-                          onImageChange={field.onChange}
-                        />
-                      )}
-                    </Field>
-                    <Button
-                      type="submit"
-                      className="mb-4 mt-3"
-                      variant="contained"
-                      color="primary"
-                      disabled={isSubmitting}
-                    >
-                      Update Profile Image
-                    </Button>
-                    <ErrorMessage
-                      className="text-red-500 mb-4 w-full"
-                      name="profilePhoto"
-                      component="div"
-                    />
+          return (
+            <Form>
+              <Card>
+                <CardContent>
+                  <div>
+                    <Typography variant="h5">Profile Photo</Typography>
+                    <div className="ml-12 md:ml-28 lg:ml-32 max-w-xl">
+                      <Field name="profilePhoto" label="Profile Photo">
+                        {({ field }: FieldProps<string>) => (
+                          <ImageUpload
+                            name={field.name}
+                            image={field.value}
+                            onImageChange={field.onChange}
+                          />
+                        )}
+                      </Field>
+                      <Button
+                        type="submit"
+                        className="mb-4 mt-3"
+                        variant="contained"
+                        color="primary"
+                        disabled={isSubmitting}
+                      >
+                        Update Profile Image
+                      </Button>
+                      <ErrorMessage
+                        className="text-red-500 mb-4 w-full"
+                        name="profilePhoto"
+                        component="div"
+                      />
+                    </div>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
-          </Form>
-        )}}
+                </CardContent>
+              </Card>
+            </Form>
+          );
+        }}
       </Formik>
       <hr className="text-gray-300 m-6 ml-12 mr-12" />
       <Formik
@@ -170,7 +169,7 @@ const SettingsPage: React.FC = () => {
               <CardContent>
                 <div>
                   <Typography className="mb-4 mt-4" variant="h5">
-                    Personal Information
+                    {t("settings.PersonalInfo")}
                   </Typography>
                   <div className="ml-12 md:ml-28 lg:ml-32 max-w-xl">
                     <Field
@@ -201,7 +200,7 @@ const SettingsPage: React.FC = () => {
                       className="mb-4"
                       as={TextField}
                       name="email"
-                      label="Email Address"
+                      label={t("settings.EmailField")}
                       fullWidth
                       disabled
                     />

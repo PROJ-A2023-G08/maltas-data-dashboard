@@ -1,0 +1,39 @@
+{
+  "sidebar": {
+    "Dashboard": "Dashboard",
+    "Home": "Home",
+    "Settings": "Settings",
+    "Help": "Help",
+    "LogOut": "Log out"
+  },
+  "settings": {
+    "ProfilePhoto": "Profile photo",
+    "PersonalInfo" : "Personal information",
+    "ChangePicture": "Change picture",
+    "ChangePassword": "Change password",
+    "ChangeLanguage": "Change language",
+    "EmailField" : "Email address",
+    "NameField" : "Display name",
+    "CurrentPassword" : "Current password",
+    "NewPassword" : "New password",
+    "ConfirmPassword" : "Confirm password",
+    "UpdatePassword" : "Update password",
+    "Language" : "Language",
+    "Notifications" : "Notifications",
+    "Save" : "Save",
+    "Cancel" : "Cancel",
+    "English" : "English",
+    "Finnish" : "Finnish",
+    "Swedish" : "Swedish"
+  },
+  "contact": {
+    "Header": "Get in touch!",
+    "Subtext": "Please explain the problem, and we'll get back to you",
+    "Message": "Message",
+    "Send": "Send"
+  },
+  "uiElements": {
+    "FAQ": "FAQ",
+    "Contact": "Contact"
+  }
+}
