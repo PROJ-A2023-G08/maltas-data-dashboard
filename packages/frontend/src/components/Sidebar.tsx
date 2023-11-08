@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -10,6 +10,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import HelpIcon from "@mui/icons-material/Help";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useTranslation } from "next-i18next";
+import Image from 'next/image'
 
 interface SidebarProps {
   setActiveComponent: (componentName: string) => void;
@@ -18,8 +19,11 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ setActiveComponent }) => {
   const { t } = useTranslation("common");
 
+  const [selectedItem, setSelectedItem] = useState<string>('');
+
   const handleSidebarItemClick = (componentName: string) => {
     setActiveComponent(componentName);
+    setSelectedItem(componentName); 
   };
 
   const menuItems = [
@@ -42,31 +46,46 @@ const Sidebar: React.FC<SidebarProps> = ({ setActiveComponent }) => {
   ];
 
   return (
-    <div className="bg-gray-800 text-white w-60 min-h-screen">
+    <div className="bg-gray-800 text-white w-60 min-h-screen pl-2">
       <div className="flex flex-col items-start justify-between h-full">
         <div className="flex flex-col items-start justify-start w-full">
           <div className="flex flex-col items-center justify-center w-full h-40">
-            <img
-              className="w-8 h-8 rounded-full"
-              src="https://avatars.githubusercontent.com/u/10491406?v=4"
-              alt="avatar"
-            />
-            <h3 className="text-lg font-bold">LOGO HERE</h3>
+            <div className="pt-20">
+              <Image
+                src="/Malta_logo.svg"
+                alt="Maltas Logo"
+                width={160}
+                height={160}
+              />
+            </div>
           </div>
-          <div className="flex flex-col items-start justify-start w-full">
+          <div className="flex flex-col items-start justify-start w-full pt-36">
             <List component="nav" aria-label="main mailbox folders">
               {menuItems.map((item) => (
-                <ListItem key={item.name}>
+                <ListItem
+                  key={item.name}
+                  className={`${
+                    selectedItem === item.name
+                      ? 'bg-white text-black rounded-xl mb-2'
+                      : 'hover:bg-white hover:text-black rounded-xl mb-2'
+                  }`}
+                  style={{ width: '200px', height: '70px' }}
+                >
                   <ListItemButton
                     onClick={() => handleSidebarItemClick(item.name)}
+                    className="flex items-center" 
+                    disableTouchRipple
+                    disableRipple 
                   >
-                    <ListItemIcon>{item.icon}</ListItemIcon>
-                    <ListItemText primary={t("sidebar." + item.name)} />
+                    <div className="-ml-2 pt-1">
+                      <ListItemIcon>{item.icon}</ListItemIcon>
+                    </div>
+                    <p className="font-bold text-xl -ml-6">{t("sidebar." + item.name)}</p>
                   </ListItemButton>
                 </ListItem>
               ))}
             </List>
-          </div>
+          </div>     
         </div>
         <div className="flex flex-row items-center justify-start w-full h-12 pl-5 cursor-pointer hover:bg-gray-700">
           <div className="mr-4">
