@@ -26,7 +26,7 @@ const Layout = () => {
   return (
     <div className="flex flex-row justify-start h-full">
       <Sidebar setActiveComponent={setActiveComponent} />
-      <div className="bg-white flex-1 p-4 text-black">{renderComponent()}</div>
+      <div className="bg-backgroundLight flex-1 p-4 text-black">{renderComponent()}</div>
     </div>
   );
 };

@@ -11,6 +11,7 @@ import HelpIcon from "@mui/icons-material/Help";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useTranslation } from "next-i18next";
 import Image from 'next/image'
+import { ButtonBase } from "@mui/material";
 
 interface SidebarProps {
   setActiveComponent: (componentName: string) => void;
@@ -46,7 +47,7 @@ const Sidebar: React.FC<SidebarProps> = ({ setActiveComponent }) => {
   ];
 
   return (
-    <div className="bg-gray-800 text-white w-60 min-h-screen pl-2">
+    <div className="bg-darkblue text-white w-60 min-h-screen pl-2">
       <div className="flex flex-col items-start justify-between h-full">
         <div className="flex flex-col items-start justify-start w-full">
           <div className="flex flex-col items-center justify-center w-full h-40">
@@ -66,12 +67,12 @@ const Sidebar: React.FC<SidebarProps> = ({ setActiveComponent }) => {
                   key={item.name}
                   className={`${
                     selectedItem === item.name
-                      ? 'bg-white text-black rounded-xl mb-2'
+                      ? 'bg-selection text-black rounded-xl mb-2'
                       : 'hover:bg-white hover:text-black rounded-xl mb-2'
                   }`}
                   style={{ width: '200px', height: '70px' }}
                 >
-                  <ListItemButton
+                  <ButtonBase 
                     onClick={() => handleSidebarItemClick(item.name)}
                     className="flex items-center" 
                     disableTouchRipple
@@ -81,17 +82,17 @@ const Sidebar: React.FC<SidebarProps> = ({ setActiveComponent }) => {
                       <ListItemIcon>{item.icon}</ListItemIcon>
                     </div>
                     <p className="font-bold text-xl -ml-6">{t("sidebar." + item.name)}</p>
-                  </ListItemButton>
+                  </ButtonBase >
                 </ListItem>
               ))}
             </List>
           </div>     
         </div>
-        <div className="flex flex-row items-center justify-start w-full h-12 pl-5 cursor-pointer hover:bg-gray-700">
+        <div className="flex flex-row items-center justify-start w-52 h-12 pl-5 cursor-pointer hover:bg-white hover:text-black hover:rounded-md">
           <div className="mr-4">
             <LogoutIcon />
           </div>
-          <div>{t("sidebar.LogOut")}</div>
+          <p className="font-bold">{t("sidebar.LogOut")}</p>
         </div>
       </div>
     </div>
