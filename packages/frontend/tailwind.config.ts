@@ -20,6 +20,10 @@ const config: Config = {
       colors: {
         primary: '#3498db',
         secondary: '#2ecc71',
+        darkblue : '#9ACEFE',
+        backgroundLight: '#e6f7ff',
+        selection : '#4e82ba',
+        sidebarText: '#e6f7ff'
         // Add more custom colors here
       },
       fontFamily: {
