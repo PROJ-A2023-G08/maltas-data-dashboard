@@ -11,12 +11,12 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     "paths": {
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/context/AuthProvider.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.test.tsx", "**/*.tsx", "src/context/AuthProvider.js"],
   "exclude": ["node_modules"]
 }
