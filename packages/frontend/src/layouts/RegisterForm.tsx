@@ -4,9 +4,10 @@ import { FieldProps } from 'formik';
 import * as Yup from 'yup';
 import { Button, TextField, Typography } from '@mui/material';
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
-import { alpha, styled } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import { register } from '../../lib/api/api';
 
 export const StyledField = styled(Field)< FieldProps>(({ theme }) => ({
   background: "white",
@@ -39,7 +40,7 @@ const validationSchema = Yup.object({
     .required('Confirm password is required'),
 });
 
-interface RegisterBasics {
+export interface RegisterBasics {
   email: string;
   password: string;
   firstName: string;
@@ -47,21 +48,25 @@ interface RegisterBasics {
 }
 
 interface RegisterProps {
-  onRegister: (values: RegisterBasics) => void;
+  onRegister?: (values: RegisterBasics) => void;
 }
 
 const RegisterForm: React.FC<RegisterProps> = ({ onRegister }) => {
   const router = useRouter();
   const onSubmit = async (values: RegisterBasics) => {
-    //onRegister(values);
+
     const { firstName, lastName, email, password } = values;
     try {
       const data =  { firstName, lastName, email, password }
-      const response = await axios.post("http://localhost:5000/api/auth/register", data)
-      console.log(response.data)
+      const response = await register(data);
+  
       if (response.status === 200) {
-        console.log("Success")
-        router.push("/");
+        const { accessToken, refreshToken } = response.data;
+        localStorage.setItem('accessToken', accessToken);
+        localStorage.setItem('refreshToken', refreshToken);
+
+        router.push('/');
+       
       }
 
     }catch(error)  { 
@@ -70,12 +75,18 @@ const RegisterForm: React.FC<RegisterProps> = ({ onRegister }) => {
   };
 
   return (
-    <div className="pt-12">
+    <div className="pt-3">
       <section className="flex items-center mb-8">
         <span className="pr-4">
-          <DoubleArrowIcon sx={{ fontSize: 30 }} color="success" />
+          <DoubleArrowIcon sx={{ fontSize: 30 }} color="primary" />
         </span>
-        <Typography variant="h3" color="green" component="div" align="center" gutterBottom>
+        <Typography
+          variant="h3"
+          color="primary"
+          component="div"
+          align="center"
+          gutterBottom
+        >
           Register
         </Typography>
       </section>
@@ -91,15 +102,19 @@ const RegisterForm: React.FC<RegisterProps> = ({ onRegister }) => {
               type="text"
               label="First Name"
               name="firstName"
-              sx={{ borderRadius: 1}}
+              sx={{ borderRadius: 1 }}
               fullWidth
               variant="outlined"
             />
-            <ErrorMessage className="text-red-500" name="firstName" component="div" />
+            <ErrorMessage
+              className="text-red-500"
+              name="firstName"
+              component="div"
+            />
           </div>
           <div className="pb-4">
             <Field
-              sx={{ borderRadius: 1}}
+              sx={{ borderRadius: 1 }}
               as={TextField}
               type="text"
               label="Last Name"
@@ -107,7 +122,11 @@ const RegisterForm: React.FC<RegisterProps> = ({ onRegister }) => {
               fullWidth
               variant="outlined"
             />
-            <ErrorMessage className="text-red-500" name="lastName" component="div" />
+            <ErrorMessage
+              className="text-red-500"
+              name="lastName"
+              component="div"
+            />
           </div>
           <div className="pb-4">
             <Field
@@ -115,11 +134,15 @@ const RegisterForm: React.FC<RegisterProps> = ({ onRegister }) => {
               type="text"
               label="Email"
               name="email"
-              sx={{ borderRadius: 1}}
+              sx={{ borderRadius: 1 }}
               fullWidth
               variant="outlined"
             />
-            <ErrorMessage className="text-red-500" name="email" component="div" />
+            <ErrorMessage
+              className="text-red-500"
+              name="email"
+              component="div"
+            />
           </div>
           <div className="pb-4">
             <Field
@@ -128,10 +151,14 @@ const RegisterForm: React.FC<RegisterProps> = ({ onRegister }) => {
               label="Password"
               name="password"
               fullWidth
-              sx={{ borderRadius: 1}}
+              sx={{ borderRadius: 1 }}
               variant="outlined"
             />
-            <ErrorMessage className="text-red-500" name="password" component="div" />
+            <ErrorMessage
+              className="text-red-500"
+              name="password"
+              component="div"
+            />
           </div>
           <div className="pb-4">
             <Field
@@ -140,12 +167,26 @@ const RegisterForm: React.FC<RegisterProps> = ({ onRegister }) => {
               label="Confirm Password"
               name="confirmPassword"
               fullWidth
-              sx={{ borderRadius: 1}}
+              sx={{ borderRadius: 1 }}
               variant="outlined"
             />
-            <ErrorMessage className="text-red-500" name="confirmPassword" component="div" />
+            <ErrorMessage
+              className="text-red-500"
+              name="confirmPassword"
+              component="div"
+            />
           </div>
-          <Button fullWidth  size="large" type="submit" variant="contained" color="success">
+          <Button
+            sx={{
+              height: (theme) => theme.spacing(7),
+              mb: (theme) => theme.spacing(1)
+            }}
+            fullWidth
+            size="large"
+            type="submit"
+            variant="contained"
+            color="primary"
+          >
             Register
           </Button>
         </Form>
