@@ -27,7 +27,7 @@ const ContactTab = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 w-1/2 pt-20">
+    <div className="container mx-auto p-4 w-1/2 pt-20" data-testid="Contact-id">
       <h1 className="text-4xl font-bold mb-4 text-start">
         {t("contact.Header")}
       </h1>
@@ -47,6 +47,7 @@ const ContactTab = () => {
             />
           </div>
           <button
+            data-testid="Send-button"
             type="submit"
             className="w-1/4 h-12 px-6 text-indigo-100 transition-colors duration-150 border-hidden	 bg-blue-500 rounded-lg focus:shadow-outline hover:bg-blue-800"
           >
