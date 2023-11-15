@@ -4,6 +4,8 @@
     "packages/*"
   ],
   "dependencies": {
+    "@testing-library/jest-dom": "^6.1.4",
+    "@testing-library/react": "^14.1.0",
     "axios": "^1.6.0",
     "react-icons": "^4.11.0",
     "typescript": "^5.2.2"

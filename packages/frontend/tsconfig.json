@@ -17,6 +17,12 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.test.tsx", "**/*.tsx", "src/context/AuthProvider.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.test.tsx",
+    "**/*.tsx",
+    "src/context/AuthProvider.js"
+  ],
   "exclude": ["node_modules"]
 }
