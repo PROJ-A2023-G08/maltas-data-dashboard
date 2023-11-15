@@ -34,6 +34,60 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+
+### Testing
+
+to run the test
+```bash
+npm run frontend test
+```
+
+Testing the component is required for each developed component, the minimum is making sure is rendering properly
+
+```
+// example
+
+// component
+const Dashboard = () => (<div>Dashboard</div>)
+
+//test
+
+describe("Dashboard", () => {
+    it("renders correctly", () => {
+        const tree = renderer.create(<Dashboard  />).toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+});
+```
+
+It's also important to test each function/utils you create
+```
+// example
+
+// function 
+let count = 0
+const increment = () => count + 1
+
+// test
+// the test
+```
+
+## Backend Development
+
+First, run the development server:
+
+```bash
+npm run backend:dev
+```
+
+### Testing
+to run the test
+```bash
+npm run backend test
+```
+
+Testing the component is required for each developed service
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
