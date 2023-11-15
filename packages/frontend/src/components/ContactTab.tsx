@@ -16,14 +16,23 @@ const ContactTab = () => {
     message: "",
   });
 
-  const handleChange = (e: any) => {
+  let messageValue = "";
+
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Sending email:", formData);
+    setFormData({ ...formData, message: "" });
+    showPopup();
+    // Clear the message field after sending
+  };
+
+  const showPopup = () => {
+    alert("Message sent!");
   };
 
   return (
@@ -42,15 +51,18 @@ const ContactTab = () => {
             </label>
             <textarea
               id="large-input"
-              className="block w-full p-4 rounded-lg border bg-gray-200 text-gray-900"
+              className="block w-full pt-2 rounded-lg border bg-gray-200 text-gray-900"
               rows={11}
+              name="message"
+              onChange={handleChange}
+              value={formData.message}
             />
           </div>
           <button
             type="submit"
-            className="w-1/4 h-12 px-6 text-indigo-100 transition-colors duration-150 border-hidden	 bg-blue-500 rounded-lg focus:shadow-outline hover:bg-blue-800"
+            className="w-1/4 h-1/8 text-indigo-100 transition-colors duration-150 border-hidden bg-indigo-600 rounded-lg focus:shadow-outline hover:bg-blue-800"
           >
-            {t("contact.Send")}
+            <p className="text-xl">{t("contact.Send")}</p>
           </button>
         </form>
 
