@@ -28,6 +28,12 @@ First, run the development server:
 npm run frontend:dev
 ```
 
+## Install needed packages
+You may need to run npm/yarn install in the root folder, packages/frontend and packages/backend to get all of the latest needed packages
+
+## Run the tests
+Ensure you have all of the needed packages, after this run npm test in the root folder. This will run all of the frontend and backend tests.
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
