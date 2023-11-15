@@ -12,7 +12,7 @@ jest.mock("next-i18next", () => ({
   }),
 }));
 
-xdescribe("Sidebar", () => {
+describe("Sidebar", () => {
   it("Sidebar renders correctly", () => {
     const setActiveComponent = jest.fn();
     const tree = renderer
@@ -23,7 +23,7 @@ xdescribe("Sidebar", () => {
 });
 
 //U01.1.6
-it("Matlas logo renders", () => {
+it("Maltas logo renders", () => {
   const setActiveComponent = jest.fn();
   render(<Sidebar setActiveComponent={setActiveComponent} />);
   expect(screen.getByAltText("Maltas Logo")).toBeInTheDocument();
