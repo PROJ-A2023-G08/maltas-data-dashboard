@@ -3,39 +3,53 @@ import React, { useState } from "react";
 const FaqTab = () => {
   const faqData = [
     {
-      question: "What is Lorem ipsum",
+      question: "What is the Maltas Dashboard service?",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Maltas Dashboard service is a cloud-based analytics service that enables healthcare professionals to visualize and analyze data regarding hygiene compliance processes. It connects users to cloud-based and on-premises data through easy-to-use dashboards and interactive reports. For more information, see www…….",
     },
     {
-      question: "What is Lorem ipsum",
+      question: "How do I start using Maltas Dashboard",
       answer:
-        "dolore magna aliqua.",
+        "Maltas Dashboard User is always part of a specific healthcare organization. Organizations assign roles for Users and new User shall receive login details via email. If you wish to become Maltas Dashboard User, please contact your own organization to see whether Your organization is already aboard.  ",
     },
     {
-      question: "What is Lorem ipsum",
+      question: "What are different user roles?",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "The way you interact with Maltas Dashboard will depend on your job role. As a user, you're the person who receives content (dashboards, reports) from data sources. [Let’s expand on this]",
     },
     {
-      question: "What is Lorem ipsum",
-      answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      question: "Where can I get a new password for Maltas Dashboard?",
+      answer: "[Good question!]",
     },
     {
-      question: "What is Lorem ipsum",
+      question: "What data is presented in Maltas Dashboard?",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "In short, the data shown in Maltas Dashboard Service is data from different applications and devices monitoring hygiene and disinfection processes in a specific healthcare unit. For more information, please see www…",
     },
     {
-      question: "What is Lorem ipsum",
+      question: "Does Maltas Dashboard require installation of software?",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "No. Maltas Daahboard is a cloud-based webapp and there is no need for any software installation.  ",
     },
     {
-      question: "What is Lorem ipsum",
+      question: "Can I download data from Maltas Dashboard.",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "We are developing some predetermined reporting tools which allow Users to download data from Maltas Dashboard.",
+    },
+    {
+      question: "Why do I have to sign up with my work email?",
+      answer:
+        "Maltas Dashboard Service is used by healthcare and other professionals that work with infection control. Maltas doesn't support email addresses provided by consumer email services or telecommunications providers. ",
+    },
+    {
+      question: "Does Maltas support mobile devices?",
+      answer:
+        "Yes. Maltas Dashboard WebApp works also in mobile browsers. Maltas Dashboard does not however have native apps for Android, iOS or Windows devices.",
+    },
+    {
+      question: "Where can I learn more about security?",
+      answer:
+        "Learn more about Maltas Dashboard Service security, privacy, and compliance here:",
     },
   ];
 
@@ -61,7 +75,9 @@ const FaqTab = () => {
             {openQuestion === index && (
               <div className="flex mt-2">
                 <div className="w-full">
-                  <p className="p-2 bg-gray-300 rounded-lg text-lg">{faq.answer}</p>
+                  <p className="p-2 bg-gray-300 rounded-lg text-lg">
+                    {faq.answer}
+                  </p>
                 </div>
               </div>
             )}
