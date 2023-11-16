@@ -1,26 +1,37 @@
 import React from 'react';
 import dynamic from "next/dynamic";
 import DataMeasurement from "@maltas-dashboard/frontend/public/csvjson.json";
-import { Measurement, StackedComplianceChart, RoleCount } from "@maltas-dashboard/common/types/ChartTypes";
+import { Measurement } from "@maltas-dashboard/common/types/Types";
 
 const ResponsiveBar = dynamic(
     () => import("@nivo/bar").then((m) => m.ResponsiveBar),
     { ssr: false },
 );
 
+type StackedComplianceChart = {
+    month: string;
+} & RoleCount;
 
-interface Props {
-    // Define props here
+type RoleCount = {
+    0: number;
+    1: number;
+    2: number;
+}
+
+type EachMonthData = {
+    [key: string]: RoleCount;
 }
 
 export const StackedCompliance = () => {
     const data: Measurement[] = DataMeasurement as Measurement[];
 
-    type EachMonthData = {
-        [key: string]: RoleCount;
-    }
+    // TODO:interactivity
+    // month can be exchange to date or week
+    // status can be exchange to any other status
+    // role can be selected for interactivitiy
     const monthData: EachMonthData = {}
     // this should be in the backend in the future
+    // or at least in a helper function to calculate it once and call it using context
     data.forEach((item) => {
         const month = new Date(item.end_time_iso).getMonth().toString();
         if (month && item.status === "COMPLETE") {
@@ -40,7 +51,7 @@ export const StackedCompliance = () => {
                 case 2:
                     monthData[month] = {
                         ...monthData[month],
-                        2: monthData[month]?.[2]? monthData[month][2]+ 1 : 1
+                        2: monthData[month]?.[2] ? monthData[month][2] + 1 : 1
                     }
                     break;
                 default:
