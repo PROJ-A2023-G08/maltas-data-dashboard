@@ -25,7 +25,7 @@ type EachMonthData = {
 export const StackedCompliance = () => {
     const data: Measurement[] = DataMeasurement as Measurement[];
 
-    // TODO:interactivity
+    // TODO:interactivity put it in controller / page
     // month can be exchange to date or week
     // status can be exchange to any other status
     // role can be selected for interactivitiy
