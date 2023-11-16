@@ -18,6 +18,7 @@ jest.mock("next-i18next", () => ({
   }),
 }));
 
+//U01.5
 describe("FAQ Tab", () => {
   it("FAQ option renders", () => {
     render(<Help />);
@@ -73,6 +74,7 @@ it("Contact option is clickable", () => {
   expect(contactTab).toBeInTheDocument();
 });
 
+//U01.5.2
 describe("Contact Tab", () => {
   //Used to open the actual contact tab, needed in order for other tests to work
   beforeEach(() => {
