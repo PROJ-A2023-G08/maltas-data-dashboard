@@ -1,64 +1,46 @@
 import React from 'react';
 import dynamic from "next/dynamic";
-import DataMeasurement from "../../../public/csvjson.json";
+import DataMeasurement from "@maltas-dashboard/frontend/public/csvjson.json";
+import { Measurement, StackedComplianceChart, RoleCount } from "@maltas-dashboard/common/types/ChartTypes";
+
 const ResponsiveBar = dynamic(
     () => import("@nivo/bar").then((m) => m.ResponsiveBar),
     { ssr: false },
 );
 
-type MeasurementTypes = {
-    measurement_id: number;
-    device_id: number;
-    role_id: number;
-    start_time_iso: string; // ISO 8601
-    end_time_iso: string; // ISO 8601
-    total_time_spent: number;
-    status: 'COMPLETE' | 'CONTINUED' | 'INTERRUPTED' | 'STARTED' | 'PAUSED';
-}
-
-type ChartData = {
-    month: string;
-} & StatusCount;
-
-type StatusCount = {
-    COMPLETE: number;
-    INTERRUPTED: number;
-    PAUSED: number;
-}
-
-type monthData = {
-    [key: string]: StatusCount;
-}
 
 interface Props {
     // Define props here
 }
 
 export const StackedCompliance = () => {
-    const data: MeasurementTypes[] = DataMeasurement as MeasurementTypes[];
+    const data: Measurement[] = DataMeasurement as Measurement[];
 
-
-    const monthData: monthData = {}
+    type EachMonthData = {
+        [key: string]: RoleCount;
+    }
+    const monthData: EachMonthData = {}
+    // this should be in the backend in the future
     data.forEach((item) => {
         const month = new Date(item.end_time_iso).getMonth().toString();
-        if (month) {
-            switch (item.status) {
-                case "COMPLETE":
+        if (month && item.status === "COMPLETE") {
+            switch (item.role_id) {
+                case 0:
                     monthData[month] = {
                         ...monthData[month],
-                        COMPLETE: monthData[month]?.COMPLETE ? monthData[month].COMPLETE + 1 : 1
+                        0: monthData[month]?.[0] ? monthData[month][0] + 1 : 1
                     }
                     break;
-                case "INTERRUPTED":
+                case 1:
                     monthData[month] = {
                         ...monthData[month],
-                        INTERRUPTED: monthData[month]?.INTERRUPTED ? monthData[month].INTERRUPTED + 1 : 1
+                        1: monthData[month]?.[1] ? monthData[month][1] + 1 : 1
                     }
                     break;
-                case "PAUSED":
+                case 2:
                     monthData[month] = {
                         ...monthData[month],
-                        PAUSED: monthData[month]?.PAUSED ? monthData[month].PAUSED + 1 : 1
+                        2: monthData[month]?.[2]? monthData[month][2]+ 1 : 1
                     }
                     break;
                 default:
@@ -67,9 +49,8 @@ export const StackedCompliance = () => {
         }
     }
     )
-
-    const mappedData: ChartData[] = Object.keys(monthData).map((key) => {
-        const eachMonthData: ChartData = {
+    const mappedData: StackedComplianceChart[] = Object.keys(monthData).map((key) => {
+        const eachMonthData: StackedComplianceChart = {
             month: key,
             ...monthData[key]
         }
@@ -86,7 +67,7 @@ export const StackedCompliance = () => {
             indexScale={{ type: 'band', round: true }}
             colors={{ scheme: 'nivo' }}
             indexBy="month"
-            keys={["COMPLETE", "PAUSED", "INTERRUPTED"]} />
+            keys={["0", "1", "2"]} />
     )
 
 
