@@ -1,7 +1,7 @@
 import React from 'react';
 import dynamic from "next/dynamic";
 import DataMeasurement from "@maltas-dashboard/frontend/public/csvjson.json";
-import { Measurement, Status } from "@maltas-dashboard/common/types/Types";
+import { Measurement } from "@maltas-dashboard/common/types/Types";
 
 const ResponsiveBar = dynamic(
     () => import("@nivo/bar").then((m) => m.ResponsiveBar),
@@ -34,7 +34,7 @@ export const StackedCompliance = () => {
     // or at least in a helper function to calculate it once and call it using context
     data.forEach((item) => {
         const month = new Date(item.end_time_iso).getMonth().toString();
-        if (month && item.status === Status.COMPLETE) {
+        if (month && item.status === "COMPLETE") {
             switch (item.role_id) {
                 case 0:
                     monthData[month] = {
