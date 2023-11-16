@@ -80,25 +80,6 @@ export const StackedCompliance = () => {
             indexBy="month"
             keys={["0", "1", "2"]} />
     )
-
-
-    // const filterCompleteSeptember = data.filter(
-    //     measurement => {
-    //         const time = new Date(measurement.start_time_iso);
-    //         return measurement.status === "COMPLETE" && time.getMonth() === 9;
-    //     }
-    // );
-
-    // filterComplete.forEach(measurement => {
-    //     const { role_id, total_time_spent } = measurement;
-    //     if (!roleData[role_id]) {
-    //         roleData[role_id] = { total_time_spent: 0, count: 0 };
-    //     }
-    //     roleData[role_id].total_time_spent += total_time_spent;
-    //     roleData[role_id].count++;
-    // });
-
-
 };
 
 export default StackedCompliance;
