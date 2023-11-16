@@ -4,6 +4,9 @@
     "packages/*"
   ],
   "dependencies": {
+    "@maltas-dashboard/frontend": "file:packages/frontend",
+    "@maltas-dashboard/backend": "file:packages/backend",
+    "@maltas-dashboard/common": "file:packages/common",
     "axios": "^1.6.0",
     "react-icons": "^4.11.0",
     "typescript": "^5.2.2"
