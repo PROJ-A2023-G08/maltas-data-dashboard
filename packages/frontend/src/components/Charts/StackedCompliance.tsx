@@ -1,7 +1,7 @@
 import React from 'react';
 import dynamic from "next/dynamic";
-import DataMeasurement from "@maltas-dashboard/frontend/public/csvjson.json";
-import { Measurement } from "@maltas-dashboard/common/types/Types";
+import DataMeasurement from "../../../public/csvjson.json";
+import { Measurement } from "../../../../common/types/Types";
 
 const ResponsiveBar = dynamic(
     () => import("@nivo/bar").then((m) => m.ResponsiveBar),
