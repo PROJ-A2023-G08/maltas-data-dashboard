@@ -1,0 +1,294 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sidebar renders correctly 1`] = `
+<div
+  className="bg-darkblue text-white w-60 min-h-screen pl-2"
+>
+  <div
+    className="flex flex-col items-start justify-between h-full"
+  >
+    <div
+      className="flex flex-col items-start justify-start w-full"
+    >
+      <div
+        className="flex flex-col items-center justify-center w-full h-40"
+      >
+        <div
+          className="pt-20"
+        >
+          <img
+            alt="Maltas Logo"
+            data-nimg="1"
+            decoding="async"
+            height={160}
+            loading="lazy"
+            onError={[Function]}
+            onLoad={[Function]}
+            src="/Malta_logo.svg"
+            style={
+              {
+                "color": "transparent",
+              }
+            }
+            width={160}
+          />
+        </div>
+      </div>
+      <div
+        className="flex flex-col items-start justify-start w-full pt-36"
+      >
+        <nav
+          aria-label="main mailbox folders"
+          className="MuiList-root MuiList-padding css-h4y409-MuiList-root"
+        >
+          <li
+            className="MuiListItem-root MuiListItem-gutters MuiListItem-padding hover:bg-white hover:text-black rounded-xl mb-2 css-1p823my-MuiListItem-root"
+            disabled={false}
+            style={
+              {
+                "height": "70px",
+                "width": "200px",
+              }
+            }
+          >
+            <button
+              className="MuiButtonBase-root flex items-center css-10d1a0h-MuiButtonBase-root"
+              disabled={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onContextMenu={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={0}
+              type="button"
+            >
+              <div
+                className="-ml-2 pt-1"
+              >
+                <div
+                  className="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
+                >
+                  <svg
+                    aria-hidden={true}
+                    className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="HomeIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <p
+                className="font-bold text-xl -ml-6"
+              >
+                sidebar.Home
+              </p>
+            </button>
+          </li>
+          <li
+            className="MuiListItem-root MuiListItem-gutters MuiListItem-padding hover:bg-white hover:text-black rounded-xl mb-2 css-1p823my-MuiListItem-root"
+            disabled={false}
+            style={
+              {
+                "height": "70px",
+                "width": "200px",
+              }
+            }
+          >
+            <button
+              className="MuiButtonBase-root flex items-center css-10d1a0h-MuiButtonBase-root"
+              disabled={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onContextMenu={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={0}
+              type="button"
+            >
+              <div
+                className="-ml-2 pt-1"
+              >
+                <div
+                  className="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
+                >
+                  <svg
+                    aria-hidden={true}
+                    className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="GridViewIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M3 3v8h8V3H3zm6 6H5V5h4v4zm-6 4v8h8v-8H3zm6 6H5v-4h4v4zm4-16v8h8V3h-8zm6 6h-4V5h4v4zm-6 4v8h8v-8h-8zm6 6h-4v-4h4v4z"
+                      fillRule="evenodd"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <p
+                className="font-bold text-xl -ml-6"
+              >
+                sidebar.Dashboard
+              </p>
+            </button>
+          </li>
+          <li
+            className="MuiListItem-root MuiListItem-gutters MuiListItem-padding hover:bg-white hover:text-black rounded-xl mb-2 css-1p823my-MuiListItem-root"
+            disabled={false}
+            style={
+              {
+                "height": "70px",
+                "width": "200px",
+              }
+            }
+          >
+            <button
+              className="MuiButtonBase-root flex items-center css-10d1a0h-MuiButtonBase-root"
+              disabled={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onContextMenu={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={0}
+              type="button"
+            >
+              <div
+                className="-ml-2 pt-1"
+              >
+                <div
+                  className="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
+                >
+                  <svg
+                    aria-hidden={true}
+                    className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="SettingsIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <p
+                className="font-bold text-xl -ml-6"
+              >
+                sidebar.Settings
+              </p>
+            </button>
+          </li>
+          <li
+            className="MuiListItem-root MuiListItem-gutters MuiListItem-padding hover:bg-white hover:text-black rounded-xl mb-2 css-1p823my-MuiListItem-root"
+            disabled={false}
+            style={
+              {
+                "height": "70px",
+                "width": "200px",
+              }
+            }
+          >
+            <button
+              className="MuiButtonBase-root flex items-center css-10d1a0h-MuiButtonBase-root"
+              disabled={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onContextMenu={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={0}
+              type="button"
+            >
+              <div
+                className="-ml-2 pt-1"
+              >
+                <div
+                  className="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
+                >
+                  <svg
+                    aria-hidden={true}
+                    className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="HelpIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <p
+                className="font-bold text-xl -ml-6"
+              >
+                sidebar.Help
+              </p>
+            </button>
+          </li>
+        </nav>
+      </div>
+    </div>
+    <div
+      className="flex flex-row items-center justify-start w-52 h-12 pl-5 cursor-pointer hover:bg-white hover:text-black hover:rounded-md"
+    >
+      <div
+        className="mr-4"
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+          data-testid="LogoutIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="m17 7-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"
+          />
+        </svg>
+      </div>
+      <p
+        className="font-bold"
+      >
+        sidebar.LogOut
+      </p>
+    </div>
+  </div>
+</div>
+`;

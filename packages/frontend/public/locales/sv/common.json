@@ -1,0 +1,39 @@
+{
+  "sidebar": {
+    "Dashboard": "Instrumentpanel",
+    "Home": "Hem",
+    "Settings": "Inställningar",
+    "Help": "Hjälp",
+    "LogOut": "Logga ut"
+  },
+  "settings": {
+    "ProfilePhoto": "Profilbild",
+    "PersonalInfo" : "Personlig information",
+    "ChangePicture": "Ändra bild",
+    "ChangePassword": "Ändra lösenord",
+    "ChangeLanguage": "Ändra språk",
+    "EmailField" : "E-postadress",
+    "NameField" : "Namn",
+    "CurrentPassword" : "Nuvarande lösenord",
+    "NewPassword" : "Nytt lösenord",
+    "ConfirmPassword" : "Bekräfta lösenord",
+    "UpdatePassword" : "Uppdatera lösenord",
+    "Language" : "Språk",
+    "Notifications" : "Notifikationer",
+    "Save" : "Spara",
+    "Cancel" : "Avbryt",
+    "English" : "Engelska",
+    "Finnish" : "Finska",
+    "Swedish" : "Svenska"
+  },
+  "contact": {
+    "Header": "Kontakta oss",
+    "Subtext": "Har du några frågor? Skicka ett meddelande till oss!",
+    "Message": "Meddelande",
+    "Send": "Skicka"
+  },
+  "uiElements": {
+    "FAQ": "FAQ",
+    "Contact": "Kontakt"
+  }
+}

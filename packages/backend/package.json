@@ -1,0 +1,50 @@
+{
+  "name": "@maltas-dashboard/backend",
+  "version": "0.0.0",
+  "description": "Now I’m the model of a modern major general / The venerated Virginian veteran whose men are all / Lining up, to put me up on a pedestal / Writin’ letters to relatives / Embellishin’ my elegance and eloquence / But the elephant is in the room / The truth is in ya face when ya hear the British cannons go / BOOM",
+  "keywords": [],
+  "author": "arielmalada <arielmalada@outlook.com>",
+  "license": "ISC",
+  "main": "lib/backend.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PROJ-A2023-G08/maltas-data-dashboard.git"
+  },
+  "scripts": {
+    "test": "jest",
+    "dev": "nodemon src",
+    "start": "node src"
+  },
+  "bugs": {
+    "url": "https://github.com/PROJ-A2023-G08/maltas-data-dashboard/issues"
+  },
+  "homepage": "https://github.com/PROJ-A2023-G08/maltas-data-dashboard#readme",
+  "dependencies": {
+    "-": "^0.0.1",
+    "@prisma/client": "^5.5.2",
+    "bcrypt": "^5.1.1",
+    "cloudinary": "^1.41.0",
+    "common": "file:../common",
+    "cors": "^2.8.5",
+    "D": "^1.0.0",
+    "express": "^4.18.2",
+    "gridfs-stream": "^1.1.1",
+    "helmet": "^7.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.4",
+    "multer-gridfs-storage": "^5.0.2",
+    "prisma": "^5.5.2",
+    "uuid": "^9.0.1",
+    "validator": "^13.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
