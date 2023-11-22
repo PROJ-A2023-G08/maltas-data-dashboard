@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FormEvent, useRef, useState } from "react";
 import PersonIcon from "@mui/icons-material/Person";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneInTalkIcon from "@mui/icons-material/PhoneInTalk";
@@ -7,23 +7,44 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { useTranslation } from "next-i18next";
+import emailjs from "@emailjs/browser";
 
 const ContactTab = () => {
-  const { t } = useTranslation("common");
-  const [formData, setFormData] = useState({
-    //name: "", Use if needed
-    //email: "", Use if needed
-    message: "",
-  });
+  //email utilizes emailjs.
+  //https://dashboard.emailjs.com/admin
 
-  const handleChange = (e: any) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+  const { t } = useTranslation("common");
+  const form = useRef<HTMLFormElement | null>(null);
+  const [isEmailSent, setIsEmailSent] = useState(false);
+
+  const sendEmail = (e: FormEvent) => {
+    e.preventDefault();
+
+    if (form.current) {
+      emailjs
+        .sendForm(
+          "service_xs3y2nj",
+          "template_fgdehpc",
+          form.current,
+          "nwkaHg97wzPvMT9dz",
+        )
+        .then(
+          (result) => {
+            console.log(result.text);
+            setIsEmailSent(true);
+            resetForm();
+          },
+          (error) => {
+            console.log(error.text);
+          },
+        );
+    }
   };
 
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-    console.log("Sending email:", formData);
+  const resetForm = () => {
+    if (form.current) {
+      form.current.reset();
+    }
   };
 
   return (
@@ -35,22 +56,42 @@ const ContactTab = () => {
         {t("contact.Subtext")}
       </h1>
       <div className="flex">
-        <form onSubmit={handleSubmit} className="w-2/3 pr-4">
-          <div className="mb-6">
+        <form ref={form} onSubmit={sendEmail} className="w-2/3 pr-4">
+          <div className="mb-2">
             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
-              {t("contact.Message")}
+              Name
+            </label>
+            <input
+              type="text"
+              name="user_name"
+              className="w-full p-2 border rounded-md focus:outline-none focus:ring focus:border-indigo-300"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block text-sm font-medium text-gray-900 dark:text-black">
+              Email
+            </label>
+            <input
+              type="email"
+              name="user_email"
+              className="w-full p-2 border rounded-md focus:outline-none focus:ring focus:border-indigo-300"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
+              Message
             </label>
             <textarea
-              id="large-input"
-              className="block w-full p-4 rounded-lg border bg-gray-200 text-gray-900"
-              rows={11}
+              name="message"
+              className="w-full p-2 border rounded-md focus:outline-none focus:ring focus:border-indigo-300"
             />
           </div>
           <button
             type="submit"
-            className="w-1/4 h-12 px-6 text-indigo-100 transition-colors duration-150 border-hidden	 bg-blue-500 rounded-lg focus:shadow-outline hover:bg-blue-800"
+            value="Send"
+            className="w-1/4 h-1/8 text-indigo-100 transition-colors duration-150 border-hidden bg-indigo-600 rounded-lg focus:shadow-outline hover:bg-blue-800"
           >
-            {t("contact.Send")}
+            <p className="text-xl">{t("contact.Send")}</p>
           </button>
         </form>
 
