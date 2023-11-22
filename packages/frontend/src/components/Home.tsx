@@ -7,6 +7,7 @@ const ResponsivePie = dynamic(
 
 import Data1 from "../../public/data1.json";
 import StackedCompliance from "./Charts/StackedCompliance";
+import LineAverage from "./Charts/LineAverage";
 const Home = () => {
   return (
     <>
@@ -14,6 +15,7 @@ const Home = () => {
       <div style={{ height: "400px" }}>
         <ResponsivePie data={Data1} />
         <StackedCompliance />
+        <LineAverage />
       </div>
     </>
   );
