@@ -8,6 +8,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { useTranslation } from "next-i18next";
 import emailjs from "@emailjs/browser";
+import { Result } from "postcss";
 
 const ContactTab = () => {
   //email utilizes emailjs.
@@ -21,6 +22,21 @@ const ContactTab = () => {
     e.preventDefault();
 
     if (form.current) {
+      // Validate form fields
+      const formData = new FormData(form.current);
+      let isValid = true;
+
+      formData.forEach((value, key) => {
+        if (!value) {
+          isValid = false;
+        }
+      });
+
+      if (!isValid) {
+        alert(`Please fill in all of the fields`);
+        return;
+      }
+
       emailjs
         .sendForm(
           "service_xs3y2nj",
@@ -33,6 +49,7 @@ const ContactTab = () => {
             console.log(result.text);
             setIsEmailSent(true);
             resetForm();
+            alert(`Message sent successfully`);
           },
           (error) => {
             console.log(error.text);
