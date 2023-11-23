@@ -25,12 +25,14 @@ type Props = {
 export const LineAverage = ({ minimumDate, maximumDate }: Props) => {
     const { maxValues, maxDate, minDate } = useContext(MeasurementContext);
 
-    if (!maxValues || !maxDate || !minDate) return null;
+    if (!maxValues || !maxDate || !minDate|| !minimumDate || !maximumDate) return null;
     const { role0, role1, role2 } = useMemo(() => {
         const role0: OmittedMeasurement[] = [], role1: OmittedMeasurement[] = [], role2: OmittedMeasurement[] = [];
+        const minimumDateX = minimumDate ? minimumDate : minDate;
+        const maxDateX = maximumDate ? maximumDate : maxDate;
         Object.values(maxValues).forEach((item) => {
             const date = new Date(item.start_time_iso);
-            if (date > minDate && date < maxDate) {
+            if (date > minimumDateX && date < maxDateX) {
                 switch (item.role_id) {
                     case 0:
                         role0.push(item);
@@ -45,7 +47,7 @@ export const LineAverage = ({ minimumDate, maximumDate }: Props) => {
             }
         });
         return { role0, role1, role2 };
-    }, [maxValues, maxDate, minDate]);
+    }, [maxValues, maxDate, minDate, minimumDate, maximumDate]);
 
     const calculateAverage = (role: OmittedMeasurement[]): Data[] => {
         const averageRole: Data[] = [];

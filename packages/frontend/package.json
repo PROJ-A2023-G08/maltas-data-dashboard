@@ -21,13 +21,14 @@
   },
   "homepage": "https://github.com/PROJ-A2023-G08/maltas-data-dashboard#readme",
   "dependencies": {
-    "@maltas-dashboard/frontend": "file:../packages/frontend",
-    "@maltas-dashboard/backend": "file:../packages/backend",
-    "@maltas-dashboard/common": "file:../packages/common",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@maltas-dashboard/backend": "file:../packages/backend",
+    "@maltas-dashboard/common": "file:../packages/common",
+    "@maltas-dashboard/frontend": "file:../packages/frontend",
     "@mui/icons-material": "^5.14.12",
     "@mui/material": "^5.14.12",
+    "@mui/x-date-pickers": "^6.18.2",
     "@nivo/bar": "^0.83.1",
     "@nivo/colors": "^0.83.1",
     "@nivo/core": "^0.83.1",
@@ -35,6 +36,7 @@
     "@nivo/pie": "^0.83.1",
     "axios": "^1.6.0",
     "classnames": "^2.3.2",
+    "date-fns": "^2.30.0",
     "formik": "^2.4.5",
     "i18next": "^23.6.0",
     "next": "13.4.6",
@@ -59,6 +61,9 @@
     "react-test-renderer": "^18.2.0",
     "tailwindcss": "^3",
     "typescript": "^5"
+  },
+  "peerDependencies": {
+    "@mui/system": "^5.8.0"
   },
   "scripts": {
     "test": "jest",

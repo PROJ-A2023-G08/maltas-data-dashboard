@@ -11,11 +11,12 @@ import LineAverage from "./Charts/LineAverage";
 import { Box, Grid } from "@mui/material";
 import { MeasurementContext } from "@/contexts/MeasurementProvider.context";
 import { useContext, useState } from "react";
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 const Home = () => {
   const { maxDate, minDate } = useContext(MeasurementContext);
   // state for the date range of line average chart
-  const [minimumDate, setMinimumDate] = useState<Date | undefined>(minDate);
-  const [maximumDate, setMaximumDate] = useState<Date | undefined>(maxDate);
+  const [minimumDate, setMinimumDate] = useState<Date | undefined | null>(minDate);
+  const [maximumDate, setMaximumDate] = useState<Date | undefined | null>(maxDate);
 
   return (
     <>
@@ -32,6 +33,20 @@ const Home = () => {
 
         <Grid item container sx={{ height: "400px" }} md={8}>
           <Grid sm={12}>
+            <DatePicker
+              minDate={minDate}
+              maxDate={maximumDate}
+              defaultValue={minDate}
+              value={minimumDate}
+              onChange={(minimumDate) => setMinimumDate(minimumDate)}
+            />
+            <DatePicker
+              minDate={minimumDate}
+              maxDate={maxDate}
+              defaultValue={maxDate}
+              value={maximumDate}
+              onChange={(maximumDate) => setMaximumDate(maximumDate)}
+            />
           </Grid>
           <Grid item sx={{ height: "400px" }} sm={12}>
             <LineAverage minimumDate={minimumDate} maximumDate={maximumDate} />
