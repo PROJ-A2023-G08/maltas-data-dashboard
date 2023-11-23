@@ -8,7 +8,6 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { useTranslation } from "next-i18next";
 import emailjs from "@emailjs/browser";
-import { Result } from "postcss";
 
 const ContactTab = () => {
   //email utilizes emailjs.
@@ -76,7 +75,7 @@ const ContactTab = () => {
         <form ref={form} onSubmit={sendEmail} className="w-2/3 pr-4">
           <div className="mb-2">
             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
-              Name
+              {t("contact.SenderName")}
             </label>
             <input
               type="text"
@@ -86,7 +85,7 @@ const ContactTab = () => {
           </div>
           <div className="mb-2">
             <label className="block text-sm font-medium text-gray-900 dark:text-black">
-              Email
+              {t("contact.SenderEmail")}
             </label>
             <input
               type="email"
@@ -96,10 +95,11 @@ const ContactTab = () => {
           </div>
           <div className="mb-2">
             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
-              Message
+              {t("contact.SenderMessage")}
             </label>
             <textarea
               name="message"
+              rows={7}
               className="w-full p-2 border rounded-md focus:outline-none focus:ring focus:border-indigo-300"
             />
           </div>

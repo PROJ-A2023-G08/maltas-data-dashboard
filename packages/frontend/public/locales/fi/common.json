@@ -8,32 +8,59 @@
   },
   "settings": {
     "ProfilePhoto": "Profiilikuva",
-    "PersonalInfo" : "Käyttäjän tiedot",
+    "PersonalInfo": "Käyttäjän tiedot",
     "ChangePicture": "Vaihda kuva",
     "ChangePassword": "Vaihda salasana",
     "ChangeLanguage": "Valitse kieli",
-    "EmailField" : "Sähköposti",
-    "NameField" : "Nimi",
-    "CurrentPassword" : "Nykyinen salasana",
-    "NewPassword" : "Uusi salasana",
-    "ConfirmPassword" : "Uusi salasana uudelleen",
-    "UpdatePassword" : "Päivitä salasana",
-    "Language" : "Kieli",
-    "Notifications" : "Ilmoitukset",
-    "Save" : "Tallenna",
-    "Cancel" : "Peruuta",
-    "English" : "Enlanti",
-    "Finnish" : "Suomi",
-    "Swedish" : "Ruotsi"
+    "EmailField": "Sähköposti",
+    "NameField": "Nimi",
+    "CurrentPassword": "Nykyinen salasana",
+    "NewPassword": "Uusi salasana",
+    "ConfirmPassword": "Uusi salasana uudelleen",
+    "UpdatePassword": "Päivitä salasana",
+    "Language": "Kieli",
+    "Notifications": "Ilmoitukset",
+    "Save": "Tallenna",
+    "Cancel": "Peruuta",
+    "English": "Enlanti",
+    "Finnish": "Suomi",
+    "Swedish": "Ruotsi"
   },
   "contact": {
     "Header": "Ota yhteyttä!",
     "Subtext": "Jos sinulla on kysyttävää, ota yhteyttä alla olevalla lomakkeella.",
     "Message": "Viesti",
-    "Send": "Lähetä"
+    "Send": "Lähetä",
+    "SenderName": "Nimi",
+    "SenderEmail": "Sähköposti",
+    "SenderMessage": "Viesti"
   },
   "uiElements": {
     "FAQ": "UKK",
     "Contact": "Ota yhteyttä"
+  },
+  "FAQquestions": {
+    "Q1": "Mikä on Maltas Dashboard -palvelu?",
+    "Q2": "Kuinka aloitan Maltas Dashboardin käytön?",
+    "Q3": "Mitkä ovat eri käyttäjäroolit?",
+    "Q4": "Mistä saan uuden salasanan Maltas Dashboardiin?",
+    "Q5": "Mitä tietoja esitetään Maltas Dashboardissa?",
+    "Q6": "Vaatiiko Maltas Dashboard ohjelmiston asentamisen?",
+    "Q7": "Voinko ladata tietoja Maltas Dashboardista?",
+    "Q8": "Miksi minun on rekisteröidyttävä työsähköpostillani?",
+    "Q9": "Tukeeko Maltas mobiililaitteita?",
+    "Q10": "Mistä voin oppia lisää tietoturvasta?"
+  },
+  "FAQanswers": {
+    "A1": "Maltas Dashboard -palvelu on pilvipohjainen analytiikkapalvelu, joka mahdollistaa terveydenhuollon ammattilaisille datan visualisoinnin ja analysoinnin hygienian noudattamisprosesseista. Se yhdistää käyttäjät pilvipohjaiseen ja paikalliseen dataan helppokäyttöisten koontinäyttöjen ja interaktiivisten raporttien kautta. Lisätietoja löydät osoitteesta www…….",
+    "A2": "Maltas Dashboardin käyttäjä on aina osa tiettyä terveydenhuolto-organisaatiota. Organisaatiot määrittävät käyttäjille rooleja, ja uusi käyttäjä saa kirjautumistiedot sähköpostitse. Jos haluat tulla Maltas Dashboardin käyttäjäksi, ota yhteyttä omaan organisaatioosi nähdäksesi, onko organisaatiosi jo mukana.",
+    "A3": "Miten vuorovaikutat Maltas Dashboardin kanssa riippuu työroolistasi. Käyttäjänä olet henkilö, joka vastaanottaa sisältöä (koontinäytöt, raportit) tietolähteistä. [Laajennetaan tätä vielä]",
+    "A4": "[Hyvä kysymys!]",
+    "A5": "Lyhyesti sanottuna Maltas Dashboard -palvelussa näkyvä data on peräisin eri sovelluksista ja laitteista, jotka seuraavat hygienian ja desinfektioprosesseja tietyssä terveydenhuollon yksikössä. Lisätietoja saat osoitteesta www…",
+    "A6": "Ei. Maltas Dashboard on pilvipohjainen verkkosovellus, eikä ohjelmiston asentamista tarvita.",
+    "A7": "Kehitämme joitakin valmiita raportointityökaluja, jotka mahdollistavat käyttäjille datan lataamisen Maltas Dashboardista.",
+    "A8": "Maltas Dashboard -palvelua käyttävät terveydenhuollon ja muiden ammattilaisten, jotka työskentelevät infektioiden torjunnan parissa. Maltas ei tue kuluttajapalvelujen tai teleoperaattoreiden tarjoamia sähköpostiosoitteita.",
+    "A9": "Kyllä. Maltas Dashboard WebApp toimii myös mobiiliselaimissa. Maltas Dashboardilla ei kuitenkaan ole omaa sovellusta Androidille, iOS:lle tai Windows-laitteille.",
+    "A10": "Lue lisää Maltas Dashboard -palvelun tietoturvasta, yksityisyydestä ja noudattamisesta täältä:"
   }
 }
