@@ -2,15 +2,18 @@ import Layout from "@/components/Layout";
 import type { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import useAuth from "../../lib/util/useAuth";
+import { MeasurementProvider } from "@/contexts/MeasurementProvider.context";
 export default function Home() {
-  const { logout, isLoggedIn} = useAuth();
-  if(!isLoggedIn){
-    return <div/>
+  const { logout, isLoggedIn } = useAuth();
+  if (!isLoggedIn) {
+    return <div />
   }
   return (
-    <main>
-      <Layout />
-    </main>
+    <MeasurementProvider>
+      <main>
+        <Layout />
+      </main>
+    </MeasurementProvider>
   );
 }
 
