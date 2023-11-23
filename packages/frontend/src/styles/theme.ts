@@ -3,9 +3,10 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#00695f', // Primary color
-      light: '#009688', // Lighter shade
-      dark: '#094a43', // Darker shade
+      main: '#247fbc', // Primary color
+      light: '#cdf0ff', // Lighter shade
+      dark: '#14537d', // Darker shade
+      contrastText: '#e6f7ff',
     },
     secondary: {
       main: '#FFC107', // Secondary color
@@ -17,8 +18,7 @@ const theme = createTheme({
       paper: '#FFFFFF', // Background color for paper elements
     },
     text: {
-      primary: '#333333', // Primary text color
-      secondary: '#757575', // Secondary text color
+      primary: "#273A50"
     },
     error: {
       main: '#D32F2F', // Error color

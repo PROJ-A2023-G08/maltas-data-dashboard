@@ -4,8 +4,9 @@
     "packages/*"
   ],
   "dependencies": {
-    "@testing-library/jest-dom": "^6.1.4",
-    "@testing-library/react": "^14.1.0",
+    "@maltas-dashboard/frontend": "file:packages/frontend",
+    "@maltas-dashboard/backend": "file:packages/backend",
+    "@maltas-dashboard/common": "file:packages/common",
     "axios": "^1.6.0",
     "react-icons": "^4.11.0",
     "typescript": "^5.2.2"
@@ -25,11 +26,14 @@
     "ts-node": "^10.9.1"
   },
   "scripts": {
-    "backend": "npm --workspace=frontend",
-    "frontend": "npm --workspace=frontend",
-    "test": "jest",
-    "frontend:dev": "npm run dev --workspace=frontend",
-    "frontend:build": "npm run build --workspace=frontend",
-    "frontend:start": "npm run start --workspace=frontend"
+    "build": "npm run build --workspace=@maltas-dashboard/frontend",
+    "backend": "npm --workspace=@maltas-dashboard/backend",
+    "backend:dev": "npm run dev --workspace=@maltas-dashboard/backend",
+    "backend:start": "npm run start --workspace=@maltas-dashboard/backend",
+    "frontend": "npm --workspace=@maltas-dashboard/frontend",
+    "test": "npm run test --workspace=@maltas-dashboard/frontend",
+    "frontend:dev": "npm run dev --workspace=@maltas-dashboard/frontend",
+    "frontend:build": "npm run build --workspace=@maltas-dashboard/frontend",
+    "frontend:start": "npm run start --workspace=@maltas-dashboard/frontend"
   }
 }
