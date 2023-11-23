@@ -33,7 +33,9 @@
     "Send": "Skicka",
     "SenderName": "Namn",
     "SenderEmail": "E-postadress",
-    "SenderMessage": "Meddelande"
+    "SenderMessage": "Meddelande",
+    "MissingField": "Detta fält är obligatoriskt",
+    "SentSuccesfully": "Ditt meddelande har skickats!"
   },
   "uiElements": {
     "FAQ": "FAQ",

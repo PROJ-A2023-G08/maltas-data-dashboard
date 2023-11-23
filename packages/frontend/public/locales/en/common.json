@@ -33,7 +33,9 @@
     "Send": "Send",
     "SenderName": "Name",
     "SenderEmail": "Email",
-    "SenderMessage": "Message"
+    "SenderMessage": "Message",
+    "MissingField": "Please fill in all of the fields.",
+    "SentSuccesfully": "Message sent succesfully!"
   },
   "uiElements": {
     "FAQ": "FAQ",

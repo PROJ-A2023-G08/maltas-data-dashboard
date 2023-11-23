@@ -32,7 +32,7 @@ const ContactTab = () => {
       });
 
       if (!isValid) {
-        alert(`Please fill in all of the fields`);
+        alert(t("contact.MissingField"));
         return;
       }
 
@@ -48,7 +48,7 @@ const ContactTab = () => {
             console.log(result.text);
             setIsEmailSent(true);
             resetForm();
-            alert(`Message sent successfully`);
+            alert(t("contact.SentSuccesfully"));
           },
           (error) => {
             console.log(error.text);
@@ -106,7 +106,7 @@ const ContactTab = () => {
           <button
             type="submit"
             value="Send"
-            className="w-1/4 h-1/8 text-indigo-100 transition-colors duration-150 border-hidden bg-indigo-600 rounded-lg focus:shadow-outline hover:bg-blue-800"
+            className="w-1/4 h-1/8 bg-secondary transition-colors duration-150 border-hidden rounded-lg focus:shadow-outline hover:bg-selection"
           >
             <p className="text-xl">{t("contact.Send")}</p>
           </button>
