@@ -8,32 +8,61 @@
   },
   "settings": {
     "ProfilePhoto": "Profile photo",
-    "PersonalInfo" : "Personal information",
+    "PersonalInfo": "Personal information",
     "ChangePicture": "Change picture",
     "ChangePassword": "Change password",
     "ChangeLanguage": "Change language",
-    "EmailField" : "Email address",
-    "NameField" : "Display name",
-    "CurrentPassword" : "Current password",
-    "NewPassword" : "New password",
-    "ConfirmPassword" : "Confirm password",
-    "UpdatePassword" : "Update password",
-    "Language" : "Language",
-    "Notifications" : "Notifications",
-    "Save" : "Save",
-    "Cancel" : "Cancel",
-    "English" : "English",
-    "Finnish" : "Finnish",
-    "Swedish" : "Swedish"
+    "EmailField": "Email address",
+    "NameField": "Display name",
+    "CurrentPassword": "Current password",
+    "NewPassword": "New password",
+    "ConfirmPassword": "Confirm password",
+    "UpdatePassword": "Update password",
+    "Language": "Language",
+    "Notifications": "Notifications",
+    "Save": "Save",
+    "Cancel": "Cancel",
+    "English": "English",
+    "Finnish": "Finnish",
+    "Swedish": "Swedish"
   },
   "contact": {
     "Header": "Get in touch!",
-    "Subtext": "Please explain the problem, and we'll get back to you",
+    "Subtext": "Got something to ask or tell us? Send us a message and we'll get back to you as soon as possible!",
     "Message": "Message",
-    "Send": "Send"
+    "Send": "Send",
+    "SenderName": "Name",
+    "SenderEmail": "Email",
+    "SenderMessage": "Message",
+    "MissingField": "Please fill in all of the fields.",
+    "SentSuccesfully": "Message sent succesfully!"
   },
   "uiElements": {
     "FAQ": "FAQ",
     "Contact": "Contact"
+  },
+  "FAQquestions": {
+    "Q1": "What is the Maltas Dashboard service?",
+    "Q2": "How do I start using Maltas Dashboard",
+    "Q3": "What are different user roles?",
+    "Q4": "Where can I get a new password for Maltas Dashboard?",
+    "Q5": "What data is presented in Maltas Dashboard?",
+    "Q6": "Does Maltas Dashboard require installation of software?",
+    "Q7": "Can I download data from Maltas Dashboard.",
+    "Q8": "Why do I have to sign up with my work email?",
+    "Q9": "Does Maltas support mobile devices?",
+    "Q10": "Where can I learn more about security?"
+  },
+  "FAQanswers": {
+    "A1": "Maltas Dashboard service is a cloud-based analytics service that enables healthcare professionals to visualize and analyze data regarding hygiene compliance processes. It connects users to cloud-based and on-premises data through easy-to-use dashboards and interactive reports. For more information, see www…….",
+    "A2": "Maltas Dashboard User is always part of a specific healthcare organization. Organizations assign roles for Users and new User shall receive login details via email. If you wish to become Maltas Dashboard User, please contact your own organization to see whether Your organization is already aboard.",
+    "A3": "The way you interact with Maltas Dashboard will depend on your job role. As a user, you're the person who receives content (dashboards, reports) from data sources. [Let’s expand on this]",
+    "A4": "[Good question!]",
+    "A5": "In short, the data shown in Maltas Dashboard Service is data from different applications and devices monitoring hygiene and disinfection processes in a specific healthcare unit. For more information, please see www…",
+    "A6": "No. Maltas Daahboard is a cloud-based webapp and there is no need for any software installation.",
+    "A7": "We are developing some predetermined reporting tools which allow Users to download data from Maltas Dashboard.",
+    "A8": "Maltas Dashboard Service is used by healthcare and other professionals that work with infection control. Maltas doesn't support email addresses provided by consumer email services or telecommunications providers.",
+    "A9": "Yes. Maltas Dashboard WebApp works also in mobile browsers. Maltas Dashboard does not however have native apps for Android, iOS or Windows devices.",
+    "A10": "Learn more about Maltas Dashboard Service security, privacy, and compliance here:"
   }
 }
