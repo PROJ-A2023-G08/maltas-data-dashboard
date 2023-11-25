@@ -35,6 +35,8 @@ router.post('/register', async (req, res, next) => {
     }
 
     const user = await createUser({ firstName, lastName, email, password });
+      res.status(200).json({ success: true, message: 'Registration Successful' })
+    
     const jti = uuidv4();
     const { accessToken, refreshToken } = generateTokens(user, jti);
     await addRefreshTokenToWhitelist({ jti, refreshToken, userId: user.id });

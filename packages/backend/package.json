@@ -17,7 +17,6 @@
     "url": "git+https://github.com/PROJ-A2023-G08/maltas-data-dashboard.git"
   },
   "scripts": {
-    "test": "jest",
     "dev": "nodemon src",
     "start": "node src"
   },
@@ -27,8 +26,9 @@
   "homepage": "https://github.com/PROJ-A2023-G08/maltas-data-dashboard#readme",
   "dependencies": {
     "-": "^0.0.1",
-    "@prisma/client": "^5.5.2",
+    "@prisma/client": "^5.6.0",
     "bcrypt": "^5.1.1",
+    "chai": "^4.3.10",
     "cloudinary": "^1.41.0",
     "common": "file:../common",
     "cors": "^2.8.5",
@@ -37,6 +37,8 @@
     "gridfs-stream": "^1.1.1",
     "helmet": "^7.0.0",
     "jsonwebtoken": "^9.0.2",
+    "mocha": "^10.2.0",
+    "mockgoose": "^8.0.4",
     "morgan": "^1.10.0",
     "multer": "^1.4.4",
     "multer-gridfs-storage": "^5.0.2",
@@ -45,6 +47,8 @@
     "validator": "^13.11.0"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1"
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.1",
+    "supertest": "^6.3.3"
   }
 }
