@@ -67,12 +67,9 @@ router.put('/update-user-info', isAuthenticated,  async (req, res, next) => {
     if (!user) {
       return res.status(404).json({ success: false, message: 'User not found' });
     }
-
-    // Update first name and last name
-    user.firstName = firstName;
-    user.lastName = lastName;
    
     await updateUser(email, {firstName, lastName});
+      res.status(200).json({ success: true, message: 'User info updated successfully '})
 
     const jti = uuidv4();
     const { accessToken, refreshToken } = generateTokens(user, jti);
@@ -90,5 +87,24 @@ router.put('/update-user-info', isAuthenticated,  async (req, res, next) => {
     next(err);
   }
 });
+
+router.put('/update-image', isAuthenticated,  async (req, res, next) => {
+  const { email, imageUrl } = req.body;
+
+  try {
+    // Find the user by email
+    const user = await findUserByEmail(email);
+
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'User not found' });
+    }
+   
+    await updateUser(email, { imageUrl });
+      res.status(200).json({ success: true, message: 'Image upload successfully' })
+
+  } catch (err) {
+    next(err);
+  }
+});	
 
 module.exports = router;

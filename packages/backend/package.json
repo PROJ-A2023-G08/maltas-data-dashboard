@@ -27,7 +27,7 @@
   "homepage": "https://github.com/PROJ-A2023-G08/maltas-data-dashboard#readme",
   "dependencies": {
     "-": "^0.0.1",
-    "@prisma/client": "^5.5.2",
+    "@prisma/client": "^5.6.0",
     "bcrypt": "^5.1.1",
     "cloudinary": "^1.41.0",
     "common": "file:../common",
