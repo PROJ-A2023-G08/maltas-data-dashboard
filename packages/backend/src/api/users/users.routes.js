@@ -71,18 +71,6 @@ router.put('/update-user-info', isAuthenticated,  async (req, res, next) => {
     await updateUser(email, {firstName, lastName});
       res.status(200).json({ success: true, message: 'User info updated successfully '})
 
-    const jti = uuidv4();
-    const { accessToken, refreshToken } = generateTokens(user, jti);
-    await addRefreshTokenToWhitelist({
-      jti,
-      refreshToken,
-      userId: user.id,
-    });
-
-    res.json({
-      accessToken,
-      refreshToken,
-    });
   } catch (err) {
     next(err);
   }
