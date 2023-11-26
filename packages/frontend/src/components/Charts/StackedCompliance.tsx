@@ -1,8 +1,6 @@
 import React, { useContext } from 'react';
 import dynamic from "next/dynamic";
-import DataMeasurement from "@maltas-dashboard/frontend/public/csvjson.json";
-import { Measurement } from "@maltas-dashboard/common/types/Types";
-import { MeasurementContext, MeasurementState } from '@/contexts/MeasurementProvider.context';
+import { MeasurementContext } from '@/contexts/MeasurementProvider.context';
 
 const ResponsiveBar = dynamic(
     () => import("@nivo/bar").then((m) => m.ResponsiveBar),
