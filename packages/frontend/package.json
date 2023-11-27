@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/PROJ-A2023-G08/maltas-data-dashboard#readme",
   "dependencies": {
+    "@emailjs/browser": "^3.11.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@maltas-dashboard/backend": "file:../packages/backend",
@@ -37,6 +38,7 @@
     "axios": "^1.6.0",
     "classnames": "^2.3.2",
     "date-fns": "^2.30.0",
+    "emailjs": "^4.0.3",
     "formik": "^2.4.5",
     "i18next": "^23.6.0",
     "next": "13.4.6",
