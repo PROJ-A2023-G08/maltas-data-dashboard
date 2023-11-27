@@ -8,32 +8,61 @@
   },
   "settings": {
     "ProfilePhoto": "Profilbild",
-    "PersonalInfo" : "Personlig information",
+    "PersonalInfo": "Personlig information",
     "ChangePicture": "Ändra bild",
     "ChangePassword": "Ändra lösenord",
     "ChangeLanguage": "Ändra språk",
-    "EmailField" : "E-postadress",
-    "NameField" : "Namn",
-    "CurrentPassword" : "Nuvarande lösenord",
-    "NewPassword" : "Nytt lösenord",
-    "ConfirmPassword" : "Bekräfta lösenord",
-    "UpdatePassword" : "Uppdatera lösenord",
-    "Language" : "Språk",
-    "Notifications" : "Notifikationer",
-    "Save" : "Spara",
-    "Cancel" : "Avbryt",
-    "English" : "Engelska",
-    "Finnish" : "Finska",
-    "Swedish" : "Svenska"
+    "EmailField": "E-postadress",
+    "NameField": "Namn",
+    "CurrentPassword": "Nuvarande lösenord",
+    "NewPassword": "Nytt lösenord",
+    "ConfirmPassword": "Bekräfta lösenord",
+    "UpdatePassword": "Uppdatera lösenord",
+    "Language": "Språk",
+    "Notifications": "Notifikationer",
+    "Save": "Spara",
+    "Cancel": "Avbryt",
+    "English": "Engelska",
+    "Finnish": "Finska",
+    "Swedish": "Svenska"
   },
   "contact": {
     "Header": "Kontakta oss",
-    "Subtext": "Har du några frågor? Skicka ett meddelande till oss!",
+    "Subtext": "Har du några frågor? Skicka oss ett meddelande så svarar vi så snart vi kan!",
     "Message": "Meddelande",
-    "Send": "Skicka"
+    "Send": "Skicka",
+    "SenderName": "Namn",
+    "SenderEmail": "E-postadress",
+    "SenderMessage": "Meddelande",
+    "MissingField": "Detta fält är obligatoriskt",
+    "SentSuccesfully": "Ditt meddelande har skickats!"
   },
   "uiElements": {
     "FAQ": "FAQ",
     "Contact": "Kontakt"
+  },
+  "FAQquestions": {
+    "Q1": "Vad är Maltas Dashboard-tjänsten?",
+    "Q2": "Hur börjar jag använda Maltas Dashboard?",
+    "Q3": "Vilka olika användarroller finns?",
+    "Q4": "Var kan jag få ett nytt lösenord för Maltas Dashboard?",
+    "Q5": "Vilka data presenteras i Maltas Dashboard?",
+    "Q6": "Kräver Maltas Dashboard installation av programvara?",
+    "Q7": "Kan jag ladda ner data från Maltas Dashboard?",
+    "Q8": "Varför måste jag registrera mig med min arbets-e-post?",
+    "Q9": "Stöder Maltas mobila enheter?",
+    "Q10": "Var kan jag lära mig mer om säkerhet?"
+  },
+  "FAQanswers": {
+    "A1": "Maltas Dashboard-tjänsten är en molnbaserad analys tjänst som möjliggör för vårdpersonal att visualisera och analysera data om hygienisk efterlevnad. Den ansluter användare till molnbaserad och lokal data genom användarvänliga instrumentpaneler och interaktiva rapporter. För mer information, se www…….",
+    "A2": "En användare av Maltas Dashboard är alltid en del av en specifik vårdorganisation. Organisationer tilldelar roller till användare och en ny användare får inloggningsuppgifter via e-post. Om du vill bli användare av Maltas Dashboard, kontakta din egen organisation för att se om din organisation redan är med.",
+    "A3": "Hur du interagerar med Maltas Dashboard kommer att bero på din arbetsroll. Som användare är du personen som tar emot innehåll (instrumentpaneler, rapporter) från datakällor. [Låt oss utvidga på detta]",
+    "A4": "[Bra fråga!]",
+    "A5": "Kort sagt, datan som visas i Maltas Dashboard Service kommer från olika applikationer och enheter som övervakar hygien- och desinfektionsprocesser inom en specifik vårdavdelning. För mer information, se www…",
+    "A6": "Nej. Maltas Dashboard är en molnbaserad webbapp och det krävs ingen installation av programvara.",
+    "A7": "Vi utvecklar några förbestämda rapportverktyg som gör det möjligt för användare att ladda ner data från Maltas Dashboard.",
+    "A8": "Maltas Dashboard-tjänsten används av hälso- och sjukvårdspersonal samt andra yrkesverksamma som arbetar med smittkontroll. Maltas stöder inte e-postadresser från konsumenttjänster eller telekommunikationsleverantörer.",
+    "A9": "Ja. Maltas Dashboard WebApp fungerar också i mobila webbläsare. Maltas Dashboard har dock inga nativa appar för Android, iOS eller Windows-enheter.",
+    "A10": "Läs mer om Maltas Dashboard-tjänstens säkerhet, integritet och överensstämmelse här:"
   }
 }

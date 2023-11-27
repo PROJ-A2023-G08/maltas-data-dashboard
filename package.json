@@ -26,6 +26,7 @@
     "ts-node": "^10.9.1"
   },
   "scripts": {
+    "build": "npm run build --workspace=@maltas-dashboard/frontend",
     "backend": "npm --workspace=@maltas-dashboard/backend",
     "backend:dev": "npm run dev --workspace=@maltas-dashboard/backend",
     "backend:start": "npm run start --workspace=@maltas-dashboard/backend",
