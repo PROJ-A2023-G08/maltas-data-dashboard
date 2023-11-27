@@ -2,6 +2,7 @@ import React, { useContext, useMemo, useState } from 'react';
 import dynamic from "next/dynamic";
 import { Measurement } from "@maltas-dashboard/common/types/Types";
 import { MeasurementContext } from '@/contexts/MeasurementProvider.context';
+import LineChart from './LineChart';
 
 // @ts-ignore giving out error for some reason idk why
 const ResponsiveLine = dynamic(() => import("@nivo/line").then(m => m.ResponsiveLine), { ssr: false });
@@ -23,14 +24,14 @@ type Props = {
 }
 
 export const LineAverage = ({ minimumDate, maximumDate }: Props) => {
-    const { maxValues, maxDate, minDate } = useContext(MeasurementContext);
+    const { timeSpent, maxDate, minDate } = useContext(MeasurementContext);
 
-    if (!maxValues || !maxDate || !minDate|| !minimumDate || !maximumDate) return null;
+    if (!timeSpent || !maxDate || !minDate || !minimumDate || !maximumDate) return null;
     const { role0, role1, role2 } = useMemo(() => {
         const role0: OmittedMeasurement[] = [], role1: OmittedMeasurement[] = [], role2: OmittedMeasurement[] = [];
         const minimumDateX = minimumDate ? minimumDate : minDate;
         const maxDateX = maximumDate ? maximumDate : maxDate;
-        Object.values(maxValues).forEach((item) => {
+        Object.values(timeSpent).forEach((item) => {
             const date = new Date(item.start_time_iso);
             if (date > minimumDateX && date < maxDateX) {
                 switch (item.role_id) {
@@ -47,7 +48,7 @@ export const LineAverage = ({ minimumDate, maximumDate }: Props) => {
             }
         });
         return { role0, role1, role2 };
-    }, [maxValues, maxDate, minDate, minimumDate, maximumDate]);
+    }, [timeSpent, maxDate, minDate, minimumDate, maximumDate]);
 
     const calculateAverage = (role: OmittedMeasurement[]): Data[] => {
         const averageRole: Data[] = [];
@@ -85,30 +86,9 @@ export const LineAverage = ({ minimumDate, maximumDate }: Props) => {
     ];
 
     return (
-        <ResponsiveLine
+        <LineChart
             data={averageValues}
-            margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
-            colors={{ scheme: 'nivo' }}
-            xScale={{
-                type: 'time',
-                format: '%m/%d/%Y',
-                useUTC: false,
-                precision: 'day',
-            }}
-            xFormat="time:%d/%m/%Y"
-            axisBottom={{
-                format: '%d/%m',
-                tickValues: 'every 1 days',
-            }}
-            curve="monotoneX"
-            pointSize={16}
-            pointBorderWidth={1}
-            pointBorderColor={{
-                from: 'color',
-                modifiers: [['darker', 0.3]],
-            }}
-            useMesh={true}
-            enableSlices={false}
+
         />
     )
 };

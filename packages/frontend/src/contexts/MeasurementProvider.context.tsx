@@ -2,6 +2,14 @@ import React, { createContext, useEffect, useState } from 'react';
 import DataMeasurement from "@maltas-dashboard/frontend/public/csvjson.json";
 import { Measurement } from "@maltas-dashboard/common/types/Types";
 
+
+enum Status {
+    COMPLETE = "COMPLETE",
+    CONTINUED = "CONTINUED",
+    INTERRUPTED = "INTERRUPTED",
+    STARTED = "STARTED",
+    PAUSED = "PAUSED",
+}
 interface Props {
     children: React.ReactNode;
 }
@@ -11,6 +19,7 @@ type MaxEachMeasurement = {
         total_time_spent: number;
         start_time_iso: string;
         role_id: number;
+        status: Status;
     };
 }
 
@@ -23,7 +32,7 @@ type EachMonthData = {
 }
 
 export interface MeasurementState {
-    maxValues?: MaxEachMeasurement;
+    timeSpent?: MaxEachMeasurement;
     monthData?: EachMonthData;
     minDate?: Date;
     maxDate?: Date;
@@ -39,12 +48,12 @@ export const MeasurementProvider = ({ children }: Props) => {
     const data: Measurement[] = DataMeasurement as Measurement[];
     const [state, setState] = useState<MeasurementState>({});
 
-    // using useEffect to calculate the maxValues and monthData when the API ready
+    // using useEffect to calculate the timeSpent and monthData when the API ready
     useEffect(() => {
-        const maxValues: MaxEachMeasurement = {};
+        const timeSpent: MaxEachMeasurement = {};
         const monthData: EachMonthData = {}
         const minDate = new Date(data[0].start_time_iso);
-        const maxDate = new Date(data[0].start_time_iso);
+        const maxDate = new Date(data[data.length - 1].start_time_iso);
         data.forEach((measurement) => {
 
             // calculate the minDate and maxDate
@@ -57,7 +66,7 @@ export const MeasurementProvider = ({ children }: Props) => {
             }
 
             // calculate the monthData
-            const month = new Date(measurement.end_time_iso).getMonth().toString();
+            const month = (new Date(measurement.start_time_iso).getMonth() + 1).toString();
             if (month && measurement.status === "COMPLETE") {
                 monthData[month] = {
                     ...monthData[month],
@@ -65,18 +74,18 @@ export const MeasurementProvider = ({ children }: Props) => {
                 }
             }
 
-            // calculate the maxValues
-            const { measurement_id, total_time_spent, start_time_iso, role_id } = measurement;
-
-            if (measurement_id in maxValues) {
-                maxValues[measurement_id].total_time_spent = Math.max(maxValues[measurement_id].total_time_spent, total_time_spent);
-            } else {
-                maxValues[measurement_id] = {
-                    total_time_spent, start_time_iso, role_id
-                };
+            // calculate the timeSpent
+            const filterOnlyLatestMeasurement = (item: Measurement) => {
+                return item.status === Status.COMPLETE || item.status === Status.INTERRUPTED;
+            }
+            if (!filterOnlyLatestMeasurement(measurement)) return;
+            
+            const { measurement_id, total_time_spent, status, start_time_iso, role_id } = measurement;
+            timeSpent[measurement_id] = {
+                total_time_spent, start_time_iso, role_id, status
             }
         });
-        setState({ maxValues, monthData, minDate, maxDate });
+        setState({ timeSpent, monthData, minDate, maxDate });
     }, []);
 
     // Return the provider with the state and any necessary functions

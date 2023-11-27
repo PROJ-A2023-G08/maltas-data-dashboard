@@ -10,13 +10,18 @@ import StackedCompliance from "./Charts/StackedCompliance";
 import LineAverage from "./Charts/LineAverage";
 import { Box, Grid } from "@mui/material";
 import { MeasurementContext } from "@/contexts/MeasurementProvider.context";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 const Home = () => {
   const { maxDate, minDate } = useContext(MeasurementContext);
   // state for the date range of line average chart
   const [minimumDate, setMinimumDate] = useState<Date | undefined | null>(minDate);
   const [maximumDate, setMaximumDate] = useState<Date | undefined | null>(maxDate);
+
+  useEffect(() => {
+    setMinimumDate(minDate);
+    setMaximumDate(maxDate);
+  }, [minDate, maxDate]);
 
   return (
     <>
@@ -50,9 +55,6 @@ const Home = () => {
           </Grid>
           <Grid item sx={{ height: "400px" }} sm={12}>
             <LineAverage minimumDate={minimumDate} maximumDate={maximumDate} />
-          </Grid>
-          <Grid item sx={{ height: "400px" }} sm={12}>
-            <LineAverage />
           </Grid>
         </Grid>
 
