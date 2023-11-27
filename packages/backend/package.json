@@ -33,6 +33,7 @@
     "common": "file:../common",
     "cors": "^2.8.5",
     "D": "^1.0.0",
+    "emailjs": "^4.0.3",
     "express": "^4.18.2",
     "gridfs-stream": "^1.1.1",
     "helmet": "^7.0.0",
