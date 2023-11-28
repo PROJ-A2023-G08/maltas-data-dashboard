@@ -1,6 +1,12 @@
 const { db } = require('../../utils/db');
 const { hashToken } = require('../../utils/hashToken');
 
+function saveDatatoDataBase(rawData) {
+  return db.measurement.createMany({
+    data: rawData,
+  });
+}
+
 function addRefreshTokenToWhitelist({ jti, refreshToken, userId }) {
   return db.refreshToken.create({
     data: {
@@ -42,6 +48,7 @@ function revokeTokens(userId) {
 }
 
 module.exports = {
+  saveDatatoDataBase,
   addRefreshTokenToWhitelist,
   findRefreshTokenByJti,
   deleteRefreshToken,

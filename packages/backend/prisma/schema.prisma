@@ -31,3 +31,13 @@ model RefreshToken {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
+
+model Measurement {
+  measurement_id    Int     
+  device_id         Int     
+  role_id           Int     
+  start_time_iso    String
+  end_time_iso      String
+  total_time_spent  Int
+  status            String
+}

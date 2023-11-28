@@ -16,7 +16,6 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api', api);
-
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
 
