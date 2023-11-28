@@ -1,4 +1,5 @@
 import { useTranslation } from "next-i18next";
+import React from "react";
 
 const Dashboard = () => {
   const { t } = useTranslation("common");
