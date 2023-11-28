@@ -8,15 +8,57 @@ const ResponsivePie = dynamic(
 import Data1 from "../../public/data1.json";
 import StackedCompliance from "./Charts/StackedCompliance";
 import LineAverage from "./Charts/LineAverage";
+import { Box, Grid } from "@mui/material";
+import { MeasurementContext } from "@/contexts/MeasurementProvider.context";
+import { useContext, useEffect, useState } from "react";
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 const Home = () => {
+  const { maxDate, minDate } = useContext(MeasurementContext);
+  // state for the date range of line average chart
+  const [minimumDate, setMinimumDate] = useState<Date | undefined | null>(minDate);
+  const [maximumDate, setMaximumDate] = useState<Date | undefined | null>(maxDate);
+
+  useEffect(() => {
+    setMinimumDate(minDate);
+    setMaximumDate(maxDate);
+  }, [minDate, maxDate]);
+
   return (
     <>
       <h1>Home</h1>
-      <div style={{ height: "400px" }}>
-        <ResponsivePie data={Data1} />
-        <StackedCompliance />
-        <LineAverage />
-      </div>
+      <Grid container>
+        <Grid item container sx={{ height: "400px" }} md={4}>
+          <Grid item sx={{ height: "400px" }} sm={12}>
+            <ResponsivePie data={Data1} />
+          </Grid>
+          <Grid item sx={{ height: "400px" }} sm={12}>
+            <StackedCompliance />
+          </Grid>
+        </Grid>
+
+        <Grid item container sx={{ height: "400px" }} md={8}>
+          <Grid sm={12}>
+            <DatePicker
+              minDate={minDate}
+              maxDate={maximumDate}
+              defaultValue={minDate}
+              value={minimumDate}
+              onChange={(minimumDate) => setMinimumDate(minimumDate)}
+            />
+            <DatePicker
+              minDate={minimumDate}
+              maxDate={maxDate}
+              defaultValue={maxDate}
+              value={maximumDate}
+              onChange={(maximumDate) => setMaximumDate(maximumDate)}
+            />
+          </Grid>
+          <Grid item sx={{ height: "400px" }} sm={12}>
+            <LineAverage minimumDate={minimumDate} maximumDate={maximumDate} />
+          </Grid>
+        </Grid>
+
+      </Grid>
     </>
   );
 };
