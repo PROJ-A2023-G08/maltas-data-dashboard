@@ -77,7 +77,7 @@ const ScrollHandler: React.FC<ScrollHandlerProps> = (props) => {
   });
 };
 
-const LandingPageLayout: React.FC<Props> = (props) => {
+const LandingPageLayout = (props: Props) => {
   const { logout, isLoggedIn } = useAuth();
   const { children, landingPageImageUrl } = props;
   const router = useRouter();
@@ -186,8 +186,8 @@ const LandingPageLayout: React.FC<Props> = (props) => {
                 color: trigger
                   ? "primary.main"
                   : mobileOpen
-                  ? "primary.main"
-                  : "#fff",
+                    ? "primary.main"
+                    : "#fff",
               }}
             >
               <MenuIcon />
@@ -316,7 +316,9 @@ const LandingPageLayout: React.FC<Props> = (props) => {
           alt="doctors during operation"
           height={400}
         />
-        {children}
+        <>
+          {props.children}
+        </>
         <Footer />
       </Box>
     </Box>
