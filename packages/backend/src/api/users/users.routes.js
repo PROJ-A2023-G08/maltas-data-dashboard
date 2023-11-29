@@ -58,7 +58,7 @@ router.post('/update-password', isAuthenticated, async (req, res, next) => {
 });
 
 router.put('/update-user-info', isAuthenticated,  async (req, res, next) => {
-  const { email, firstName, lastName } = req.body;
+  const { email, firstName, lastName, gender, notification, phoneNumber, address, city, postalCode } = req.body;
 
   try {
     // Find the user by email
@@ -68,7 +68,7 @@ router.put('/update-user-info', isAuthenticated,  async (req, res, next) => {
       return res.status(404).json({ success: false, message: 'User not found' });
     }
    
-    await updateUser(email, {firstName, lastName});
+    await updateUser(email, {firstName, lastName, gender, notification, phoneNumber, address, city, postalCode });
       res.status(200).json({ success: true, message: 'User info updated successfully '})
 
   } catch (err) {

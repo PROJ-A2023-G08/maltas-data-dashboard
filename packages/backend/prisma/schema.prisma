@@ -15,7 +15,13 @@ model User {
   firstName     String
   lastName      String
   email         String         @unique
-  imageUrl      String
+  imageUrl      String?
+  gender        String?
+  notification  String?
+  phoneNumber   String?
+  address       String?
+  city          String?
+  postalCode    String?
   password      String
   refreshTokens RefreshToken[]
   createdAt     DateTime       @default(now())
