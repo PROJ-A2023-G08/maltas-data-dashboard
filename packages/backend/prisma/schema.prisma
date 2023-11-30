@@ -15,6 +15,18 @@ model User {
   firstName     String
   lastName      String
   email         String         @unique
+  imageUrl      String?
+  language      String?
+  bio           String?
+  profession    String?
+  role          String?
+  isAdmin       Boolean       @default(false)
+  gender        String?
+  notification  String?
+  phoneNumber   String?
+  address       String?
+  city          String?
+  postalCode    String?
   password      String
   refreshTokens RefreshToken[]
   createdAt     DateTime       @default(now())
