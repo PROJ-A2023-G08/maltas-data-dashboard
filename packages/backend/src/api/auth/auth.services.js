@@ -1,9 +1,17 @@
 const { db } = require('../../utils/db');
 const { hashToken } = require('../../utils/hashToken');
 
-function saveDatatoDataBase(rawData) {
-  return db.measurement.createMany({
-    data: rawData,
+function saveMeasurementToDataBase(measurement_id, device_id, role_id, start_time_iso, end_time_iso, total_time_spent, status) {
+  return db.measurement.create({
+    data: {
+      measurement_id: measurement_id,    
+      device_id: device_id,    
+      role_id: role_id,    
+      start_time_iso: start_time_iso,
+      end_time_iso: end_time_iso,
+      total_time_spent: total_time_spent,
+      status: status
+    },
   });
 }
 
@@ -48,7 +56,7 @@ function revokeTokens(userId) {
 }
 
 module.exports = {
-  saveDatatoDataBase,
+  saveMeasurementToDataBase, 
   addRefreshTokenToWhitelist,
   findRefreshTokenByJti,
   deleteRefreshToken,

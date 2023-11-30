@@ -12,7 +12,7 @@ const {
 } = require('../users/users.services');
 const { generateTokens } = require('../../utils/jwt');
 const {
-  saveDatatoDataBase,
+  saveMeasurementToDataBase,
   addRefreshTokenToWhitelist,
   findRefreshTokenByJti,
   deleteRefreshToken,
@@ -24,56 +24,34 @@ const { collapseTextChangeRangesAcrossMultipleVersions } = require('typescript')
 
 const router = express.Router();
 
-
 router.post('/saveData', async (req, res) => {
   try { 
     const csvFile = 'data.csv';
-    const rawData = [];
-    // read file
+
     fs.createReadStream(csvFile).pipe(csv({ separator: ';' }))
     .on('data', (row) => {
-      console.log('Raw row:', row);
+      console.log(row);
       
-      // check if numbers is non-NaN, push data to rawData
       const measurement_id = parseInt(row.measurement_id);
       const device_id = parseInt(row.device_id);
       const role_id = parseInt(row.role_id);
       const total_time_spent = parseInt(row.total_time_spent);
+
       if (!isNaN(measurement_id) && !isNaN(device_id) && !isNaN(role_id) && !isNaN(total_time_spent)) {
-        rawData.push({
-          measurement_id: measurement_id,
-          device_id: device_id,
-          role_id: role_id,
-          start_time_iso: row.start_time_iso,
-          end_time_iso: row.end_time_iso,
-          total_time_spent: total_time_spent,
-          status: row.status,
-        });
+        saveMeasurementToDataBase(measurement_id, device_id, role_id, row.start_time_iso, row.end_time_iso, total_time_spent, row.status);
       } else {
         console.error('Incorrect data in a line, will be omitted:', row);
       }
     })
     .on('end', async () => {
-      console.log(rawData);
+      console.log('Data saved to database');
     });
-    
-    const result = await saveDatatoDataBase(rawData);
-    console.log('Data saved to database:', result);
-    res.json({ message: 'Data saved to database', insertedCount: result.count });
+    res.json({ message: 'Data saved to database'});
   
-  } catch (err) {
-    //next(err);
-  }
-});
-
-/*router.post('/saveData', async (req, res, next) => {
-  try {
-    const data = getData();
   } catch (err) {
     next(err);
   }
-});*/
-  
+});
 
 router.post('/register', async (req, res, next) => {
   try {

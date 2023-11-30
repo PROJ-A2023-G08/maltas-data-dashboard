@@ -15,7 +15,7 @@ model User {
   firstName     String
   lastName      String
   email         String         @unique
-  password      String
+  password      String       
   refreshTokens RefreshToken[]
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @updatedAt
@@ -33,11 +33,11 @@ model RefreshToken {
 }
 
 model Measurement {
-  measurement_id    Int     
-  device_id         Int     
-  role_id           Int     
+  measurement_id    Number     @id @map("_id")
+  device_id         Number     
+  role_id           Number    
   start_time_iso    String
   end_time_iso      String
-  total_time_spent  Int
+  total_time_spent  Number
   status            String
 }
