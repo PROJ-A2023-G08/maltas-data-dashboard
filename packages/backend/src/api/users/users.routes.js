@@ -185,4 +185,15 @@ router.put("/update-user-role", isAuthenticated, isAdmin,  async (req, res, next
     next(err);
   }
 });
+
+router.delete("/removeUser/:userId", isAuthenticated, isAdmin, async (req, res, next) => {
+  try {  
+    const singleUser = await findUserById(req.params.userId)
+    res.json({ singleUser, message: "User removed successfully" });
+
+  } catch (error) {
+    next(error.message);
+  }
+});
+
 module.exports = router;
