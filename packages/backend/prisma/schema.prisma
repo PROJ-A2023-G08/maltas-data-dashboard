@@ -19,7 +19,7 @@ model User {
   language      String?
   bio           String?
   profession    String?
-  role          String?
+  role          Role          @default(USER)
   isAdmin       Boolean       @default(false)
   gender        String?
   notification  String?
@@ -42,4 +42,11 @@ model RefreshToken {
   revoked     Boolean  @default(false)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+}
+
+
+enum Role {
+  USER
+  ADMIN
+  MANAGER
 }
