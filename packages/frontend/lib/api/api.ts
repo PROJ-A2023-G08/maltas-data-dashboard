@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from 'axios';
 import { RegisterBasics } from '@/layouts/RegisterForm';
 import { LoginBasic } from '@/layouts/LoginForm';
 
-const API_BASE_URL = 'http://localhost:5000';// we are going to change this base on host in future
+const API_BASE_URL = "http://104.248.194.135:5000";// we are going to change this base on host in future
 
 const api = axios.create({
   baseURL: API_BASE_URL,
