@@ -19,6 +19,7 @@
   "scripts": {
     "test": "jest",
     "dev": "nodemon src",
+    "postinstall": "prisma generate",
     "start": "node src"
   },
   "bugs": {
