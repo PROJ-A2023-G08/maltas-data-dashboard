@@ -1,9 +1,8 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import React, { useState } from "react";
 import * as Yup from 'yup';
-import { Button, TextField, Typography, Card, CardContent } from '@mui/material';
-import axios, { AxiosError} from 'axios';
+import { Button, TextField, Typography } from '@mui/material';
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
-import { useState, ChangeEvent  } from 'react';
 import { useRouter } from 'next/navigation';
 import { login } from '../../lib/api/api';
 
@@ -26,9 +25,12 @@ interface LoginFormProps {
 
 const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const onSubmit = async (values: LoginBasic) => {
     const { email, password } = values;
     try {
+      setLoading(true);
       const data =  {  email, password }
       const response = await login(data);
      
@@ -36,11 +38,15 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
         const { accessToken, refreshToken } = response.data;
         localStorage.setItem('accessToken', accessToken);
         localStorage.setItem('refreshToken', refreshToken);
-
+        setLoading(false);
+        setError(false);
         router.push('/');
+       
       }
     }catch(error)  { 
+      setLoading(false);
       console.log(error)
+      setError(true);
     }
  
  
@@ -62,6 +68,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
         onSubmit={onSubmit}
       >
         <Form>
+        {error &&<div className='text-red-600'>Incorrect email or password</div>}
           <div className="pb-4">
             <Field
               as={TextField}
@@ -96,10 +103,13 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
           </div>
           <div className="flex justify-end mb-3"><Typography color={"text.primary"} variant="h6">Forgot Password?</Typography></div>
           <Button
+            className="mb-2"
             fullWidth
             size="large"
             type="submit"
             variant="contained"
+            disabled={loading}
+            centerRipple={loading}
             color="primary"
             sx={{
               height: (theme) => theme.spacing(7),
@@ -110,7 +120,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
           <Typography
           variant="h6"
           color={"text.primary"}
-          className="cursor-pointer mt-4"
+          className="cursor-pointer mt-4 pt-3"
           onClick={() => {
             router.push("/register");
           }}
