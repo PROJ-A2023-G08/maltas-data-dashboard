@@ -26,8 +26,8 @@ import MailIcon from "@mui/icons-material/Mail";
 import LockIcon from "@mui/icons-material/Lock";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import Footer from "@/components/LandingPage/Footer";
-import { getRoute } from "@/components/LandingPage/helper";
+import Footer from "../components/LandingPage/Footer";
+import { getRoute } from "../components/LandingPage/helper";
 import useAuth from "../../lib/util/useAuth";
 
 interface Props {

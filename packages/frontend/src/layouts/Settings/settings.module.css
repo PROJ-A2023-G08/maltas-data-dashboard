@@ -1,0 +1,9 @@
+.input {
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px 1px;
+}
+
+.input:focus {
+    outline: none;
+    box-shadow: rgba(102, 178, 255, 0.5) 0px 0px 0px 1px;
+  }
+  

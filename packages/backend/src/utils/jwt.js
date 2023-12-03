@@ -2,9 +2,10 @@ const jwt = require('jsonwebtoken');
 
 function generateAccessToken(user) {
   return jwt.sign({ userId: user.id, isAdmin: user.isAdmin }, process.env.JWT_ACCESS_SECRET, {
-    expiresIn: '5m',
+    expiresIn: '200h',
   });
 }
+
 
 function generateRefreshToken(user, jti) {
   return jwt.sign({
@@ -12,7 +13,7 @@ function generateRefreshToken(user, jti) {
     isAdmin: user.isAdmin,
     jti
   }, process.env.JWT_REFRESH_SECRET, {
-    expiresIn: '4h',
+    expiresIn: '200h',
   });
 }
 

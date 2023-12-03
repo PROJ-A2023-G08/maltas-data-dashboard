@@ -36,6 +36,7 @@ const useAuth = () => {
     setIsLoggedIn(false);
     
     // Redirect to the home page after logout
+  
     router.push('/home');
   };
 

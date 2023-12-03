@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-
+import React from "react";
 const ResponsivePie = dynamic(
   () => import("@nivo/pie").then((m) => m.ResponsivePie),
   { ssr: false },
@@ -37,15 +37,20 @@ const Home = () => {
         </Grid>
 
         <Grid item container sx={{ height: "400px" }} md={8}>
-          <Grid sm={12}>
+          <Grid item sm={12}>
+            <span className="m-6">
             <DatePicker
+              className="mr-6"
               minDate={minDate}
               maxDate={maximumDate}
               defaultValue={minDate}
               value={minimumDate}
               onChange={(minimumDate) => setMinimumDate(minimumDate)}
             />
+            </span>
+           
             <DatePicker
+              className="mr-6"
               minDate={minimumDate}
               maxDate={maxDate}
               defaultValue={maxDate}
