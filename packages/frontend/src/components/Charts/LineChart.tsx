@@ -46,6 +46,7 @@ const LineChart = ({ data, chartProps }: LineChartProps) => {
             }}
             useMesh={true}
             enableSlices={false}
+            
             {...chartProps}
 
         />

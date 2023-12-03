@@ -1,21 +1,20 @@
 import React, { useContext, useMemo, useState } from 'react';
-import dynamic from "next/dynamic";
 import { Measurement } from "@maltas-dashboard/common/types/Types";
 import { MeasurementContext } from '@/contexts/MeasurementProvider.context';
 import LineChart from './LineChart';
-
+import { getWeek } from 'date-fns'
+import Box from '@mui/material/Box';
+import { FilterTypes } from '@/types/filterTypes';
+import { ChartData } from '@/types/chartData';
+import { calculateAverage } from '@/utils/calculateAverage';
+import { Button } from '@mui/material';
 // @ts-ignore giving out error for some reason idk why
-const ResponsiveLine = dynamic(() => import("@nivo/line").then(m => m.ResponsiveLine), { ssr: false });
 
 
 type OmittedMeasurement = Omit<Measurement, "end_time_iso" | "status" | "role_id" | "device_id" | "measurement_id">;
-type Data = {
-    x: string; //date start_time_iso
-    y: number; //avg total_time_spent
-}
 type LineAverageChart = {
     id: string; //role_id
-    data: Data[];
+    data: ChartData[];
 }
 
 type Props = {
@@ -24,9 +23,11 @@ type Props = {
 }
 
 export const LineAverage = ({ minimumDate, maximumDate }: Props) => {
+    // call context
     const { timeSpent, maxDate, minDate } = useContext(MeasurementContext);
-
     if (!timeSpent || !maxDate || !minDate || !minimumDate || !maximumDate) return null;
+    
+    // filter the data based on the minimumDate and maximumDate
     const { role0, role1, role2 } = useMemo(() => {
         const role0: OmittedMeasurement[] = [], role1: OmittedMeasurement[] = [], role2: OmittedMeasurement[] = [];
         const minimumDateX = minimumDate ? minimumDate : minDate;
@@ -49,26 +50,11 @@ export const LineAverage = ({ minimumDate, maximumDate }: Props) => {
         });
         return { role0, role1, role2 };
     }, [timeSpent, maxDate, minDate, minimumDate, maximumDate]);
+    const [filter, setFilter] = useState(FilterTypes.DAILY);
 
-    const calculateAverage = (role: OmittedMeasurement[]): Data[] => {
-        const averageRole: Data[] = [];
-
-        role.forEach((item) => {
-            const date = new Date(item.start_time_iso).toLocaleDateString();
-            const index = averageRole.findIndex((item) => item.x === date);
-            if (index !== -1) {
-                averageRole[index].y = Math.floor((averageRole[index].y + item.total_time_spent) / 2);
-            } else {
-                averageRole.push({ x: date, y: item.total_time_spent });
-            }
-        });
-
-        return averageRole;
-    };
-
-    const averageRole0 = calculateAverage(role0);
-    const averageRole1 = calculateAverage(role1);
-    const averageRole2 = calculateAverage(role2);
+    const averageRole0 = calculateAverage(role0, filter);
+    const averageRole1 = calculateAverage(role1, filter);
+    const averageRole2 = calculateAverage(role2, filter);
 
     const averageValues: LineAverageChart[] = [
         {
@@ -84,12 +70,37 @@ export const LineAverage = ({ minimumDate, maximumDate }: Props) => {
             data: averageRole2
         }
     ];
+    const chartProps = filter !== FilterTypes.DAILY ? {
+        xFormat: undefined,
+        xScale: undefined,
+        axisBottom: undefined,
+    } : {};
 
     return (
-        <LineChart
-            data={averageValues}
-
-        />
+        <>
+            <Box>
+                <Button  onClick={() => setFilter(FilterTypes.DAILY)}>Daily</Button>
+                <Button onClick={() => setFilter(FilterTypes.WEEKLY)}>Weekly</Button>
+                <Button onClick={() => setFilter(FilterTypes.MONTHLY)}>Monthly</Button>
+            </Box>
+            <LineChart
+                data={averageValues}
+                chartProps={{
+                    yScale: { max: 200, min: 'auto', type: 'linear', stacked: false },
+                    markers:
+                        [
+                            {
+                                axis: 'y',
+                                value: 180,
+                                lineStyle: { stroke: '#9ACEFE', strokeWidth: 1, strokeDasharray: '4 4' },
+                                legend: 'compliance level',
+                                legendOrientation: 'horizontal',
+                            }
+                        ],
+                    ...chartProps
+                }}
+            />
+        </>
     )
 };
 
