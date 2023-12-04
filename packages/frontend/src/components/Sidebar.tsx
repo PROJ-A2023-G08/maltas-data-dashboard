@@ -10,6 +10,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import HelpIcon from "@mui/icons-material/Help";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useTranslation } from "next-i18next";
+import useAuth from "../../lib/util/useAuth";
 import Image from 'next/image'
 import { ButtonBase } from "@mui/material";
 
@@ -19,6 +20,7 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ setActiveComponent }) => {
   const { t } = useTranslation("common");
+  const { logout} = useAuth();
 
   const [selectedItem, setSelectedItem] = useState<string>('');
 
@@ -47,7 +49,7 @@ const Sidebar: React.FC<SidebarProps> = ({ setActiveComponent }) => {
   ];
 
   return (
-    <div className="bg-darkblue text-white w-60 min-h-screen pl-2">
+    <div className="bg-darkblue text-white w-60 min-h-screen pl-2 pr-2">
       <div className="flex flex-col items-start justify-between h-full">
         <div className="flex flex-col items-start justify-start w-full">
           <div className="flex flex-col items-center justify-center w-full h-40">
@@ -61,19 +63,23 @@ const Sidebar: React.FC<SidebarProps> = ({ setActiveComponent }) => {
             </div>
           </div>
           <div className="flex flex-col items-start justify-start w-full pt-36">
-            <List component="nav" aria-label="main mailbox folders">
+            <List className="w-full" component="nav" aria-label="main mailbox folders">
               {menuItems.map((item) => (
                 <ListItem
+                 sx={{
+                  width: "100% !important",
+                  cursor: "pointer"
+                 }}
+                onClick={() => handleSidebarItemClick(item.name)}
                   key={item.name}
                   className={`${
                     selectedItem === item.name
                       ? 'bg-selection text-black rounded-xl mb-2'
                       : 'hover:bg-white hover:text-black rounded-xl mb-2'
                   }`}
-                  style={{ width: '200px', height: '70px' }}
+                  style={{ height: '70px', }}
                 >
                   <ButtonBase 
-                    onClick={() => handleSidebarItemClick(item.name)}
                     className="flex items-center" 
                     disableTouchRipple
                     disableRipple 
@@ -88,7 +94,9 @@ const Sidebar: React.FC<SidebarProps> = ({ setActiveComponent }) => {
             </List>
           </div>     
         </div>
-        <div className="flex flex-row items-center justify-start w-52 h-12 pl-5 cursor-pointer hover:bg-white hover:text-black hover:rounded-md">
+        <div onClick={()=>{
+          logout();
+        }} className="flex flex-row items-center justify-start w-52 h-12 pl-5 cursor-pointer hover:bg-white hover:text-black hover:rounded-md">
           <div className="mr-4">
             <LogoutIcon />
           </div>

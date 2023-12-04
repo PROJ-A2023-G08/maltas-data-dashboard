@@ -30,12 +30,26 @@ function updateUser(email, data) {
       email,
     },
     data
-  })
+  });
+}
+
+function findManyUsers() {
+    return db.user.findMany({
+      select: {
+        id: true,
+        firstName: true,
+        lastName: true,
+        email: true,
+        role: true,
+        isAdmin: true,
+      },
+    });
 }
 
 module.exports = {
   findUserByEmail,
   findUserById,
   createUser,
-  updateUser
+  updateUser,
+  findManyUsers,
 };
