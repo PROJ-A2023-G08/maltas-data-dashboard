@@ -1,8 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "types": ["node", "jest", "@testing-library/jest-dom"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -12,10 +15,12 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "react",
+    "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     },
     "forceConsistentCasingInFileNames": true
   },
@@ -24,6 +29,8 @@
     "**/*.ts",
     "**/*.tsx",
     "src/context/AuthProvider.js"
-  ],
-  "exclude": ["node_modules"]
+, "src/layouts/Settings/LanguageSettings.jsx"  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
