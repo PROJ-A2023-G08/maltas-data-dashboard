@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 import { FilterTypes } from '@/types/filterTypes';
 import { ChartData } from '@/types/chartData';
 import { calculateAverage } from '@/utils/calculateAverage';
-import { Button } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 // @ts-ignore giving out error for some reason idk why
 
 
@@ -78,11 +78,29 @@ export const LineAverage = ({ minimumDate, maximumDate }: Props) => {
 
     return (
         <>
-            <Box>
-                <Button  onClick={() => setFilter(FilterTypes.DAILY)}>Daily</Button>
-                <Button onClick={() => setFilter(FilterTypes.WEEKLY)}>Weekly</Button>
-                <Button onClick={() => setFilter(FilterTypes.MONTHLY)}>Monthly</Button>
+            <Box sx={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "flex-end",
+                marginBottom: (theme)=> theme.spacing(2)
+            }}>
+                <Button sx={{
+                    paddingLeft: (theme)=> theme.spacing(3),
+                    paddingRight: (theme)=> theme.spacing(3),
+                    marginRight: (theme)=> theme.spacing(3),
+                }} variant='outlined'  onClick={() => setFilter(FilterTypes.DAILY)}>Daily</Button>
+                <Button sx={{
+                    paddingLeft: (theme)=> theme.spacing(3),
+                    paddingRight: (theme)=> theme.spacing(3),
+                    marginRight: (theme)=> theme.spacing(3),
+                }}  variant='outlined' onClick={() => setFilter(FilterTypes.WEEKLY)}>Weekly</Button>
+                <Button sx={{
+                    paddingLeft: (theme)=> theme.spacing(3),
+                    paddingRight: (theme)=> theme.spacing(3),
+                    marginRight: (theme)=> theme.spacing(3),
+                }}  variant='outlined' onClick={() => setFilter(FilterTypes.MONTHLY)}>Monthly</Button>
             </Box>
+            <Typography className="w-full">Avg.Max Time/Measurement</Typography>
             <LineChart
                 data={averageValues}
                 chartProps={{
@@ -93,13 +111,14 @@ export const LineAverage = ({ minimumDate, maximumDate }: Props) => {
                                 axis: 'y',
                                 value: 180,
                                 lineStyle: { stroke: '#9ACEFE', strokeWidth: 1, strokeDasharray: '4 4' },
-                                legend: 'compliance level',
+                                legend: '',
                                 legendOrientation: 'horizontal',
                             }
                         ],
                     ...chartProps
                 }}
             />
+             <Typography className="w-full text-center">Day of End Time Iso</Typography>
         </>
     )
 };
