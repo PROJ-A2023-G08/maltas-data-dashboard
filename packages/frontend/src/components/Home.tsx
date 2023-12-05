@@ -12,6 +12,8 @@ import { Box, Grid } from "@mui/material";
 import { MeasurementContext } from "@/contexts/MeasurementProvider.context";
 import { useContext, useEffect, useState } from "react";
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import LineCompliance from "./Charts/LineCompliance";
+import LineInterrupted from "./Charts/LineInterrupted";
 const Home = () => {
   const { maxDate, minDate } = useContext(MeasurementContext);
   // state for the date range of line average chart
@@ -60,6 +62,12 @@ const Home = () => {
           </Grid>
           <Grid item sx={{ height: "400px" }} sm={12}>
             <LineAverage minimumDate={minimumDate} maximumDate={maximumDate} />
+          </Grid>
+          <Grid item sx={{ height: "400px" }} sm={12}>
+            <LineCompliance minimumDate={minimumDate} maximumDate={maximumDate} />
+          </Grid>
+          <Grid item sx={{ height: "400px" }} sm={12}>
+            <LineInterrupted minimumDate={minimumDate} maximumDate={maximumDate} />
           </Grid>
         </Grid>
 
