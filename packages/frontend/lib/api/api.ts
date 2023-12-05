@@ -52,7 +52,7 @@ const makeRequest = async <T>(
 
     return response.data;
   } catch (error) {
-    console.error('Request error:', error);
+    // console.error('Request error:', error);
   }
 };
 

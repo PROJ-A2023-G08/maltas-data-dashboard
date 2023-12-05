@@ -14,10 +14,10 @@ import {
 import { AdminGetSingleUserQueryParams } from "./types/queryTypes";
 
 export const useUserProfile = (options?: UseQueryOptions<User>) => {
-  const { accessToken } = useAuth();
+  const { accessToken, fastAccessToken } = useAuth();
   return useQuery<User>(
     [qkGetUserProfile, accessToken],
-    () => api.getUserProfile(accessToken!),
+    () => api.getUserProfile(fastAccessToken || accessToken!),
     options,
   );
 };
@@ -25,10 +25,10 @@ export const useUserProfile = (options?: UseQueryOptions<User>) => {
 export const useAdminGetAllUsers = (
   options?: UseQueryOptions<AdminGetAllUsersResult>,
 ) => {
-  const { accessToken } = useAuth();
+  const { accessToken, fastAccessToken } = useAuth();
   return useQuery<AdminGetAllUsersResult>(
     [qkAllUsers, accessToken],
-    () => api.getAllUsers(accessToken!),
+    () => api.getAllUsers(fastAccessToken || accessToken!),
     options,
   );
 };
@@ -37,10 +37,10 @@ export const useAdminGetSingleUser = (
   data: AdminGetSingleUserQueryParams,
   options?: UseQueryOptions<AdminGetSingleUserResult>,
 ) => {
-  const { accessToken } = useAuth();
+  const { accessToken, fastAccessToken } = useAuth();
   return useQuery<AdminGetSingleUserResult>(
     [qkGetSingleUserByAdmin, accessToken],
-    () => api.getSingleUser(accessToken!, data),
+    () => api.getSingleUser(fastAccessToken || accessToken!, data),
     options,
   );
 };
