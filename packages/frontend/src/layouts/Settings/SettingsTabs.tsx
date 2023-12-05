@@ -90,12 +90,12 @@ const SettingsTabs: React.FC<SettingsTabsProps> = () => {
           label="Organizations"
           iconPosition="start"
         />
-        <Tab
+        {userData && userData.isAdmin? <Tab
           icon={<SupervisorAccount />}
           sx={{ minHeight: "12px", minWidth: "200px", justifyContent: "start" }}
           label="Admin"
           iconPosition="start"
-        />
+        />: null}
       </Tabs>
 
       <Box px={3} sx={{ width: "100%" }}>
@@ -184,7 +184,7 @@ const SettingsTabs: React.FC<SettingsTabsProps> = () => {
           </>
         )}
 
-        {value === 5 && (
+        {value === 5 && userData?.isAdmin? (
           <>
             <Typography
               variant="h2"
@@ -198,7 +198,7 @@ const SettingsTabs: React.FC<SettingsTabsProps> = () => {
             </Typography>
             <AdminPage user={userData} />
           </>
-        )}
+        ): null}
       </Box>
     </div>
   );

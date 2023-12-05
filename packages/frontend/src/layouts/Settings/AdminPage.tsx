@@ -81,7 +81,7 @@ const AdminPage: React.FC<AdminPageProps> = (props) => {
         },
         {
           onSuccess: () => {
-            toast("User deleted Succesfully", {
+            toast("User Updated Succesfully", {
               position: "top-right",
               autoClose: 5000,
               closeOnClick: true,

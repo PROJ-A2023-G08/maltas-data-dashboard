@@ -27,7 +27,7 @@ const Home = () => {
 
   return (
     <>
-      <h1>Home</h1>
+      <h1>Hi, Welcome</h1>
       <Grid container>
         <Grid item container sx={{ height: "400px" }} md={4}>
           <Grid item sx={{ height: "400px" }} sm={12}>
