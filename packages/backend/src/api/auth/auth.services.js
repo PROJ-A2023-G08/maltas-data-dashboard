@@ -53,21 +53,21 @@ async function getAllMeasurements() {
 async function deleteAllMeasurements() {
   var result;
   try {
-    /*for (let i = 0; i <= 370; i++) {
-      const stringValue = `${i}`;
-      console.log(stringValue);
-      result = db.measurement.deleteMany({
-        where: { measurement_id: stringValue}
-      });*/
+    //for (let i = 0; i <= 370; i++) {
+      //const stringValue = `${i}`;
+     // console.log(stringValue);
+      result = await db.measurement.deleteMany({
+        where: {  role_id: "1"}
+      });
     //result = db.measurement.deleteMany({ where: {
     //device_id: "1"}}) 
-    console.log(await db.measurement.deleteMany({ where: {
-      measurement_id: "371"}}));
+    //console.log(await db.measurement.deleteMany({ where: {
+      //measurement_id: "371"}}));
     //
-    //console.log(result.count);
+    console.log(result.count);
   //}
     //console.log('Deleted', result.count, 'measurements.');
-    return result;
+    return result; //}
   } catch (error) {
     console.error('Error deleting measurements:', error);
   }

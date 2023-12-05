@@ -29,6 +29,7 @@ const { collapseTextChangeRangesAcrossMultipleVersions } = require('typescript')
 const router = express.Router();
 
 router.get('/getDataCount', async (req, res, next) => {
+  // for testing
   try { 
     const count = await db.measurement.count({});
     console.log(count);
@@ -54,7 +55,7 @@ router.post('/saveData', async (req, res, next) => {
     fs.createReadStream(csvFile).pipe(csv({ separator: ';' }))
     .on('data', async (row) => {
       try {
-        result = await saveMeasurementToDataBase(row.measurement_id, row.device_id, row.role_id, row.start_time_iso, row.end_time_iso, row.total_time_spent, row.status);
+        result = await saveMeasurementToDataBase(parseInt(row.measurement_id), parseInt(row.device_id), parseInt(row.role_id), row.start_time_iso, row.end_time_iso, parseInt(row.total_time_spent), row.status);
         counter++;
         console.log(counter);
         console.log('result is: ', result);
