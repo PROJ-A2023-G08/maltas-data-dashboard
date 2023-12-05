@@ -29,50 +29,6 @@ const Home = () => {
   return (
     <>
       <h1>Hi, Welcome</h1>
-      {/* <Grid container>
-        <Grid item container sx={{ height: "400px" }} md={4}>
-          <Grid item sx={{ height: "400px" }} sm={12}>
-            <ResponsivePie data={Data1} />
-          </Grid>
-          <Grid item sx={{ height: "400px" }} sm={12}>
-            <StackedCompliance />
-          </Grid>
-        </Grid>
-
-        <Grid item container sx={{ height: "400px" }} md={8}>
-          <Grid item sm={12}>
-            <span className="m-6">
-            <DatePicker
-              className="mr-6"
-              minDate={minDate}
-              maxDate={maximumDate}
-              defaultValue={minDate}
-              value={minimumDate}
-              onChange={(minimumDate) => setMinimumDate(minimumDate)}
-            />
-            </span>
-           
-            <DatePicker
-              className="mr-6"
-              minDate={minimumDate}
-              maxDate={maxDate}
-              defaultValue={maxDate}
-              value={maximumDate}
-              onChange={(maximumDate) => setMaximumDate(maximumDate)}
-            />
-          </Grid>
-          <Grid item sx={{ height: "400px" }} sm={12}>
-            <LineAverage minimumDate={minimumDate} maximumDate={maximumDate} />
-          </Grid>
-          <Grid item sx={{ height: "400px" }} sm={12}>
-            <LineCompliance minimumDate={minimumDate} maximumDate={maximumDate} />
-          </Grid>
-          <Grid item sx={{ height: "400px" }} sm={12}>
-            <LineInterrupted minimumDate={minimumDate} maximumDate={maximumDate} />
-          </Grid>
-        </Grid>
-
-      </Grid> */}
       <div className="flex justify-end mb-4">
         <span className="m-3">
           <DatePicker
@@ -108,7 +64,7 @@ const Home = () => {
               <Typography
                 variant="h4"
                 sx={{
-                  marginBottom: (theme) => theme.spacing(2),
+                  marginBottom: (theme) => theme.spacing(6),
                 }}
                 component="div"
               >
