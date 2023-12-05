@@ -13,6 +13,10 @@ const {
 const { generateTokens } = require('../../utils/jwt');
 const {
   saveMeasurementToDataBase,
+  getMeasurementData,
+  getRoleData,
+  getAllMeasurements,
+  deleteAllMeasurements,
   addRefreshTokenToWhitelist,
   findRefreshTokenByJti,
   deleteRefreshToken,
@@ -24,30 +28,78 @@ const { collapseTextChangeRangesAcrossMultipleVersions } = require('typescript')
 
 const router = express.Router();
 
-router.post('/saveData', async (req, res) => {
+router.get('/getDataCount', async (req, res, next) => {
   try { 
+    const count = await db.measurement.count({});
+    console.log(count);
+    res.json(count);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.delete('/deleteData', async (req, res, next) => {
+  try { 
+    result = deleteAllMeasurements();
+    res.json(result);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.post('/saveData', async (req, res, next) => {
     const csvFile = 'data.csv';
-
+    var result; 
+    var counter = 0;
     fs.createReadStream(csvFile).pipe(csv({ separator: ';' }))
-    .on('data', (row) => {
-      console.log(row);
-      
-      const measurement_id = parseInt(row.measurement_id);
-      const device_id = parseInt(row.device_id);
-      const role_id = parseInt(row.role_id);
-      const total_time_spent = parseInt(row.total_time_spent);
-
-      if (!isNaN(measurement_id) && !isNaN(device_id) && !isNaN(role_id) && !isNaN(total_time_spent)) {
-        saveMeasurementToDataBase(measurement_id, device_id, role_id, row.start_time_iso, row.end_time_iso, total_time_spent, row.status);
-      } else {
-        console.error('Incorrect data in a line, will be omitted:', row);
-      }
+    .on('data', async (row) => {
+      try {
+        result = await saveMeasurementToDataBase(row.measurement_id, row.device_id, row.role_id, row.start_time_iso, row.end_time_iso, row.total_time_spent, row.status);
+        counter++;
+        console.log(counter);
+        console.log('result is: ', result);
+      } catch (err) {
+      next(err);
+      }      
     })
     .on('end', async () => {
-      console.log('Data saved to database');
+      console.log('now here');
+      
     });
-    res.json({ message: 'Data saved to database'});
+    res.json({ message: 'Saving data to database'});
   
+});
+
+router.get('/getMeasurementData', async (req, res, next) => {
+  try { 
+    const measurement_id = "1";
+    console.log("Data from measurement", measurement_id);
+    const result = await getMeasurementData(measurement_id);
+    res.json(result );
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get('/getRoleData', async (req, res, next) => {
+  try { 
+    const id = "1";
+    console.log("Data from role", id);
+    const result = await getRoleData(id);
+    res.json(result);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get('/getData', async (req, res, next) => {
+  try { 
+    const result = await getAllMeasurements()
+    .then((measurements) => res.json(measurements))
+    .catch((error) => console.error('Error fetching measurements:', error))
+    .finally(async () => { 
+    console.log('all measurement is on res');
+    });
   } catch (err) {
     next(err);
   }

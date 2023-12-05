@@ -33,11 +33,20 @@ model RefreshToken {
 }
 
 model Measurement {
-  measurement_id    Number     @id @map("_id")
-  device_id         Number     
-  role_id           Number    
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  measurement_id    String  
+  device_id         String     
+  role_id           String     
   start_time_iso    String
   end_time_iso      String
-  total_time_spent  Number
+  total_time_spent  String
   status            String
+}
+
+enum Status {
+  COMPLETE
+  CONTINUED
+  INTERRUPTED
+  STARTED
+  PAUSED
 }
