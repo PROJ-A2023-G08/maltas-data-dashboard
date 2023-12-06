@@ -24,7 +24,7 @@ const LineChart = ({ data, chartProps }: LineChartProps) => {
     return (
         <ResponsiveLine
             data={data}
-            margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
+            margin={{ top: 5, right: 20, bottom: 5, left: 30 }}
             colors={{ scheme: 'nivo' }}
             xScale={{
                 type: 'time',
@@ -46,6 +46,7 @@ const LineChart = ({ data, chartProps }: LineChartProps) => {
             }}
             useMesh={true}
             enableSlices={false}
+            enablePoints={false}
             
             {...chartProps}
 
