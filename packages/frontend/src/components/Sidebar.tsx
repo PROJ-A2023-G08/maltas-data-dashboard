@@ -114,7 +114,7 @@ const Sidebar: React.FC<SidebarProps> = ({ setActiveComponent }) => {
               component="nav"
               aria-label="main mailbox folders"
             >
-              {menuItems.map((item) => (
+              {menuItems.map((item, index) => (
                 <ListItem
                   sx={{
                     width: "100% !important",
@@ -133,6 +133,7 @@ const Sidebar: React.FC<SidebarProps> = ({ setActiveComponent }) => {
                     className="flex items-center"
                     disableTouchRipple
                     disableRipple
+                    data-testid={`menu-item-${item.name.toLowerCase()}-${index}`}
                   >
                     <div className="-ml-2 pt-1">
                       <ListItemIcon>{item.icon}</ListItemIcon>

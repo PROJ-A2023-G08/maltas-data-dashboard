@@ -1,6 +1,11 @@
 import React from "react";
 import Sidebar from "../Sidebar";
-import { render, screen } from "@testing-library/react";
+import {
+  render,
+  screen,
+  fireEvent,
+  getAllByTestId,
+} from "@testing-library/react";
 import useAuth from "../../../lib/util/useAuth";
 import "@testing-library/jest-dom";
 
@@ -76,4 +81,44 @@ describe("Sidebar rendering tests", () => {
   });
 });
 
-describe("Sidebar functionality tests", () => {});
+describe("Sidebar functionality tests", () => {
+  test("Home button click", () => {
+    const setActiveComponentMock: any = jest.fn();
+    const { getAllByTestId } = render(
+      <Sidebar setActiveComponent={setActiveComponentMock} />,
+    );
+    const homeButton = getAllByTestId("menu-item-home-0");
+    fireEvent.click(homeButton[1]);
+    expect(setActiveComponentMock).toHaveBeenCalledTimes(1);
+  });
+
+  test("Dashboard button click", () => {
+    const setActiveComponentMock: any = jest.fn();
+    const { getAllByTestId } = render(
+      <Sidebar setActiveComponent={setActiveComponentMock} />,
+    );
+    const dashButton = getAllByTestId("menu-item-dashboard-1");
+    fireEvent.click(dashButton[1]);
+    expect(setActiveComponentMock).toHaveBeenCalledTimes(1);
+  });
+
+  test("Settings button click", () => {
+    const setActiveComponentMock: any = jest.fn();
+    const { getAllByTestId } = render(
+      <Sidebar setActiveComponent={setActiveComponentMock} />,
+    );
+    const settingsButton = getAllByTestId("menu-item-settings-2");
+    fireEvent.click(settingsButton[1]);
+    expect(setActiveComponentMock).toHaveBeenCalledTimes(1);
+  });
+
+  test("Help button click", () => {
+    const setActiveComponentMock: any = jest.fn();
+    const { getAllByTestId } = render(
+      <Sidebar setActiveComponent={setActiveComponentMock} />,
+    );
+    const helpButton = getAllByTestId("menu-item-help-3");
+    fireEvent.click(helpButton[1]);
+    expect(setActiveComponentMock).toHaveBeenCalledTimes(1);
+  });
+});
