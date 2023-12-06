@@ -37,20 +37,43 @@ beforeEach(() => {
   require("../../../lib/queries").useUserProfile.mockReturnValueOnce({
     data: userData,
   });
+
+  render(<Sidebar setActiveComponent={() => {}} />);
 });
 
-describe("Sidebar", () => {
-  it("logo renders", () => {
-    render(<Sidebar setActiveComponent={() => {}} />);
+describe("Sidebar rendering tests", () => {
+  test("logo renders", () => {
     expect(screen.getByTestId("maltas-logo")).toBeInTheDocument();
   });
-  it("User names render", () => {
-    render(<Sidebar setActiveComponent={() => {}} />);
+
+  test("User names render", () => {
     expect(screen.getByTestId("user-names")).toBeInTheDocument();
   });
-  it("User email render", () => {
-    render(<Sidebar setActiveComponent={() => {}} />);
+
+  test("User email render", () => {
     screen.debug();
     expect(screen.getByText("tester.test@test.com")).toBeInTheDocument();
   });
+
+  test("Home button renders", () => {
+    expect(screen.getByText("sidebar.Home")).toBeInTheDocument();
+  });
+
+  test("Dashboard button renders", () => {
+    expect(screen.getByText("sidebar.Dashboard")).toBeInTheDocument();
+  });
+
+  test("Settings button renders", () => {
+    expect(screen.getByText("sidebar.Settings")).toBeInTheDocument();
+  });
+
+  test("Help button renders", () => {
+    expect(screen.getByText("sidebar.Help")).toBeInTheDocument();
+  });
+
+  test("Log out button renders", () => {
+    expect(screen.getByText("sidebar.LogOut")).toBeInTheDocument();
+  });
 });
+
+describe("Sidebar functionality tests", () => {});
