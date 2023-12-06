@@ -11,7 +11,7 @@ import HelpIcon from "@mui/icons-material/Help";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useTranslation } from "next-i18next";
 import useAuth from "../../lib/util/useAuth";
-import Image from 'next/image'
+import Image from "next/image";
 import { ButtonBase } from "@mui/material";
 import { useUserProfile } from "../../lib/queries";
 import { Typography, Avatar } from "@mui/material";
@@ -22,15 +22,15 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ setActiveComponent }) => {
   const { t } = useTranslation("common");
-  const { logout} = useAuth();
+  const { logout } = useAuth();
   const userDataApi = useUserProfile();
-  const userData = userDataApi?.data 
+  const userData = userDataApi?.data;
 
-  const [selectedItem, setSelectedItem] = useState<string>('');
+  const [selectedItem, setSelectedItem] = useState<string>("");
 
   const handleSidebarItemClick = (componentName: string) => {
     setActiveComponent(componentName);
-    setSelectedItem(componentName); 
+    setSelectedItem(componentName);
   };
 
   const menuItems = [
@@ -63,28 +63,36 @@ const Sidebar: React.FC<SidebarProps> = ({ setActiveComponent }) => {
                 alt="Maltas Logo"
                 width={160}
                 height={160}
+                data-testid="maltas-logo"
               />
             </div>
           </div>
 
           <div className="flex flex-col items-start justify-start w-full pt-12">
-            <Typography color={"primary"} variant="h5" sx={{
-              width: "100%",
-              textAlign: "center",
-              marginTop: "15px",
-              fontWeight: 700,
-            }}>
+            <Typography
+              color={"primary"}
+              variant="h5"
+              sx={{
+                width: "100%",
+                textAlign: "center",
+                marginTop: "15px",
+                fontWeight: 700,
+              }}
+            >
               Maltas technology Oy
             </Typography>
             {userData && (
-              <List sx={{
-                paddingTop: "20px"
-              }}>
+              <List
+                sx={{
+                  paddingTop: "20px",
+                }}
+              >
                 <ListItem>
                   <ListItemIcon>
                     <Avatar alt={"user image"} src={userData.imageUrl || ""} />
                   </ListItemIcon>
                   <ListItemText
+                    data-testid="user-names"
                     sx={{
                       fontWeight: 700,
                     }}

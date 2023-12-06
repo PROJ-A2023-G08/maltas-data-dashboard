@@ -16,6 +16,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
+    "types": ["node", "jest", "@testing-library/jest-dom"],
     "forceConsistentCasingInFileNames": true
   },
   "include": [
