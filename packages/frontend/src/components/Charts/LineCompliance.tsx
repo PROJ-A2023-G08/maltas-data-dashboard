@@ -77,15 +77,15 @@ export const LineCompliance = ({ minimumDate, maximumDate }: Props) => {
 
     const complianceCountValues: LineComplianceChart[] = [
         {
-            id: "role0",
+            id: "Doctor",
             data: complianceCountRole0
         },
         {
-            id: "role1",
+            id: "Nurse",
             data: complianceCountRole1
         },
         {
-            id: "role2",
+            id: "N/A",
             data: complianceCountRole2
         }
     ];

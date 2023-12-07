@@ -76,7 +76,7 @@ const Home = () => {
                 paddingY={1}
               >
                 <div className="h-full">
-                <LineInterrupted minimumDate={minimumDate} maximumDate={maximumDate} />
+                  <LineInterrupted minimumDate={minimumDate} maximumDate={maximumDate} />
                 </div>
               </Box>
               <div className="flex flex-wrap pt-4">
@@ -109,15 +109,19 @@ const Home = () => {
                 paddingBottom: (theme) => theme.spacing(3),
               }}
             >
-              <Typography
-                variant="h4"
+              <Box
                 sx={{
-                  marginBottom: (theme) => theme.spacing(2),
+                  mb: 2,
                 }}
-                component="div"
               >
-                Compliance Level
-              </Typography>
+                <Typography variant="h4">
+                  Average Time Spent / Day for Each Role
+                </Typography>
+                <Typography>
+                  Each day is counted by the average time spent of each role
+                </Typography>
+              </Box>
+
               <Box
                 sx={{ height: (theme) => theme.spacing(45) }}
                 paddingX={1}
@@ -128,20 +132,7 @@ const Home = () => {
                     minimumDate={minimumDate}
                     maximumDate={maximumDate}
                   />
-                  <div className="flex flex-wrap pt-3">
-                    <div>
-                      <Dot color="rgb(241, 225, 91)" />
-                      <span className="p-2">Interupted hand washing</span>
-                    </div>
-                    <div>
-                      <Dot color="rgb(244, 117, 96)" />
-                      <span className="p-2">Completed Washing</span>
-                    </div>
-                    <div>
-                      <Dot color="rgb(232, 193, 160)" />
-                      <span className="p-2">Currently Washing hand</span>
-                    </div>
-                  </div>
+
                 </div>
               </Box>
             </CardContent>
@@ -202,15 +193,18 @@ const Home = () => {
                 paddingBottom: (theme) => theme.spacing(3),
               }}
             >
-              <Typography
-                variant="h4"
+              <Box
                 sx={{
-                  marginBottom: (theme) => theme.spacing(2),
+                  mb: 2,
                 }}
-                component="div"
               >
-                All each role avg for each day
-              </Typography>
+                <Typography variant="h4">
+                  Compliance Over Time
+                </Typography>
+                <Typography>
+                  Compliance of each role each day counted by the number of measurement that reach 180 seconds
+                </Typography>
+              </Box>
               <Box
                 sx={{ height: (theme) => theme.spacing(50) }}
                 paddingX={1}
@@ -221,20 +215,7 @@ const Home = () => {
                   maximumDate={maximumDate}
                 />
               </Box>
-              <div className="flex flex-wrap pt-3">
-                <div>
-                  <Dot color="rgb(241, 225, 91)" />
-                  <span className="p-2">Interupted hand washing</span>
-                </div>
-                <div>
-                  <Dot color="rgb(244, 117, 96)" />
-                  <span className="p-2">Completed Washing</span>
-                </div>
-                <div>
-                  <Dot color="rgb(232, 193, 160)" />
-                  <span className="p-2">Currently Washing hand</span>
-                </div>
-              </div>
+
             </CardContent>
           </Card>
         </Grid>

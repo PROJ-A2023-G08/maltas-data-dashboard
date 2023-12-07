@@ -118,9 +118,8 @@ const Home = () => {
                 sx={{
                   marginBottom: (theme) => theme.spacing(2),
                 }}
-                component="div"
               >
-                Compliance Level
+                Average Time Spent / Day for Each Role
               </Typography>
               <Box
                 sx={{ height: (theme) => theme.spacing(45) }}
@@ -132,20 +131,6 @@ const Home = () => {
                     minimumDate={minimumDate}
                     maximumDate={maximumDate}
                   />
-                  <div className="flex flex-wrap pt-3">
-                    <div>
-                      <Dot color="rgb(241, 225, 91)" />
-                      <span className="p-2">Interupted hand washing</span>
-                    </div>
-                    <div>
-                      <Dot color="rgb(244, 117, 96)" />
-                      <span className="p-2">Completed Washing</span>
-                    </div>
-                    <div>
-                      <Dot color="rgb(232, 193, 160)" />
-                      <span className="p-2">Currently Washing hand</span>
-                    </div>
-                  </div>
                 </div>
               </Box>
             </CardContent>
@@ -225,20 +210,6 @@ const Home = () => {
                   maximumDate={maximumDate}
                 />
               </Box>
-              <div className="flex flex-wrap pt-3">
-                <div>
-                  <Dot color="rgb(241, 225, 91)" />
-                  <span className="p-2">Interupted hand washing</span>
-                </div>
-                <div>
-                  <Dot color="rgb(244, 117, 96)" />
-                  <span className="p-2">Completed Washing</span>
-                </div>
-                <div>
-                  <Dot color="rgb(232, 193, 160)" />
-                  <span className="p-2">Currently Washing hand</span>
-                </div>
-              </div>
             </CardContent>
           </Card>
         </Grid>

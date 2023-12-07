@@ -58,15 +58,15 @@ export const LineAverage = ({ minimumDate, maximumDate }: Props) => {
 
     const averageValues: LineAverageChart[] = [
         {
-            id: "role0",
+            id: "Doctor",
             data: averageRole0
         },
         {
-            id: "role1",
+            id: "Nurse",
             data: averageRole1
         },
         {
-            id: "role2",
+            id: "N/A",
             data: averageRole2
         }
     ];
@@ -100,7 +100,6 @@ export const LineAverage = ({ minimumDate, maximumDate }: Props) => {
                     marginRight: (theme)=> theme.spacing(3),
                 }}  variant='outlined' onClick={() => setFilter(FilterTypes.MONTHLY)}>Monthly</Button>
             </Box>
-            <Typography className="w-full">Avg.Max Time/Measurement</Typography>
             <LineChart
                 data={averageValues}
                 chartProps={{
@@ -111,14 +110,13 @@ export const LineAverage = ({ minimumDate, maximumDate }: Props) => {
                                 axis: 'y',
                                 value: 180,
                                 lineStyle: { stroke: '#9ACEFE', strokeWidth: 1, strokeDasharray: '4 4' },
-                                legend: '',
+                                legend: 'compliance level',
                                 legendOrientation: 'horizontal',
                             }
                         ],
                     ...chartProps
                 }}
             />
-             <Typography className="w-full text-center">Day of End Time Iso</Typography>
         </>
     )
 };
