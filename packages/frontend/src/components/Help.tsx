@@ -13,7 +13,7 @@ const Help = () => {
 
   return (
     <div>
-      <div className="flex justify-center -mb-12 mt-40">
+      <div className="flex justify-center -mb-12 mt-40" data-testid="help-div">
         <button
           onClick={() => toggleTab("faq")}
           className={`mr-2 pt-2 pb-2 pl-20 pr-20 ${

@@ -11,15 +11,19 @@ import LineAverage from "./Charts/LineAverage";
 import { Box, Grid, Card, CardContent, Typography } from "@mui/material";
 import { MeasurementContext } from "@/contexts/MeasurementProvider.context";
 import { useContext, useEffect, useState } from "react";
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import Dot from "./Dot";
 import LineCompliance from "./Charts/LineCompliance";
 import LineInterrupted from "./Charts/LineInterrupted";
-const Home = () => {
+const Dashboard = () => {
   const { maxDate, minDate } = useContext(MeasurementContext);
   // state for the date range of line average chart
-  const [minimumDate, setMinimumDate] = useState<Date | undefined | null>(minDate);
-  const [maximumDate, setMaximumDate] = useState<Date | undefined | null>(maxDate);
+  const [minimumDate, setMinimumDate] = useState<Date | undefined | null>(
+    minDate,
+  );
+  const [maximumDate, setMaximumDate] = useState<Date | undefined | null>(
+    maxDate,
+  );
 
   useEffect(() => {
     setMinimumDate(minDate);
@@ -29,7 +33,7 @@ const Home = () => {
   return (
     <>
       <h1>Hi, Welcome</h1>
-      <div className="flex justify-end mb-4">
+      <div className="flex justify-end mb-4" data-testid="dashboard-div">
         <span className="m-3">
           <DatePicker
             minDate={minDate}
@@ -76,7 +80,10 @@ const Home = () => {
                 paddingY={1}
               >
                 <div className="h-full">
-                <LineInterrupted minimumDate={minimumDate} maximumDate={maximumDate} />
+                  <LineInterrupted
+                    minimumDate={minimumDate}
+                    maximumDate={maximumDate}
+                  />
                 </div>
               </Box>
               <div className="flex flex-wrap pt-4">
@@ -243,4 +250,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Dashboard;

@@ -5,9 +5,14 @@ import {
   screen,
   fireEvent,
   getAllByTestId,
+  waitFor,
 } from "@testing-library/react";
 import useAuth from "../../../lib/util/useAuth";
 import "@testing-library/jest-dom";
+import exp from "constants";
+import Dashboard from "../../components/Dashboard";
+import { MeasurementContext } from "@/contexts/MeasurementProvider.context";
+import Help from "../Help";
 
 jest.mock("../../../lib/util/useAuth");
 jest.mock("../../../lib/queries");
@@ -120,5 +125,58 @@ describe("Sidebar functionality tests", () => {
     const helpButton = getAllByTestId("menu-item-help-3");
     fireEvent.click(helpButton[1]);
     expect(setActiveComponentMock).toHaveBeenCalledTimes(1);
+  });
+});
+
+interface MeasurementContextConsumerProps {
+  children: (value: { minDate: Date; maxDate: Date }) => React.ReactNode;
+}
+
+/*jest.mock("@/contexts/MeasurementProvider.context", () => ({
+  MeasurementContext: {
+    Consumer: ({ children }: MeasurementContextConsumerProps) =>
+      children({ minDate: new Date(), maxDate: new Date() }),
+  },
+}));*/
+
+describe("Correct components loads when clicked", () => {
+  /*
+  xtest("Dashboard component loads", async () => {
+    const setActiveComponentMock = jest.fn();
+    render(<Sidebar setActiveComponent={setActiveComponentMock} />);
+
+    const dashButton = screen.getByTestId("menu-item-dashboard-1");
+    fireEvent.click(dashButton);
+
+    expect(setActiveComponentMock).toHaveBeenCalledWith("Dashboard");
+
+    const minDate = new Date();
+    const maxDate = new Date();
+    render(
+      <MeasurementContext.Provider value={{ minDate, maxDate }}>
+        <Dashboard />
+      </MeasurementContext.Provider>,
+    );
+
+    await waitFor(() => {
+      const dashView = screen.getByTestId("dashboard-div");
+      expect(dashView).toBeInTheDocument();
+    });
+  });*/
+  test("Help component loads", async () => {
+    const setActiveComponentMock = jest.fn();
+    const { getAllByTestId } = render(
+      <Sidebar setActiveComponent={setActiveComponentMock} />,
+    );
+    const helpButton = getAllByTestId("menu-item-help-3");
+    fireEvent.click(helpButton[1]);
+    expect(setActiveComponentMock).toHaveBeenCalledTimes(1);
+
+    render(<Help />);
+
+    await waitFor(() => {
+      const helpView = screen.getByTestId("help-div");
+      expect(helpView).toBeInTheDocument();
+    });
   });
 });
