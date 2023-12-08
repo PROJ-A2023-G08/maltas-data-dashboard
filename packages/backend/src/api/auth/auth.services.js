@@ -2,7 +2,7 @@ const { db } = require('../../utils/db');
 const { hashToken } = require('../../utils/hashToken');
 
 async function saveMeasurementToDataBase(measurement_id, device_id, role_id, start_time_iso, end_time_iso, total_time_spent, status) {  
-  const result = await db.measurement.create({
+  return await db.measurement.create({
     data: {
       measurement_id: measurement_id,    
       device_id: device_id,    
@@ -13,64 +13,13 @@ async function saveMeasurementToDataBase(measurement_id, device_id, role_id, sta
       status: status
     },
   });
-  console.log(result);
-  return result;
 }
 
-async function getMeasurementData(id) {
-  try {
-    const result = await db.measurement.findMany({
-      where: {
-        measurement_id: id, 
-      },
-    });
-    return result;
-  } catch (error) {
-    console.error('Error when looking for measurement:', error);
-    throw error; 
-  }
-}
-async function getRoleData(id) {
-  try {
-    const result = await db.measurement.findMany({
-      where: {
-        role_id: id, 
-      },
-    });
-    return result;
-  } catch (error) {
-    console.error('Error when looking for measurement:', error);
-    throw error; 
-  }
-}
-
-async function getAllMeasurements() {
-  const allMeasurements = await db.measurement.findMany();
-  console.log('Measurements found: ', allMeasurements.count);
-  return allMeasurements;
-}
-
-async function deleteAllMeasurements() {
-  var result;
-  try {
-    //for (let i = 0; i <= 370; i++) {
-      //const stringValue = `${i}`;
-     // console.log(stringValue);
-      result = await db.measurement.deleteMany({
-        where: {  role_id: "1"}
-      });
-    //result = db.measurement.deleteMany({ where: {
-    //device_id: "1"}}) 
-    //console.log(await db.measurement.deleteMany({ where: {
-      //measurement_id: "371"}}));
-    //
-    console.log(result.count);
-  //}
-    //console.log('Deleted', result.count, 'measurements.');
-    return result; //}
-  } catch (error) {
-    console.error('Error deleting measurements:', error);
-  }
+async function getMeasurements() {
+  return await db.measurement.findMany({orderBy: {
+    measurement_id: 'asc',
+  },
+});
 }
 
 function addRefreshTokenToWhitelist({ jti, refreshToken, userId }) {
@@ -114,11 +63,8 @@ function revokeTokens(userId) {
 }
 
 module.exports = {
-  saveMeasurementToDataBase, 
-  getMeasurementData,
-  getRoleData,
-  getAllMeasurements,
-  deleteAllMeasurements,
+  saveMeasurementToDataBase,
+  getMeasurements,
   addRefreshTokenToWhitelist,
   findRefreshTokenByJti,
   deleteRefreshToken,
