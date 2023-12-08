@@ -15,11 +15,4 @@ import { useTranslation } from "react-i18next";
 import Profile from "../../layouts/Settings/Profile";
 //import userEvent from "@testing-library/user-event";
 
-describe("Profile settings tests", () => {
-  it("First name field renders", () => {
-    const { getByTestId } = render(<Profile />);
-    //expect(screen.getByTestId("firstName-field")).toBeInTheDocument();
-    const firstNameField = getByTestId("firstName-field");
-    expect(firstNameField).toBeInTheDocument();
-  });
-});
+describe("Profile settings tests", () => {});

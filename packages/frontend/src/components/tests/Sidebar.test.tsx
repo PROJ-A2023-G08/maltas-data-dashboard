@@ -11,8 +11,12 @@ import useAuth from "../../../lib/util/useAuth";
 import "@testing-library/jest-dom";
 import exp from "constants";
 import Dashboard from "../../components/Dashboard";
-import { MeasurementContext } from "@/contexts/MeasurementProvider.context";
+import {
+  MeasurementProvider,
+  MeasurementContext,
+} from "../../contexts/MeasurementProvider.context";
 import Help from "../Help";
+import Home from "../Home";
 
 jest.mock("../../../lib/util/useAuth");
 jest.mock("../../../lib/queries");
@@ -140,30 +144,26 @@ interface MeasurementContextConsumerProps {
 }));*/
 
 describe("Correct components loads when clicked", () => {
-  /*
-  xtest("Dashboard component loads", async () => {
+  test("Home component loads when clicked", async () => {
     const setActiveComponentMock = jest.fn();
-    render(<Sidebar setActiveComponent={setActiveComponentMock} />);
-
-    const dashButton = screen.getByTestId("menu-item-dashboard-1");
-    fireEvent.click(dashButton);
-
-    expect(setActiveComponentMock).toHaveBeenCalledWith("Dashboard");
-
-    const minDate = new Date();
-    const maxDate = new Date();
-    render(
-      <MeasurementContext.Provider value={{ minDate, maxDate }}>
-        <Dashboard />
-      </MeasurementContext.Provider>,
+    const { getAllByTestId } = render(
+      <Sidebar setActiveComponent={setActiveComponentMock} />,
     );
+    const helpButton = getAllByTestId("menu-item-help-3");
+    const homeButton = getAllByTestId("menu-item-home-0");
+    fireEvent.click(helpButton[1]);
+    fireEvent.click(homeButton[1]);
+    expect(setActiveComponentMock).toHaveBeenCalledTimes(2);
+
+    render(<Home />);
 
     await waitFor(() => {
-      const dashView = screen.getByTestId("dashboard-div");
-      expect(dashView).toBeInTheDocument();
+      const homeView = screen.getByTestId("home-div");
+      expect(homeView).toBeInTheDocument();
     });
-  });*/
-  test("Help component loads", async () => {
+  });
+
+  test("Help component loads when clicked", async () => {
     const setActiveComponentMock = jest.fn();
     const { getAllByTestId } = render(
       <Sidebar setActiveComponent={setActiveComponentMock} />,
@@ -177,6 +177,25 @@ describe("Correct components loads when clicked", () => {
     await waitFor(() => {
       const helpView = screen.getByTestId("help-div");
       expect(helpView).toBeInTheDocument();
+    });
+  });
+
+  test("Dashboard component loads when clicked", async () => {
+    const setActiveComponentMock = jest.fn();
+    const { getAllByTestId } = render(
+      <Sidebar setActiveComponent={setActiveComponentMock} />,
+    );
+    const helpButton = getAllByTestId("menu-item-help-3");
+    const dashButton = getAllByTestId("menu-item-dashboard-1");
+    fireEvent.click(helpButton[1]);
+    fireEvent.click(dashButton[1]);
+    expect(setActiveComponentMock).toHaveBeenCalledTimes(2);
+
+    const { getByTestId } = render(<Dashboard />);
+
+    await waitFor(() => {
+      const dashView = getByTestId("dashboard-div");
+      expect(dashView).toBeInTheDocument();
     });
   });
 });

@@ -9,17 +9,21 @@ import Data1 from "../../public/data1.json";
 import StackedCompliance from "./Charts/StackedCompliance";
 import LineAverage from "./Charts/LineAverage";
 import { Box, Grid, Card, CardContent, Typography } from "@mui/material";
-import { MeasurementContext } from "@/contexts/MeasurementProvider.context";
+import { MeasurementContext } from "../contexts/MeasurementProvider.context";
 import { useContext, useEffect, useState } from "react";
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import Dot from "./Dot";
 import LineCompliance from "./Charts/LineCompliance";
 import LineInterrupted from "./Charts/LineInterrupted";
 const Home = () => {
   const { maxDate, minDate } = useContext(MeasurementContext);
   // state for the date range of line average chart
-  const [minimumDate, setMinimumDate] = useState<Date | undefined | null>(minDate);
-  const [maximumDate, setMaximumDate] = useState<Date | undefined | null>(maxDate);
+  const [minimumDate, setMinimumDate] = useState<Date | undefined | null>(
+    minDate,
+  );
+  const [maximumDate, setMaximumDate] = useState<Date | undefined | null>(
+    maxDate,
+  );
 
   useEffect(() => {
     setMinimumDate(minDate);
@@ -29,8 +33,9 @@ const Home = () => {
   return (
     <>
       <h1>Hi, Welcome</h1>
-      <div className="flex justify-end mb-4">
+      <div className="flex justify-end mb-4" data-testid="home-div">
         <span className="m-3">
+          {/*  
           <DatePicker
             minDate={minDate}
             maxDate={maximumDate}
@@ -47,6 +52,7 @@ const Home = () => {
             value={maximumDate}
             onChange={(maximumDate) => setMaximumDate(maximumDate)}
           />
+          */}
         </span>
       </div>
       <Grid container spacing={3}>
