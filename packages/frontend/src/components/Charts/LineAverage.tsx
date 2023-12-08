@@ -109,7 +109,7 @@ export const LineAverage = ({ minimumDate, maximumDate }: Props) => {
                             {
                                 axis: 'y',
                                 value: 180,
-                                lineStyle: { stroke: '#9ACEFE', strokeWidth: 1, strokeDasharray: '4 4' },
+                                lineStyle: { stroke: '#000', strokeWidth: 1, strokeDasharray: '4 4' },
                                 legend: 'compliance level',
                                 legendOrientation: 'horizontal',
                             }
