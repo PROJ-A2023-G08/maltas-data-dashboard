@@ -44,24 +44,6 @@ model RefreshToken {
   updatedAt   DateTime @updatedAt
 }
 
-model Measurement {
-  id                String  @id @default(auto()) @map("_id") @db.ObjectId
-  measurement_id    Int  
-  device_id         Int     
-  role_id           Int     
-  start_time_iso    String
-  end_time_iso      String
-  total_time_spent  Int
-  status            Status
-}
-
-enum Status {
-  COMPLETE
-  CONTINUED
-  INTERRUPTED
-  STARTED
-  PAUSED
-}
 
 enum Role {
   USER
