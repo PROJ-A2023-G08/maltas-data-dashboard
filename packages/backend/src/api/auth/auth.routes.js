@@ -13,10 +13,7 @@ const {
 const { generateTokens } = require('../../utils/jwt');
 const {
   saveMeasurementToDataBase,
-  getMeasurementData,
-  getRoleData,
-  getAllMeasurements,
-  deleteAllMeasurements,
+  getMeasurements,
   addRefreshTokenToWhitelist,
   findRefreshTokenByJti,
   deleteRefreshToken,
@@ -24,83 +21,26 @@ const {
 } = require('./auth.services');
 const { hashToken } = require('../../utils/hashToken');
 const { db } = require('../../utils/db');
-const { collapseTextChangeRangesAcrossMultipleVersions } = require('typescript');
 
 const router = express.Router();
 
-router.get('/getDataCount', async (req, res, next) => {
-  // for testing
-  try { 
-    const count = await db.measurement.count({});
-    console.log(count);
-    res.json(count);
-  } catch (err) {
-    next(err);
-  }
-});
-
-router.delete('/deleteData', async (req, res, next) => {
-  try { 
-    result = deleteAllMeasurements();
-    res.json(result);
-  } catch (err) {
-    next(err);
-  }
-});
-
 router.post('/saveData', async (req, res, next) => {
-    const csvFile = 'data.csv';
-    var result; 
-    var counter = 0;
-    fs.createReadStream(csvFile).pipe(csv({ separator: ';' }))
+    fs.createReadStream('data.csv').pipe(csv({separator: ';' }))
     .on('data', async (row) => {
       try {
-        result = await saveMeasurementToDataBase(parseInt(row.measurement_id), parseInt(row.device_id), parseInt(row.role_id), row.start_time_iso, row.end_time_iso, parseInt(row.total_time_spent), row.status);
-        counter++;
-        console.log(counter);
-        console.log('result is: ', result);
+        await saveMeasurementToDataBase(parseInt(row.measurement_id), parseInt(row.device_id),
+        parseInt(row.role_id), row.start_time_iso, row.end_time_iso, parseInt(row.total_time_spent), row.status);
       } catch (err) {
       next(err);
       }      
-    })
-    .on('end', async () => {
-      console.log('now here');
-      
     });
-    res.json({ message: 'Saving data to database'});
-  
-});
-
-router.get('/getMeasurementData', async (req, res, next) => {
-  try { 
-    const measurement_id = "1";
-    console.log("Data from measurement", measurement_id);
-    const result = await getMeasurementData(measurement_id);
-    res.json(result );
-  } catch (err) {
-    next(err);
-  }
-});
-
-router.get('/getRoleData', async (req, res, next) => {
-  try { 
-    const id = "1";
-    console.log("Data from role", id);
-    const result = await getRoleData(id);
-    res.json(result);
-  } catch (err) {
-    next(err);
-  }
+    res.json({message:'Saving data to database.'});
 });
 
 router.get('/getData', async (req, res, next) => {
   try { 
-    const result = await getAllMeasurements()
-    .then((measurements) => res.json(measurements))
-    .catch((error) => console.error('Error fetching measurements:', error))
-    .finally(async () => { 
-    console.log('all measurement is on res');
-    });
+    var measurements = await getMeasurements();
+    res.json(measurements);
   } catch (err) {
     next(err);
   }
