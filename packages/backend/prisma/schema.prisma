@@ -15,7 +15,19 @@ model User {
   firstName     String
   lastName      String
   email         String         @unique
-  password      String       
+  imageUrl      String?
+  language      String?
+  bio           String?
+  profession    String?
+  role          Role          @default(USER)
+  isAdmin       Boolean       @default(false)
+  gender        String?
+  notification  String?
+  phoneNumber   String?
+  address       String?
+  city          String?
+  postalCode    String?
+  password      String
   refreshTokens RefreshToken[]
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @updatedAt
@@ -49,4 +61,10 @@ enum Status {
   INTERRUPTED
   STARTED
   PAUSED
+}
+
+enum Role {
+  USER
+  ADMIN
+  MANAGER
 }

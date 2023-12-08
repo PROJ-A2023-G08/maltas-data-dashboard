@@ -1,6 +1,5 @@
 import * as Yup from "yup";
 
-
   export const validationSchemaPersonalInfo = Yup.object().shape({
     firstname: Yup.string().required("first name is required"),
     lastname: Yup.string().required("first name is required"),

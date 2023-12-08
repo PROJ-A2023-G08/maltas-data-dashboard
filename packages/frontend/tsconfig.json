@@ -29,7 +29,7 @@
     "**/*.ts",
     "**/*.tsx",
     "src/context/AuthProvider.js"
-  ],
+, "src/layouts/Settings/LanguageSettings.jsx"  ],
   "exclude": [
     "node_modules"
   ]

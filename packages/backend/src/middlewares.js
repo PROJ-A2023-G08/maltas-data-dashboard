@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
 function notFound(req, res, next) {
   res.status(404);
@@ -11,7 +11,7 @@ function errorHandler(err, req, res, next) {
   res.status(statusCode);
   res.json({
     message: err.message,
-    stack: process.env.NODE_ENV === 'production' ? '🥞' : err.stack
+    stack: process.env.NODE_ENV === "production" ? "🥞" : err.stack,
   });
 }
 
@@ -20,26 +20,34 @@ function isAuthenticated(req, res, next) {
 
   if (!authorization) {
     res.status(401);
-    throw new Error('🚫 Un-Authorized 🚫');
+    throw new Error("🚫 Un-Authorized 🚫");
   }
-
   try {
-    const token = authorization.split(' ')[1];
+    const token = authorization.split(" ")[1];
     const payload = jwt.verify(token, process.env.JWT_ACCESS_SECRET);
     req.payload = payload;
   } catch (err) {
     res.status(401);
-    if (err.name === 'TokenExpiredError') {
+    if (err.name === "TokenExpiredError") {
       throw new Error(err.name);
     }
-    throw new Error('🚫 Un-Authorized 🚫');
+    throw new Error("🚫 Un-Authorized 🚫");
   }
 
   return next();
 }
 
+function isAdmin(req, res, next) {
+    if (req.payload.isAdmin) {
+      next()
+    } else {
+      res.status(403).send('Un-Authorized');
+    }
+}  
+
 module.exports = {
   notFound,
   errorHandler,
-  isAuthenticated
+  isAuthenticated,
+  isAdmin,
 };

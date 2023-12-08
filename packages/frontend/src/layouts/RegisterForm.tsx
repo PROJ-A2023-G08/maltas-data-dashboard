@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { FieldProps } from 'formik';
 import * as Yup from 'yup';
 import { Button, TextField, Typography } from '@mui/material';
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 import { styled } from '@mui/material/styles';
-import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { register } from '../../lib/api/api';
 
@@ -52,11 +51,14 @@ interface RegisterProps {
 }
 
 const RegisterForm: React.FC<RegisterProps> = ({ onRegister }) => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const router = useRouter();
   const onSubmit = async (values: RegisterBasics) => {
 
     const { firstName, lastName, email, password } = values;
     try {
+      setLoading(true)
       const data =  { firstName, lastName, email, password }
       const response = await register(data);
   
@@ -64,12 +66,15 @@ const RegisterForm: React.FC<RegisterProps> = ({ onRegister }) => {
         const { accessToken, refreshToken } = response.data;
         localStorage.setItem('accessToken', accessToken);
         localStorage.setItem('refreshToken', refreshToken);
-
+        setLoading(false);
+        setError(false);
         router.push('/');
        
       }
 
     }catch(error)  { 
+      setLoading(false);
+      setError(true);
       //console.log(error.message)
     }
   };
@@ -94,8 +99,9 @@ const RegisterForm: React.FC<RegisterProps> = ({ onRegister }) => {
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
-      >
+      >  
         <Form>
+        {error && <div className='text-red-600'>Incorrect email or password</div>}
           <div className="pb-4">
             <Field
               as={TextField}
@@ -177,6 +183,8 @@ const RegisterForm: React.FC<RegisterProps> = ({ onRegister }) => {
             />
           </div>
           <Button
+            centerRipple={loading}
+            disabled={loading}
             sx={{
               height: (theme) => theme.spacing(7),
               mb: (theme) => theme.spacing(1)

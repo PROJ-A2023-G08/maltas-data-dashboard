@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 
 const useAuth = () => {
   const router = useRouter();
@@ -29,6 +29,14 @@ const useAuth = () => {
     }
   }, [accessToken, refreshToken, router]);
 
+  const fastAccessToken = useMemo(() => {
+    if (typeof window !== 'undefined') {
+      const storedAccessToken = localStorage.getItem('accessToken');
+      return storedAccessToken;
+    }
+    return null;
+  }, []);
+
   const logout = () => {
     // Clear tokens from storage
     localStorage.removeItem('accessToken');
@@ -36,10 +44,11 @@ const useAuth = () => {
     setIsLoggedIn(false);
     
     // Redirect to the home page after logout
+  
     router.push('/home');
   };
 
-  return { isLoggedIn, accessToken, refreshToken, logout };
+  return { isLoggedIn, accessToken, refreshToken, logout, fastAccessToken };
 };
 
 export default useAuth;
