@@ -50,70 +50,63 @@ const Home = () => {
         </span>
       </div>
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={12} md={6} lg={6}>
-          <Card
-            sx={{
-              padding: (theme) => theme.spacing(2),
-            }}
-          >
-            <CardContent
-              sx={{
-                height: (theme) => theme.spacing(75),
-              }}
-            >
-              <Typography
-                variant="h4"
-                sx={{
-                  marginBottom: (theme) => theme.spacing(6),
-                }}
-                component="div"
-              >
-                Line Interupted
-              </Typography>
-              <Box
-                sx={{ height: (theme) => theme.spacing(50) }}
-                paddingX={1}
-                paddingY={1}
-              >
-                <div className="h-full">
-                  <LineInterrupted minimumDate={minimumDate} maximumDate={maximumDate} />
-                </div>
-              </Box>
-              <div className="flex flex-wrap pt-4">
-                <div>
-                  <Dot color="rgb(241, 225, 91)" />
-                  <span className="p-2">Doctors</span>
-                </div>
-                <div>
-                  <Dot color="rgb(244, 117, 96)" />
-                  <span className="p-2">Nurses</span>
-                </div>
-                <div>
-                  <Dot color="rgb(232, 193, 160)" />
-                  <span className="p-2">Student Doctors</span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </Grid>
+        <Grid container item xs={12} md={4} spacing={3}>
+          <Grid item xs={12}>
+            <Card >
+              <CardContent>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    marginBottom: 2,
+                  }}
+                  component="div"
+                >
+                  Count of Status
+                </Typography>
+                <Box
+                  sx={{ height: '200px' }}
+                  paddingX={1}
+                  paddingY={1}
+                >
+                  <ResponsivePie data={Data1} />
+                </Box>
 
-        <Grid item xs={12} sm={12} md={6} lg={6}>
-          <Card
-            sx={{
-              padding: (theme) => theme.spacing(2),
-            }}
-          >
-            <CardContent
-              sx={{
-                height: (theme) => theme.spacing(75),
-                paddingBottom: (theme) => theme.spacing(3),
-              }}
-            >
-              <Box
-                sx={{
-                  mb: 2,
-                }}
-              >
+              </CardContent>
+            </Card>
+          </Grid>
+
+          <Grid item xs={12}>
+            <Card>
+              <CardContent>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    marginBottom: (theme) => theme.spacing(2),
+                  }}
+                  component="div"
+                >
+                  Complete & Interupted Role
+                </Typography>
+
+                <Box
+                  sx={{ height: '200px' }}
+                  paddingX={1}
+                  paddingY={1}
+                >
+                  <div className="h-full">
+                    <StackedCompliance />
+                  </div>
+                </Box>
+
+              </CardContent>
+            </Card>
+          </Grid>
+
+        </Grid>
+        <Grid item xs={12} md={8} >
+          <Card sx={{ height: '600px' }}>
+            <CardContent>
+              <Box>
                 <Typography variant="h4">
                   Average Time Spent / Day for Each Role
                 </Typography>
@@ -122,11 +115,7 @@ const Home = () => {
                 </Typography>
               </Box>
 
-              <Box
-                sx={{ height: (theme) => theme.spacing(45) }}
-                paddingX={1}
-                paddingY={1}
-              >
+              <Box sx={{ height: '450px' }}>
                 <div className="w-full h-full">
                   <LineAverage
                     minimumDate={minimumDate}
@@ -138,78 +127,40 @@ const Home = () => {
             </CardContent>
           </Card>
         </Grid>
-
-        <Grid item xs={12} sm={12} md={6} lg={6}>
-          <Card
-            sx={{
-              padding: (theme) => theme.spacing(2),
-            }}
-          >
-            <CardContent
-              sx={{
-                height: (theme) => theme.spacing(75),
-                paddingBottom: (theme) => theme.spacing(3),
-              }}
-            >
-              <Typography
-                variant="h4"
-                sx={{
-                  marginBottom: (theme) => theme.spacing(2),
-                }}
-                component="div"
-              >
-                Count of Status
-              </Typography>
-              <Box
-                sx={{ height: (theme) => theme.spacing(55) }}
-                paddingX={1}
-                paddingY={1}
-              >
-                <ResponsivePie data={Data1} />
+        <Grid item xs={12} >
+          <Card sx={{ height: '500px' }}>
+            <CardContent>
+              <Box mb={1}>
+                <Typography variant="h4" mb={1}>
+                  Non Compliance Over Time
+                </Typography>
+                <Typography mb={1}>
+                  Non Compliance of each role each day counted by the number of measurement spent less than 180 seconds
+                </Typography>
               </Box>
-              <div className="flex flex-wrap pt-4">
-                <div>
-                  <Dot color="rgb(244, 117, 96)" />
-                  <span className="p-2">Interupted</span>
+              <Box
+                sx={{ height: '400px' }} >
+                <div className="h-full">
+                  <LineInterrupted minimumDate={minimumDate} maximumDate={maximumDate} />
                 </div>
-                <div>
-                  <Dot color="rgb(232, 193, 160)" />
-                  <span className="p-2">Completed</span>
-                </div>
-              </div>
+              </Box>
+
             </CardContent>
           </Card>
         </Grid>
-
-        <Grid item xs={12} sm={12} md={6} lg={6}>
-          <Card
-            sx={{
-              padding: (theme) => theme.spacing(2),
-            }}
-          >
-            <CardContent
-              sx={{
-                height: (theme) => theme.spacing(75),
-                paddingBottom: (theme) => theme.spacing(3),
-              }}
-            >
-              <Box
-                sx={{
-                  mb: 2,
-                }}
-              >
-                <Typography variant="h4">
+        <Grid item xs={12} >
+          <Card sx={{ height: '500px' }}>
+            <CardContent>
+              <Box mb={1}>
+                <Typography variant="h4" mb={1}>
                   Compliance Over Time
                 </Typography>
-                <Typography>
+                <Typography mb={1}>
                   Compliance of each role each day counted by the number of measurement that reach 180 seconds
                 </Typography>
               </Box>
               <Box
-                sx={{ height: (theme) => theme.spacing(50) }}
-                paddingX={1}
-                paddingY={1}
-              >
+                sx={{ height: '400px' }}>
                 <LineCompliance
                   minimumDate={minimumDate}
                   maximumDate={maximumDate}
@@ -219,6 +170,12 @@ const Home = () => {
             </CardContent>
           </Card>
         </Grid>
+
+
+
+
+
+
       </Grid>
     </>
   );
