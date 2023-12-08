@@ -2,6 +2,8 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { v4: uuidv4 } = require('uuid');
+const fs = require('fs');
+const csv = require('csv-parser');
 
 const {
   findUserByEmail,
@@ -10,14 +12,39 @@ const {
 } = require('../users/users.services');
 const { generateTokens } = require('../../utils/jwt');
 const {
+  saveMeasurementToDataBase,
+  getMeasurements,
   addRefreshTokenToWhitelist,
   findRefreshTokenByJti,
   deleteRefreshToken,
   revokeTokens,
 } = require('./auth.services');
 const { hashToken } = require('../../utils/hashToken');
+const { db } = require('../../utils/db');
 
 const router = express.Router();
+
+router.post('/saveData', async (req, res, next) => {
+    fs.createReadStream('data.csv').pipe(csv({separator: ';' }))
+    .on('data', async (row) => {
+      try {
+        await saveMeasurementToDataBase(parseInt(row.measurement_id), parseInt(row.device_id),
+        parseInt(row.role_id), row.start_time_iso, row.end_time_iso, parseInt(row.total_time_spent), row.status);
+      } catch (err) {
+      next(err);
+      }      
+    });
+    res.json({message:'Saving data to database.'});
+});
+
+router.get('/getData', async (req, res, next) => {
+  try { 
+    var measurements = await getMeasurements();
+    res.json(measurements);
+  } catch (err) {
+    next(err);
+  }
+});
 
 router.post('/register', async (req, res, next) => {
   try {
