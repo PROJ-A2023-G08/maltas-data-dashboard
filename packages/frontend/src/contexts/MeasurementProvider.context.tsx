@@ -3,7 +3,7 @@ import DataMeasurement from "@maltas-dashboard/frontend/public/csvjson.json";
 import { Measurement } from "@maltas-dashboard/common/types/Types";
 
 
-enum Status {
+export enum Status {
     COMPLETE = "COMPLETE",
     CONTINUED = "CONTINUED",
     INTERRUPTED = "INTERRUPTED",

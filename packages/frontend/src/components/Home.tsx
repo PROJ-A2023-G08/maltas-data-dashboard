@@ -1,9 +1,4 @@
-import dynamic from "next/dynamic";
 import React from "react";
-const ResponsivePie = dynamic(
-  () => import("@nivo/pie").then((m) => m.ResponsivePie),
-  { ssr: false },
-);
 
 import Data1 from "../../public/data1.json";
 import StackedCompliance from "./Charts/StackedCompliance";
@@ -12,6 +7,7 @@ import { Box, Grid, Card, CardContent, Typography } from "@mui/material";
 import { MeasurementContext } from "@/contexts/MeasurementProvider.context";
 import { useContext, useEffect, useState } from "react";
 import { subDays } from 'date-fns'
+import { PieCompliance } from "./Charts/PieCompliance";
 
 const Home = () => {
   const { maxDate, statisticsNumbers } = useContext(MeasurementContext);
@@ -58,8 +54,8 @@ const Home = () => {
                 >
                   Count of Status
                 </Typography>
-                <Box sx={{ height: '300px' }}>
-                  <ResponsivePie data={Data1} />
+                <Box sx={{ height: '250px'}}>
+                  <PieCompliance />
                 </Box>
 
               </CardContent>

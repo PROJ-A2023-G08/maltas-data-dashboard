@@ -1,10 +1,4 @@
-import dynamic from "next/dynamic";
 import React from "react";
-const ResponsivePie = dynamic(
-  () => import("@nivo/pie").then((m) => m.ResponsivePie),
-  { ssr: false },
-);
-
 import Data1 from "../../public/data1.json";
 import StackedCompliance from "./Charts/StackedCompliance";
 import LineAverage from "./Charts/LineAverage";
@@ -12,9 +6,9 @@ import { Box, Grid, Card, CardContent, Typography } from "@mui/material";
 import { MeasurementContext } from "@/contexts/MeasurementProvider.context";
 import { useContext, useEffect, useState } from "react";
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import Dot from "./Dot";
 import LineCompliance from "./Charts/LineCompliance";
 import LineInterrupted from "./Charts/LineInterrupted";
+import { PieCompliance } from "./Charts/PieCompliance";
 const Home = () => {
   const { maxDate, minDate } = useContext(MeasurementContext);
   // state for the date range of line average chart
@@ -63,12 +57,8 @@ const Home = () => {
                 >
                   Count of Status
                 </Typography>
-                <Box
-                  sx={{ height: '200px' }}
-                  paddingX={1}
-                  paddingY={1}
-                >
-                  <ResponsivePie data={Data1} />
+                <Box sx={{ height: '200px' }}>
+                  <PieCompliance />
                 </Box>
 
               </CardContent>
