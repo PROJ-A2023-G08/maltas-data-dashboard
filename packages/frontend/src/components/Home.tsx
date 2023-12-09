@@ -30,7 +30,10 @@ const Home = () => {
                   <Typography>Compliance Count</Typography>
                 </Grid>
                 <Grid item sx={{ textAlign: 'center' }} xs={12}>
-                  <Typography variant="h1">{Math.round(statisticsNumbers?.averageTimeSpent || 0)}</Typography>
+                  <Box sx={{ display: 'flex', justifyContent: 'center', alignItems:'baseline', gap: 1}}>
+                    <Typography variant="h1">{Math.round(statisticsNumbers?.averageTimeSpent || 0)}</Typography>
+                    <Typography variant="h2">s</Typography>
+                  </Box>
                   <Typography>Average Time Spent</Typography>
                 </Grid>
                 <Grid item sx={{ textAlign: 'center' }} xs={12}>
@@ -54,7 +57,7 @@ const Home = () => {
                 >
                   Count of Status
                 </Typography>
-                <Box sx={{ height: '250px'}}>
+                <Box sx={{ height: '250px' }}>
                   <PieCompliance />
                 </Box>
 
