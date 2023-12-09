@@ -35,6 +35,10 @@ export const PieCompliance = ({ chartProps }: PieChartProps) => {
     ]
     return <ResponsivePie data={data}
         margin={{ top: 5, right: 20, bottom: 70, left: 30 }}
+        enableArcLinkLabels={false}
+        innerRadius={0.5}
+        cornerRadius={4}
+        padAngle={0.7}
         legends={[{
             anchor: 'bottom',
             direction: 'row',

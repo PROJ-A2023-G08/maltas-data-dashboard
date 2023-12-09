@@ -22,23 +22,23 @@ const Home = () => {
             <CardContent>
               <Grid container spacing={1}>
                 <Grid item sx={{ textAlign: 'center' }} xs={12}>
-                  <Typography variant="h1">{percentage} %</Typography>
-                  <Typography>Compliance Percentage</Typography>
+                  <Typography variant="h1" className="text-darkblueG8">{percentage} %</Typography>
+                  <Typography className="text-darkgreyG8">Compliance Percentage</Typography>
                 </Grid>
                 <Grid item sx={{ textAlign: 'center' }} xs={12}>
-                  <Typography variant="h1">{statisticsNumbers?.compliance}</Typography>
-                  <Typography>Compliance Count</Typography>
+                  <Typography variant="h1" className="text-darkblueG8">{statisticsNumbers?.compliance}</Typography>
+                  <Typography className="text-darkgreyG8">Compliance Count</Typography>
                 </Grid>
                 <Grid item sx={{ textAlign: 'center' }} xs={12}>
-                  <Box sx={{ display: 'flex', justifyContent: 'center', alignItems:'baseline', gap: 1}}>
-                    <Typography variant="h1">{Math.round(statisticsNumbers?.averageTimeSpent || 0)}</Typography>
-                    <Typography variant="h2">s</Typography>
+                  <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'baseline', gap: 1 }}>
+                    <Typography variant="h1" className="text-darkblueG8">{Math.round(statisticsNumbers?.averageTimeSpent || 0)}</Typography>
+                    <Typography variant="h2" className="text-darkblueG8">s</Typography>
                   </Box>
-                  <Typography>Average Time Spent</Typography>
+                  <Typography className="text-darkgreyG8">Average Time Spent</Typography>
                 </Grid>
                 <Grid item sx={{ textAlign: 'center' }} xs={12}>
-                  <Typography variant="h1">{statisticsNumbers?.total}</Typography>
-                  <Typography>Total Measurement</Typography>
+                  <Typography variant="h1" className="text-darkblueG8">{statisticsNumbers?.total}</Typography>
+                  <Typography className="text-darkgreyG8">Total Measurement</Typography>
                 </Grid>
               </Grid>
             </CardContent>
@@ -54,10 +54,11 @@ const Home = () => {
                     marginBottom: 2,
                   }}
                   component="div"
+                  className="text-darkblueG8"
                 >
                   Count of Status
                 </Typography>
-                <Box sx={{ height: '250px' }}>
+                <Box sx={{ height: '300px' }}>
                   <PieCompliance />
                 </Box>
 
@@ -73,6 +74,7 @@ const Home = () => {
                   sx={{
                     marginBottom: (theme) => theme.spacing(2),
                   }}
+                  className="text-darkblueG8"
                   component="div"
                 >
                   Compliance By Role / Month
@@ -94,7 +96,10 @@ const Home = () => {
           <Card sx={{ height: '600px' }}>
             <CardContent>
               <Box>
-                <Typography variant="h4">
+                <Typography
+                  variant="h4"
+                  className="text-darkblueG8"
+                >
                   Average Time Spent / Day for Each Role
                 </Typography>
                 <Typography>

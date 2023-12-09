@@ -54,6 +54,7 @@ const Home = () => {
                     marginBottom: 2,
                   }}
                   component="div"
+                  className="text-darkblueG8"
                 >
                   Count of Status
                 </Typography>
@@ -73,6 +74,7 @@ const Home = () => {
                   sx={{
                     marginBottom: (theme) => theme.spacing(2),
                   }}
+                  className="text-darkblueG8"
                   component="div"
                 >
                   Compliance By Role / Month
@@ -97,7 +99,10 @@ const Home = () => {
           <Card sx={{ height: '600px' }}>
             <CardContent>
               <Box>
-                <Typography variant="h4">
+                <Typography
+                  variant="h4"
+                  className="text-darkblueG8"
+                >
                   Average Time Spent / Day for Each Role
                 </Typography>
                 <Typography>
@@ -121,7 +126,11 @@ const Home = () => {
           <Card sx={{ height: '500px' }}>
             <CardContent>
               <Box mb={1}>
-                <Typography variant="h4" mb={1}>
+                <Typography
+                  variant="h4"
+                  mb={1}
+                  className="text-darkblueG8"
+                >
                   Non Compliance Over Time
                 </Typography>
                 <Typography mb={1}>
@@ -142,7 +151,11 @@ const Home = () => {
           <Card sx={{ height: '500px' }}>
             <CardContent>
               <Box mb={1}>
-                <Typography variant="h4" mb={1}>
+                <Typography
+                  variant="h4"
+                  mb={1}
+                  className="text-darkblueG8"
+                >
                   Compliance Over Time
                 </Typography>
                 <Typography mb={1}>

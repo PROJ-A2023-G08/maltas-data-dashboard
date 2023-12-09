@@ -24,7 +24,7 @@ const config: Config = {
         backgroundLight: '#e6f7ff',
         selection: '#4e82ba',
         sidebarText: '#e6f7ff',
-        primaryG8: '##9ACEFE',
+        primaryG8: '#9ACEFE',
         secondaryG8: '#E6F7FF',
         darkblueG8: '#335984',
         darkgreyG8: '#707070',
