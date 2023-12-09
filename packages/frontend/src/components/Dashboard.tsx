@@ -22,7 +22,7 @@ const Home = () => {
 
   return (
     <>
-      <h1>Hi, Welcome</h1>
+      <h1>Dashboard</h1>
       <div className="flex justify-end mb-4">
         <span className="m-3">
           <DatePicker
@@ -75,7 +75,7 @@ const Home = () => {
                   }}
                   component="div"
                 >
-                  Complete & Interupted Role
+                  Compliance By Role / Month
                 </Typography>
 
                 <Box

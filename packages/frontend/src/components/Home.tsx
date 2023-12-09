@@ -72,7 +72,7 @@ const Home = () => {
                   }}
                   component="div"
                 >
-                  Complete & Interupted Role
+                  Compliance By Role / Month
                 </Typography>
 
                 <Box
