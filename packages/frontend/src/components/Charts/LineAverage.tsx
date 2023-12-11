@@ -25,13 +25,13 @@ type Props = {
 export const LineAverage = ({ minimumDate, maximumDate }: Props) => {
     // call context
     const { timeSpent, maxDate, minDate } = useContext(MeasurementContext);
-    if (!timeSpent || !maxDate || !minDate || !minimumDate || !maximumDate) return null;
-    
+
     // filter the data based on the minimumDate and maximumDate
     const { role0, role1, role2 } = useMemo(() => {
         const role0: OmittedMeasurement[] = [], role1: OmittedMeasurement[] = [], role2: OmittedMeasurement[] = [];
         const minimumDateX = minimumDate ? minimumDate : minDate;
         const maxDateX = maximumDate ? maximumDate : maxDate;
+        if (!timeSpent ||  !minimumDateX || !maxDateX) return {};
         Object.values(timeSpent).forEach((item) => {
             const date = new Date(item.start_time_iso);
             if (date > minimumDateX && date < maxDateX) {
@@ -51,22 +51,22 @@ export const LineAverage = ({ minimumDate, maximumDate }: Props) => {
         return { role0, role1, role2 };
     }, [timeSpent, maxDate, minDate, minimumDate, maximumDate]);
     const [filter, setFilter] = useState(FilterTypes.DAILY);
-
+    if(!role0 || !role1 || !role2) return null;
     const averageRole0 = calculateAverage(role0, filter);
     const averageRole1 = calculateAverage(role1, filter);
     const averageRole2 = calculateAverage(role2, filter);
 
     const averageValues: LineAverageChart[] = [
         {
-            id: "role0",
+            id: "Doctor",
             data: averageRole0
         },
         {
-            id: "role1",
+            id: "Nurse",
             data: averageRole1
         },
         {
-            id: "role2",
+            id: "N/A",
             data: averageRole2
         }
     ];
@@ -82,25 +82,24 @@ export const LineAverage = ({ minimumDate, maximumDate }: Props) => {
                 width: "100%",
                 display: "flex",
                 justifyContent: "flex-end",
-                marginBottom: (theme)=> theme.spacing(2)
+                marginBottom: (theme) => theme.spacing(2)
             }}>
                 <Button sx={{
-                    paddingLeft: (theme)=> theme.spacing(3),
-                    paddingRight: (theme)=> theme.spacing(3),
-                    marginRight: (theme)=> theme.spacing(3),
-                }} variant='outlined'  onClick={() => setFilter(FilterTypes.DAILY)}>Daily</Button>
+                    paddingLeft: (theme) => theme.spacing(3),
+                    paddingRight: (theme) => theme.spacing(3),
+                    marginRight: (theme) => theme.spacing(3),
+                }} variant='outlined' onClick={() => setFilter(FilterTypes.DAILY)}>Daily</Button>
                 <Button sx={{
-                    paddingLeft: (theme)=> theme.spacing(3),
-                    paddingRight: (theme)=> theme.spacing(3),
-                    marginRight: (theme)=> theme.spacing(3),
-                }}  variant='outlined' onClick={() => setFilter(FilterTypes.WEEKLY)}>Weekly</Button>
+                    paddingLeft: (theme) => theme.spacing(3),
+                    paddingRight: (theme) => theme.spacing(3),
+                    marginRight: (theme) => theme.spacing(3),
+                }} variant='outlined' onClick={() => setFilter(FilterTypes.WEEKLY)}>Weekly</Button>
                 <Button sx={{
-                    paddingLeft: (theme)=> theme.spacing(3),
-                    paddingRight: (theme)=> theme.spacing(3),
-                    marginRight: (theme)=> theme.spacing(3),
-                }}  variant='outlined' onClick={() => setFilter(FilterTypes.MONTHLY)}>Monthly</Button>
+                    paddingLeft: (theme) => theme.spacing(3),
+                    paddingRight: (theme) => theme.spacing(3),
+                    marginRight: (theme) => theme.spacing(3),
+                }} variant='outlined' onClick={() => setFilter(FilterTypes.MONTHLY)}>Monthly</Button>
             </Box>
-            <Typography className="w-full">Avg.Max Time/Measurement</Typography>
             <LineChart
                 data={averageValues}
                 chartProps={{
@@ -110,15 +109,14 @@ export const LineAverage = ({ minimumDate, maximumDate }: Props) => {
                             {
                                 axis: 'y',
                                 value: 180,
-                                lineStyle: { stroke: '#9ACEFE', strokeWidth: 1, strokeDasharray: '4 4' },
-                                legend: '',
+                                lineStyle: { stroke: '#000', strokeWidth: 1, strokeDasharray: '4 4' },
+                                legend: 'compliance level',
                                 legendOrientation: 'horizontal',
                             }
                         ],
                     ...chartProps
                 }}
             />
-             <Typography className="w-full text-center">Day of End Time Iso</Typography>
         </>
     )
 };

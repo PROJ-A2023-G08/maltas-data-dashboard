@@ -15,6 +15,11 @@ type RoleCount = {
     [key: number]: number;
 
 }
+const labelMap = {
+    "0": "Doctor",
+    "1": "Nurse",
+    "2": "N/A",
+}
 
 export const StackedCompliance = () => {
     const { monthData } = useContext(MeasurementContext);
@@ -26,17 +31,18 @@ export const StackedCompliance = () => {
         return eachMonthData
     }
     )
-    if(!mappedData) return null;
+    if (!mappedData) return null;
     return (
         <ResponsiveBar
             data={mappedData}
-            // margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
+            margin={{ bottom: 20, left: 40 }}
             padding={0.3}
             valueScale={{ type: 'linear' }}
             indexScale={{ type: 'band', round: true }}
             colors={{ scheme: 'nivo' }}
             indexBy="month"
-            keys={["0", "1", "2"]} />
+            keys={["0", "1", "2"]}
+        />
     )
 };
 

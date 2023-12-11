@@ -4,6 +4,7 @@
     "packages/*"
   ],
   "dependencies": {
+    "@fontsource/roboto": "^5.0.8",
     "@maltas-dashboard/backend": "file:packages/backend",
     "@maltas-dashboard/common": "file:packages/common",
     "@maltas-dashboard/frontend": "file:packages/frontend",
