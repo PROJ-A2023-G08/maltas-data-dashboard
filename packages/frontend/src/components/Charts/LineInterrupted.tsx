@@ -3,6 +3,8 @@ import dynamic from "next/dynamic";
 import { Measurement } from "@maltas-dashboard/common/types/Types";
 import { MeasurementContext } from '@/contexts/MeasurementProvider.context';
 import LineChart from './LineChart';
+import parseISO from 'date-fns/parseISO';
+import format from 'date-fns/format';
 
 // @ts-ignore giving out error for some reason idk why
 const ResponsiveLine = dynamic(() => import("@nivo/line").then(m => m.ResponsiveLine), { ssr: false });
@@ -55,7 +57,7 @@ export const LineInterrupted = ({ minimumDate, maximumDate }: Props) => {
         const averageRole: Data[] = [];
 
         role.forEach((item) => {
-            const date = new Date(item.start_time_iso).toLocaleDateString();
+            const date = format(parseISO(item.start_time_iso), 'MM/dd/yyyy');
             const index = averageRole.findIndex((item) => item.x === date);
             if (index !== -1) {
                 averageRole[index].y = Math.floor((averageRole[index].y + item.total_time_spent) / 2);

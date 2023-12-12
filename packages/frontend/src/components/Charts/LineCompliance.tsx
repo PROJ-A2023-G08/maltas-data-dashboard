@@ -3,6 +3,8 @@ import dynamic from "next/dynamic";
 import { Measurement } from "@maltas-dashboard/common/types/Types";
 import { MeasurementContext } from '@/contexts/MeasurementProvider.context';
 import LineChart from './LineChart';
+import parseISO from 'date-fns/parseISO';
+import format from 'date-fns/format';
 
 // @ts-ignore giving out error for some reason idk why
 const ResponsiveLine = dynamic(() => import("@nivo/line").then(m => m.ResponsiveLine), { ssr: false });
@@ -55,7 +57,7 @@ export const LineCompliance = ({ minimumDate, maximumDate }: Props) => {
         const filterCompleted = role.filter((item) => item.status === "COMPLETE");
         // count each date compliance that is completed and map to Data
         filterCompleted.forEach((item) => {
-            const date = new Date(item.start_time_iso).toLocaleDateString();
+            const date = format(parseISO(item.start_time_iso), 'MM/dd/yyyy');
             const index = complianceCountRole.findIndex((item) => item.x === date);
             if (index !== -1) {
                 complianceCountRole[index].y = complianceCountRole[index].y + 1;
