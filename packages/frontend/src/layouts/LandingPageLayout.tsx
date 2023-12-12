@@ -97,7 +97,7 @@ const LandingPageLayout: React.FC<Props> = (props) => {
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Image
         className={cx(trigger ? "mt-20" : "mt-16", "cursor-pointer")}
-        src="/Malta_logo.svg"
+        src="/Malta_logo.png"
         alt="Maltas Logo"
         width={100}
         height={100}
