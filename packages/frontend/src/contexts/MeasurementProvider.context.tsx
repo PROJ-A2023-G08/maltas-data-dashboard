@@ -3,7 +3,7 @@ import DataMeasurement from "@maltas-dashboard/frontend/public/csvjson.json";
 import { Measurement } from "@maltas-dashboard/common/types/Types";
 
 
-enum Status {
+export enum Status {
     COMPLETE = "COMPLETE",
     CONTINUED = "CONTINUED",
     INTERRUPTED = "INTERRUPTED",
@@ -31,7 +31,16 @@ type EachMonthData = {
     [key: string]: RoleCount;
 }
 
+// compliance, percentage, interrupted, average, total
+type StatisticsNumbers = {
+    compliance: number;
+    interrupted: number;
+    averageTimeSpent: number; // seconds
+    total: number; // count
+}
+
 export interface MeasurementState {
+    statisticsNumbers?: StatisticsNumbers;
     timeSpent?: MaxEachMeasurement;
     monthData?: EachMonthData;
     minDate?: Date;
@@ -54,7 +63,26 @@ export const MeasurementProvider = ({ children }: Props) => {
         const monthData: EachMonthData = {}
         const minDate = new Date(data[0].start_time_iso);
         const maxDate = new Date(data[data.length - 1].start_time_iso);
+        const statisticsNumbers: StatisticsNumbers = {
+            compliance: 0,
+            interrupted: 0,
+            averageTimeSpent: 0,
+            total: 0,
+        };
+        let totalSeconds = 0;
         data.forEach((measurement) => {
+            // calculate statisticsNumbers
+            // count compliance total
+            statisticsNumbers.compliance = measurement.status === "COMPLETE" ? statisticsNumbers.compliance + 1 : statisticsNumbers.compliance;
+            // count interrupted total
+            statisticsNumbers.interrupted = measurement.status === "INTERRUPTED" ? statisticsNumbers.interrupted + 1 : statisticsNumbers.interrupted;
+            // count total
+            statisticsNumbers.total = measurement.status === "COMPLETE" || measurement.status === "INTERRUPTED" ? statisticsNumbers.total + 1 : statisticsNumbers.total;
+            // calculate totalSeconds
+            totalSeconds = measurement.status === "COMPLETE" ||
+                measurement.status === "INTERRUPTED" ?
+                totalSeconds + measurement.total_time_spent : totalSeconds;
+
 
             // calculate the minDate and maxDate
             const date = new Date(measurement.start_time_iso);
@@ -79,13 +107,14 @@ export const MeasurementProvider = ({ children }: Props) => {
                 return item.status === Status.COMPLETE || item.status === Status.INTERRUPTED;
             }
             if (!filterOnlyLatestMeasurement(measurement)) return;
-            
+
             const { measurement_id, total_time_spent, status, start_time_iso, role_id } = measurement;
             timeSpent[measurement_id] = {
                 total_time_spent, start_time_iso, role_id, status
             }
         });
-        setState({ timeSpent, monthData, minDate, maxDate });
+        statisticsNumbers.averageTimeSpent = totalSeconds / statisticsNumbers.total;
+        setState({ statisticsNumbers, timeSpent, monthData, minDate, maxDate });
     }, []);
 
     // Return the provider with the state and any necessary functions

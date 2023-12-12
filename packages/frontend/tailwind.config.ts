@@ -20,14 +20,18 @@ const config: Config = {
       colors: {
         primary: '#3498db',
         secondary: '#2ecc71',
-        darkblue : '#9ACEFE',
+        darkblue: '#9ACEFE',
         backgroundLight: '#e6f7ff',
-        selection : '#4e82ba',
-        sidebarText: '#e6f7ff'
+        selection: '#4e82ba',
+        sidebarText: '#e6f7ff',
+        primaryG8: '#9ACEFE',
+        secondaryG8: '#E6F7FF',
+        darkblueG8: '#335984',
+        darkgreyG8: '#707070',
         // Add more custom colors here
       },
       fontFamily: {
-        sans: ['Helvetica Neue', 'sans-serif'],
+        sans: ['Helvetica Neue', 'Roboto','"Segoe UI"', 'sans-serif'],
         serif: ['Georgia', 'serif'],
         // Add more custom fonts here
       },
