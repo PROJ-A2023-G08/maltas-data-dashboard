@@ -5,7 +5,7 @@ import { LoginBasic } from '@/layouts/LoginForm';
 import { User, UpdatePasswordResult, UploadProfileImageResult, AdminDeleteUserResult, AdminGetAllUsersResult, AdminGetSingleUserResult, UpdateUserRoleResult } from '../types';
 import { UpdatePasswordQueryParams, UploadProfileImageQueryParams, UpdateUserQueryParams, AdminDeleteUserQueryParams, AdminGetSingleUserQueryParams, AdminUpdateUserRoleQueryParams } from '../types/queryTypes';
 
-const API_BASE_URL = 'http://localhost:5000';// we are going to change this base on host in future
+const API_BASE_URL = 'https://urchin-app-a8w2f.ondigitalocean.app/';// we are going to change this base on host in future
 
 const api = axios.create({
   baseURL: API_BASE_URL,
