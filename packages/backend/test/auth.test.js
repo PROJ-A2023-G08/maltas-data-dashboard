@@ -71,7 +71,6 @@ describe("Login Route", () => {
     const mockUser = {
       email: "test@example.com",
       password: await bcrypt.hash("password123", 10), // Hashed password
-      // Other user properties...
     };
     findUserByEmail.mockResolvedValue(mockUser);
 
