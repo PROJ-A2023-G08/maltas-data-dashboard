@@ -1,10 +1,11 @@
 import { ChartData } from "@/types/chartData";
 import { FilterTypes } from "@/types/filterTypes";
 import { Measurement } from "@maltas-dashboard/common/types/Types";
+import format from "date-fns/format";
 import getWeek from "date-fns/getWeek";
+import parseISO from "date-fns/parseISO";
 
 type OmittedMeasurement = Omit<Measurement, "end_time_iso" | "status" | "role_id" | "device_id" | "measurement_id">;
-
 
 export const calculateAverage = (role: OmittedMeasurement[], filter: FilterTypes): ChartData[] => {
     const averageRole: ChartData[] = [];
@@ -13,7 +14,7 @@ export const calculateAverage = (role: OmittedMeasurement[], filter: FilterTypes
     role.forEach((item) => {
         switch (filter) {
             case FilterTypes.DAILY:
-                date = new Date(item.start_time_iso).toLocaleDateString();
+                date = format(parseISO(item.start_time_iso), 'MM/dd/yyyy');
                 break;
             case FilterTypes.WEEKLY:
                 date = getWeek(new Date(item.start_time_iso)).toString();
@@ -22,7 +23,7 @@ export const calculateAverage = (role: OmittedMeasurement[], filter: FilterTypes
                 date = (new Date(item.start_time_iso).getMonth() + 1).toString();
                 break;
             default:
-                date = new Date(item.start_time_iso).toLocaleDateString();
+                date = format(parseISO(item.start_time_iso), 'MM/dd/yyyy');
                 break;
         }
         const index = averageRole.findIndex((item) => item.x === date);

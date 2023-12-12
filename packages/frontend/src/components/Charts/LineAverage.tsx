@@ -2,12 +2,11 @@ import React, { useContext, useMemo, useState } from 'react';
 import { Measurement } from "@maltas-dashboard/common/types/Types";
 import { MeasurementContext } from '@/contexts/MeasurementProvider.context';
 import LineChart from './LineChart';
-import { getWeek } from 'date-fns'
 import Box from '@mui/material/Box';
 import { FilterTypes } from '@/types/filterTypes';
 import { ChartData } from '@/types/chartData';
 import { calculateAverage } from '@/utils/calculateAverage';
-import { Button, Typography } from '@mui/material';
+import { Button } from '@mui/material';
 // @ts-ignore giving out error for some reason idk why
 
 
