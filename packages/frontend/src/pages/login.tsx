@@ -30,7 +30,7 @@ const LoginPage: React.FC = () => {
       >
         <div className="flex flex-col items-center p-12 pb-2 sm:flex-row sm:justify-start">
           <Image
-            src="/Malta_Logo.svg"
+            src="/Malta_Logo.png"
             alt="Maltas Logo"
             className="dark:invert mr-4 cursor-pointer"
             width={150}

@@ -6,9 +6,12 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
+import { useMediaQuery, useTheme, Theme } from '@mui/material';
 
 const HealthCards: React.FC = () => {
   const [hoveredCard, setHoveredCard] = React.useState<number | null>(null);
+  const theme = useTheme<Theme>();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
     const healthData = [
         {
           title: 'Healthy Eating',
@@ -86,12 +89,12 @@ const HealthCards: React.FC = () => {
                 <Card
                   sx={{
                    
-                    mt: data.margin ? '50px' : '0px',
-                    transform: index === hoveredCard ? 'scale(1.1)' : 'scale(1)',
+                    mt: data.margin ? '60px' : '0px',
+                    transform: index === hoveredCard ? 'scale(1.05)' : 'scale(1)',
                     transition: 'transform 0.3s ease-in-out',
                   }}
                 >
-                  <CardMedia sx={{ height: 200 }} image={data.image} title={data.title} />
+                  <CardMedia sx={{ height: isSmallScreen? 400 : 200 }} image={data.image} title={data.title} />
                   <CardContent sx={{
                     p: (theme)=> theme.spacing(4),
                     pb: (theme)=> theme.spacing(1)
