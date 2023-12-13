@@ -1,7 +1,7 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useEffect, useMemo, useState } from 'react';
 import DataMeasurement from "@maltas-dashboard/frontend/public/csvjson.json";
 import { Measurement } from "@maltas-dashboard/common/types/Types";
-
+import { useGetCSVData } from '../../lib/queries';
 
 export enum Status {
     COMPLETE = "COMPLETE",
@@ -56,8 +56,15 @@ export const MeasurementContext = createContext<MeasurementState>({});
 export const MeasurementProvider = ({ children }: Props) => {
     const data: Measurement[] = DataMeasurement as Measurement[];
     const [state, setState] = useState<MeasurementState>({});
+    const { data: csvData } = useGetCSVData();
+    const resultData = useMemo(() => {
+        if (!csvData) return [];
+        return csvData.results.data
+    }, [csvData]);
+    
+    // this not implemented further, there is an issue with the data received from the API as it's not in the correct format
+    console.log(resultData);
 
-    // using useEffect to calculate the timeSpent and monthData when the API ready
     useEffect(() => {
         const timeSpent: MaxEachMeasurement = {};
         const monthData: EachMonthData = {}
