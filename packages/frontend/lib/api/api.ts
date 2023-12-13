@@ -5,7 +5,7 @@ import { LoginBasic } from '@/layouts/LoginForm';
 import { User, UpdatePasswordResult, UploadProfileImageResult, AdminDeleteUserResult, AdminGetAllUsersResult, AdminGetSingleUserResult, UpdateUserRoleResult } from '../types';
 import { UpdatePasswordQueryParams, UploadProfileImageQueryParams, UpdateUserQueryParams, AdminDeleteUserQueryParams, AdminGetSingleUserQueryParams, AdminUpdateUserRoleQueryParams } from '../types/queryTypes';
 
-const API_BASE_URL = 'https://urchin-app-a8w2f.ondigitalocean.app/';// we are going to change this base on host in future
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL ;
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -26,7 +26,7 @@ interface RequestOptions<T> {
 
 const createApiWithToken = (token?: string): AxiosInstance => {
   const config: ApiConfig = {
-    baseURL: API_BASE_URL,
+    baseURL: API_BASE_URL || '',
     headers: {
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json',
