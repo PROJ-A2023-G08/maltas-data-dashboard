@@ -1,9 +1,8 @@
 import axios, { AxiosResponse, AxiosInstance } from 'axios';
-import { Dispatch, SetStateAction } from 'react';
 import { RegisterBasics } from '@/layouts/RegisterForm';
 import { LoginBasic } from '@/layouts/LoginForm';
 import { User, UpdatePasswordResult, UploadProfileImageResult, AdminDeleteUserResult, AdminGetAllUsersResult, AdminGetSingleUserResult, UpdateUserRoleResult } from '../types';
-import { UpdatePasswordQueryParams, UploadProfileImageQueryParams, UpdateUserQueryParams, AdminDeleteUserQueryParams, AdminGetSingleUserQueryParams, AdminUpdateUserRoleQueryParams } from '../types/queryTypes';
+import { UpdatePasswordQueryParams, UploadProfileImageQueryParams, UpdateUserQueryParams, AdminDeleteUserQueryParams, AdminGetSingleUserQueryParams, AdminUpdateUserRoleQueryParams, GetMeasurement } from '../types/queryTypes';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL ;
 
@@ -106,4 +105,9 @@ export const getAllUsers = async (token: string): Promise<AdminGetAllUsersResult
 export const deleteUser = async (token: string, data: AdminDeleteUserQueryParams): Promise<AxiosResponse<AdminDeleteUserResult>> =>{
   return  makeRequest<AdminDeleteUserResult>(createApiWithToken(token), { method: 'put', url: `/api/users/singleUser/${data.id}`, data });
 }
+
+export const getCSVData = async (token: string): Promise<GetMeasurement> =>{
+  return  makeRequest<GetMeasurement>(createApiWithToken(token), { method: 'get', url: '/api/data/csv-data', data: {} });
+}
+
 
