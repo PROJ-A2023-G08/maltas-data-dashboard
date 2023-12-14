@@ -24,9 +24,9 @@ const Sidebar: React.FC<SidebarProps> = ({ setActiveComponent }) => {
   const { t } = useTranslation("common");
   const { logout } = useAuth();
   const userDataApi = useUserProfile();
-  const userData = userDataApi?.data;
+  const userData = userDataApi?.data
 
-  const [selectedItem, setSelectedItem] = useState<string>("");
+  const [selectedItem, setSelectedItem] = useState<string>('Home');
 
   const handleSidebarItemClick = (componentName: string) => {
     setActiveComponent(componentName);
@@ -69,17 +69,13 @@ const Sidebar: React.FC<SidebarProps> = ({ setActiveComponent }) => {
           </div>
 
           <div className="flex flex-col items-start justify-start w-full pt-12">
-            <Typography
-              color={"primary"}
-              variant="h5"
-              sx={{
-                width: "100%",
-                textAlign: "center",
-                marginTop: "15px",
-                fontWeight: 700,
-              }}
-            >
-              Maltas technology Oy
+            <Typography color="black" variant="h4" sx={{
+              width: "100%",
+              textAlign: "center",
+              marginTop: "15px",
+              fontWeight: 700,
+            }}>
+             Maltas Data Dashboard
             </Typography>
             {userData && (
               <List
@@ -96,9 +92,8 @@ const Sidebar: React.FC<SidebarProps> = ({ setActiveComponent }) => {
                     sx={{
                       fontWeight: 700,
                     }}
-                    primary={`${userData.firstName || ""}  || ${
-                      userData.lastName || ""
-                    }`}
+                    primary={`${userData.firstName || ""}  || ${userData.lastName || ""
+                      }`}
                     color="#fff"
                     secondary={
                       <Typography variant="body2" color={"primary.main"}>
@@ -122,11 +117,10 @@ const Sidebar: React.FC<SidebarProps> = ({ setActiveComponent }) => {
                   }}
                   onClick={() => handleSidebarItemClick(item.name)}
                   key={item.name}
-                  className={`${
-                    selectedItem === item.name
-                      ? "bg-selection text-black rounded-xl mb-2"
-                      : "hover:bg-white hover:text-black rounded-xl mb-2"
-                  }`}
+                  className={`text-black rounded-full mb-2 ${selectedItem === item.name
+                    ? "bg-secondaryG8 "
+                    : "hover:bg-secondaryG8 "
+                    }`}
                   style={{ height: "70px" }}
                 >
                   <ButtonBase

@@ -1,8 +1,10 @@
 import React, { useContext, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import { Measurement } from "@maltas-dashboard/common/types/Types";
-import { MeasurementContext } from "../../contexts/MeasurementProvider.context";
-import LineChart from "./LineChart";
+import { MeasurementContext } from '@/contexts/MeasurementProvider.context';
+import LineChart from './LineChart';
+import parseISO from 'date-fns/parseISO';
+import format from 'date-fns/format';
 
 // @ts-ignore giving out error for some reason idk why
 const ResponsiveLine = dynamic(
@@ -63,19 +65,15 @@ export const LineInterrupted = ({ minimumDate, maximumDate }: Props) => {
 
   const calculateAverage = (role: OmittedMeasurement[]): Data[] => {
     const averageRole: Data[] = [];
-
     role.forEach((item) => {
-      const date = new Date(item.start_time_iso).toLocaleDateString();
+      const date = format(parseISO(item.start_time_iso), 'MM/dd/yyyy');
       const index = averageRole.findIndex((item) => item.x === date);
       if (index !== -1) {
-        averageRole[index].y = Math.floor(
-          (averageRole[index].y + item.total_time_spent) / 2,
-        );
+        averageRole[index].y = Math.floor((averageRole[index].y + item.total_time_spent) / 2);
       } else {
         averageRole.push({ x: date, y: item.total_time_spent });
       }
     });
-
     return averageRole;
   };
   const averageRole0 = calculateAverage(role0);

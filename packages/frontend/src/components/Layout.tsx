@@ -22,13 +22,16 @@ const Layout = () => {
         return null;
     }
   };
-
+  const contentClassname = activeComponent === "Settings" ? "bg-white flex-1 p-2 text-black relative h-full overflow-y-scroll" : "bg-backgroundLight flex-1 p-4 px-6 text-black relative h-full overflow-y-scroll";
   return (
-    <div className="flex flex-row justify-start h-full">
-      <Sidebar setActiveComponent={setActiveComponent} />
-      {activeComponent !== "Settings" && <div className="bg-backgroundLight flex-1 p-4 px-6 text-black">{renderComponent()}</div>}
-      {activeComponent === "Settings" && <div className="bg-white flex-1 p-2 text-black">{renderComponent()}</div>}
-    </div>
+    <>
+      <div className="flex flex-row justify-start h-screen">
+        <Sidebar setActiveComponent={setActiveComponent} />
+        <div className={contentClassname}>
+          {renderComponent()}
+        </div>
+      </div>
+    </>
   );
 };
 

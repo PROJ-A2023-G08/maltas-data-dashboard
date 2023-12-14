@@ -1,14 +1,9 @@
 import React, { useContext, useMemo, useState } from "react";
-import dynamic from "next/dynamic";
 import { Measurement } from "@maltas-dashboard/common/types/Types";
-import { MeasurementContext } from "../../contexts/MeasurementProvider.context";
-import LineChart from "./LineChart";
-
-// @ts-ignore giving out error for some reason idk why
-const ResponsiveLine = dynamic(
-  () => import("@nivo/line").then((m) => m.ResponsiveLine),
-  { ssr: false },
-);
+import { MeasurementContext } from '@/contexts/MeasurementProvider.context';
+import LineChart from './LineChart';
+import parseISO from 'date-fns/parseISO';
+import format from 'date-fns/format';
 
 type OmittedMeasurement = Omit<
   Measurement,
@@ -63,15 +58,15 @@ export const LineCompliance = ({ minimumDate, maximumDate }: Props) => {
     const filterCompleted = role.filter((item) => item.status === "COMPLETE");
     // count each date compliance that is completed and map to Data
     filterCompleted.forEach((item) => {
-      const date = new Date(item.start_time_iso).toLocaleDateString();
+      const date = format(parseISO(item.start_time_iso), 'MM/dd/yyyy');
       const index = complianceCountRole.findIndex((item) => item.x === date);
       if (index !== -1) {
         complianceCountRole[index].y = complianceCountRole[index].y + 1;
       } else {
         complianceCountRole.push({
           x: date,
-          y: 1,
-        });
+          y: 1
+        })
       }
     });
 
@@ -84,17 +79,17 @@ export const LineCompliance = ({ minimumDate, maximumDate }: Props) => {
 
   const complianceCountValues: LineComplianceChart[] = [
     {
-      id: "role0",
-      data: complianceCountRole0,
+      id: "Doctor",
+      data: complianceCountRole0
     },
     {
-      id: "role1",
-      data: complianceCountRole1,
+      id: "Nurse",
+      data: complianceCountRole1
     },
     {
-      id: "role2",
-      data: complianceCountRole2,
-    },
+      id: "N/A",
+      data: complianceCountRole2
+    }
   ];
 
   return <LineChart data={complianceCountValues} />;

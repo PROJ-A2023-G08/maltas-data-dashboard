@@ -24,7 +24,7 @@ const LineChart = ({ data, chartProps }: LineChartProps) => {
     return (
         <ResponsiveLine
             data={data}
-            margin={{ top: 5, right: 20, bottom: 5, left: 30 }}
+            margin={{ top: 5, right: 20, bottom: 70, left: 30 }}
             colors={{ scheme: 'nivo' }}
             xScale={{
                 type: 'time',
@@ -35,7 +35,7 @@ const LineChart = ({ data, chartProps }: LineChartProps) => {
             xFormat="time:%d/%m/%Y"
             axisBottom={{
                 format: '%d/%m',
-                tickValues: 'every 1 days',
+                tickValues: 'every 5 days',
             }}
             curve="monotoneX"
             pointSize={16}
@@ -46,8 +46,31 @@ const LineChart = ({ data, chartProps }: LineChartProps) => {
             }}
             useMesh={true}
             enableSlices={false}
-            enablePoints={false}
-            
+            legends={[{
+                anchor: 'bottom',
+                direction: 'row',
+                justify: false,
+                translateX: 0,
+                translateY: 60,
+                itemsSpacing: 0,
+                itemDirection: 'left-to-right',
+                itemWidth: 80,
+                itemHeight: 20,
+                itemOpacity: 0.75,
+                symbolSize: 20,
+                symbolShape: 'circle',
+                symbolBorderColor: 'rgba(0, 0, 0, .5)',
+                effects: [
+                    {
+                        on: 'hover',
+                        style: {
+                            itemBackground: 'rgba(0, 0, 0, .03)',
+                            itemOpacity: 1
+                        }
+                    }
+                ]
+            }
+            ]}
             {...chartProps}
 
         />
