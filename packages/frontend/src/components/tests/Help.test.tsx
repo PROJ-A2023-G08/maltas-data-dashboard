@@ -1,16 +1,11 @@
-import React from "react";
-import renderer from "react-test-renderer";
+import "@testing-library/jest-dom";
 import {
   fireEvent,
-  getAllByTestId,
-  getByTestId,
   render,
-  screen,
+  screen
 } from "@testing-library/react";
+import React from "react";
 import Help from "../Help";
-import "@testing-library/jest-dom";
-import exp from "constants";
-import { useTranslation } from "react-i18next";
 
 jest.mock("next-i18next", () => ({
   useTranslation: jest.fn().mockReturnValue({

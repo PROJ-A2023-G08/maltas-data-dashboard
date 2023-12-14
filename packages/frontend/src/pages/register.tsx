@@ -1,8 +1,9 @@
 import { useRouter } from "next/router";
 import { Container, Typography, Box, CardContent, Card } from "@mui/material";
-import RegisterForm from "@/layouts/RegisterForm";
+import RegisterForm from "@maltas-dashboard/frontend/src/layouts/RegisterForm";
 import Image from "next/image";
 import useAuth from "../../lib/util/useAuth";
+import React from "react";
 
 const RegisterPage: React.FC = () => {
   const router = useRouter();

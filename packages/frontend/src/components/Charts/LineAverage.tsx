@@ -1,11 +1,11 @@
 import React, { useContext, useMemo, useState } from "react";
 import { Measurement } from "@maltas-dashboard/common/types/Types";
-import { MeasurementContext } from '@/contexts/MeasurementProvider.context';
+import { MeasurementContext } from '@maltas-dashboard/frontend/src/contexts/MeasurementProvider.context';
 import LineChart from './LineChart';
 import Box from '@mui/material/Box';
-import { FilterTypes } from '@/types/filterTypes';
-import { ChartData } from '@/types/chartData';
-import { calculateAverage } from '@/utils/calculateAverage';
+import { FilterTypes } from '@maltas-dashboard/frontend/src/types/filterTypes';
+import { ChartData } from '@maltas-dashboard/frontend/src/types/chartData';
+import { calculateAverage } from '@maltas-dashboard/frontend/src/utils/calculateAverage';
 import { Button } from '@mui/material';
 // @ts-ignore giving out error for some reason idk why
 

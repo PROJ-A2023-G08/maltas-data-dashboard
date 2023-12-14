@@ -1,22 +1,16 @@
-import React from "react";
-import Sidebar from "../Sidebar";
+import "@testing-library/jest-dom";
 import {
+  fireEvent,
   render,
   screen,
-  fireEvent,
-  getAllByTestId,
-  waitFor,
+  waitFor
 } from "@testing-library/react";
+import React from "react";
 import useAuth from "../../../lib/util/useAuth";
-import "@testing-library/jest-dom";
-import exp from "constants";
 import Dashboard from "../../components/Dashboard";
-import {
-  MeasurementProvider,
-  MeasurementContext,
-} from "../../contexts/MeasurementProvider.context";
 import Help from "../Help";
 import Home from "../Home";
+import Sidebar from "../Sidebar";
 
 jest.mock("../../../lib/util/useAuth");
 jest.mock("../../../lib/queries");
@@ -65,7 +59,6 @@ describe("Sidebar rendering tests", () => {
   });
 
   test("User email render", () => {
-    screen.debug();
     expect(screen.getByText("tester.test@test.com")).toBeInTheDocument();
   });
 
@@ -136,7 +129,7 @@ interface MeasurementContextConsumerProps {
   children: (value: { minDate: Date; maxDate: Date }) => React.ReactNode;
 }
 
-/*jest.mock("@/contexts/MeasurementProvider.context", () => ({
+/*jest.mock("@maltas-dashboard/frontend/src/contexts/MeasurementProvider.context", () => ({
   MeasurementContext: {
     Consumer: ({ children }: MeasurementContextConsumerProps) =>
       children({ minDate: new Date(), maxDate: new Date() }),

@@ -1,6 +1,6 @@
 import React, { useContext, useMemo, useState } from "react";
 import { Measurement } from "@maltas-dashboard/common/types/Types";
-import { MeasurementContext } from '@/contexts/MeasurementProvider.context';
+import { MeasurementContext } from '@maltas-dashboard/frontend/src/contexts/MeasurementProvider.context';
 import LineChart from './LineChart';
 import parseISO from 'date-fns/parseISO';
 import format from 'date-fns/format';

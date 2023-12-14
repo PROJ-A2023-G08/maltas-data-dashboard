@@ -16,7 +16,7 @@ const Home = () => {
   return (
     <>
       <h1>Hi, Welcome</h1>
-      <Grid container spacing={3}>
+      <Grid container spacing={3} data-testid="home-div">
         <Grid item xs={2} md={2} >
           <Card sx={{ height: '400px' }}>
             <CardContent>

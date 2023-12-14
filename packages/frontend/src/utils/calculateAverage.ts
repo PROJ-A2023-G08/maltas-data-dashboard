@@ -1,4 +1,4 @@
-import { ChartData } from "@/types/chartData";
+import { ChartData } from "@maltas-dashboard/frontend/src/types/chartData";
 import { FilterTypes } from "../types/filterTypes";
 import { Measurement } from "@maltas-dashboard/common/types/Types";
 import format from "date-fns/format";

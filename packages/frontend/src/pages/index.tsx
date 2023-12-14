@@ -1,9 +1,10 @@
-import Layout from "@/components/Layout";
+import Layout from "@maltas-dashboard/frontend/src/components/Layout";
 import type { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import useAuth from "../../lib/util/useAuth";
 import { ToastContainer } from 'react-toastify';
-import { MeasurementProvider } from "@/contexts/MeasurementProvider.context";
+import { MeasurementProvider } from "@maltas-dashboard/frontend/src/contexts/MeasurementProvider.context";
+import React from "react";
 export default function Home() {
   const { logout, isLoggedIn } = useAuth();
   if (!isLoggedIn) {

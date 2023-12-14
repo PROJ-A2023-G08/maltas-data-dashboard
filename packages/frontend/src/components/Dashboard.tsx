@@ -1,12 +1,10 @@
+import { Box, Card, CardContent, Grid, Typography } from "@mui/material";
 import React from "react";
-import Data1 from "../../public/data1.json";
-import StackedCompliance from "./Charts/StackedCompliance";
 import LineAverage from "./Charts/LineAverage";
-import { Box, Grid, Card, CardContent, Typography } from "@mui/material";
-//import { MeasurementContext } from "@/contexts/MeasurementProvider.context";
-import { MeasurementContext } from "../contexts/MeasurementProvider.context";
+import StackedCompliance from "./Charts/StackedCompliance";
+//import { MeasurementContext } from "@maltas-dashboard/frontend/src/contexts/MeasurementProvider.context";
 import { useContext, useEffect, useState } from "react";
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { MeasurementContext } from "../contexts/MeasurementProvider.context";
 import LineCompliance from "./Charts/LineCompliance";
 import LineInterrupted from "./Charts/LineInterrupted";
 import { PieCompliance } from "./Charts/PieCompliance";
@@ -28,7 +26,7 @@ const Dashboard = () => {
   return (
     <>
       <h1>Dashboard</h1>
-      <div className="flex justify-end mb-4">
+      <div className="flex justify-end mb-4"  data-testid="dashboard-div">
         <span className="m-3">
           {/* 
           <DatePicker
