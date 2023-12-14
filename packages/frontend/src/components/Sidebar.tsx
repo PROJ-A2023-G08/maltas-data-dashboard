@@ -11,7 +11,7 @@ import HelpIcon from "@mui/icons-material/Help";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useTranslation } from "next-i18next";
 import useAuth from "../../lib/util/useAuth";
-import Image from 'next/image'
+import Image from "next/image";
 import { ButtonBase } from "@mui/material";
 import { useUserProfile } from "../../lib/queries";
 import { Typography, Avatar } from "@mui/material";
@@ -63,6 +63,7 @@ const Sidebar: React.FC<SidebarProps> = ({ setActiveComponent }) => {
                 alt="Maltas Logo"
                 width={160}
                 height={160}
+                data-testid="maltas-logo"
               />
             </div>
           </div>
@@ -77,14 +78,17 @@ const Sidebar: React.FC<SidebarProps> = ({ setActiveComponent }) => {
              Maltas Data Dashboard
             </Typography>
             {userData && (
-              <List sx={{
-                paddingTop: "20px"
-              }}>
+              <List
+                sx={{
+                  paddingTop: "20px",
+                }}
+              >
                 <ListItem>
                   <ListItemIcon>
                     <Avatar alt={"user image"} src={userData.imageUrl || ""} />
                   </ListItemIcon>
                   <ListItemText
+                    data-testid="user-names"
                     sx={{
                       fontWeight: 700,
                     }}
@@ -105,7 +109,7 @@ const Sidebar: React.FC<SidebarProps> = ({ setActiveComponent }) => {
               component="nav"
               aria-label="main mailbox folders"
             >
-              {menuItems.map((item) => (
+              {menuItems.map((item, index) => (
                 <ListItem
                   sx={{
                     width: "100% !important",
@@ -123,6 +127,7 @@ const Sidebar: React.FC<SidebarProps> = ({ setActiveComponent }) => {
                     className="flex items-center"
                     disableTouchRipple
                     disableRipple
+                    data-testid={`menu-item-${item.name.toLowerCase()}-${index}`}
                   >
                     <div className="-ml-2 pt-1">
                       <ListItemIcon>{item.icon}</ListItemIcon>

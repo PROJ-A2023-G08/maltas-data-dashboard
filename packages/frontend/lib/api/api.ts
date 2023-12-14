@@ -1,8 +1,8 @@
-import axios, { AxiosResponse, AxiosInstance } from 'axios';
-import { RegisterBasics } from '@/layouts/RegisterForm';
-import { LoginBasic } from '@/layouts/LoginForm';
-import { User, UpdatePasswordResult, UploadProfileImageResult, AdminDeleteUserResult, AdminGetAllUsersResult, AdminGetSingleUserResult, UpdateUserRoleResult } from '../types';
-import { UpdatePasswordQueryParams, UploadProfileImageQueryParams, UpdateUserQueryParams, AdminDeleteUserQueryParams, AdminGetSingleUserQueryParams, AdminUpdateUserRoleQueryParams, GetMeasurement } from '../types/queryTypes';
+import { LoginBasic } from '@maltas-dashboard/frontend/src/layouts/LoginForm';
+import { RegisterBasics } from '@maltas-dashboard/frontend/src/layouts/RegisterForm';
+import axios, { AxiosInstance, AxiosResponse } from 'axios';
+import { AdminDeleteUserResult, AdminGetAllUsersResult, AdminGetSingleUserResult, UpdatePasswordResult, UpdateUserRoleResult, UploadProfileImageResult, User } from '../types';
+import { AdminDeleteUserQueryParams, AdminGetSingleUserQueryParams, AdminUpdateUserRoleQueryParams, GetMeasurement, UpdatePasswordQueryParams, UpdateUserQueryParams, UploadProfileImageQueryParams } from '../types/queryTypes';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL ;
 

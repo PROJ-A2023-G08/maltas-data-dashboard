@@ -18,6 +18,7 @@ const FaqTab = () => {
       <ul key={index} className="mb-4">
         <button
           onClick={() => toggleQuestion(index)}
+          data-testid={`faq-item-${index}`}
           className="flex items-center justify-between w-full bg-white p-2 rounded-md border border-gray-300 focus:outline-none"
         >
           <span className="text-lg font-bold">
@@ -28,7 +29,10 @@ const FaqTab = () => {
         {openQuestion === index && (
           <div className="flex mt-2">
             <div className="w-full">
-              <p className="p-2 bg-gray-300 rounded-lg text-lg">
+              <p
+                className="p-2 bg-gray-300 rounded-lg text-lg"
+                data-testid="FAQ-item-answer"
+              >
                 {t(`FAQanswers.A${index + 1}`)}
               </p>
             </div>
@@ -39,7 +43,7 @@ const FaqTab = () => {
   }
 
   return (
-    <div className="container mx-auto p-4 w-1/2 pt-20">
+    <div className="container mx-auto p-4 w-1/2 pt-20" data-testid="FAQ-tab">
       <h1 className="text-4xl font-bold mb-4 text-start ml-20">
         {t("uiElements.FAQ")}
       </h1>

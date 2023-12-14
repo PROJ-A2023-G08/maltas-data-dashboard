@@ -5,7 +5,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import BusinessIcon from "@mui/icons-material/Business";
 import SupervisorAccount from "@mui/icons-material/SupervisorAccount";
-import Loading from "@/components/Loading/Loading";
+import Loading from "@maltas-dashboard/frontend/src/components/Loading/Loading";
 import NotificationSettingsPage from "./NotificationSettings";
 import LanguageSettingsPage from "./LanguageSettings";
 import AdminPage from "./AdminPage";

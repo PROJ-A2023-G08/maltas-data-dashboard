@@ -1,6 +1,6 @@
 import React from 'react';
-import LandingPageLayout from '@/layouts/LandingPageLayout';
-import ContactUsLanding from '@/components/LandingPage/ContactUsLanding';
+import LandingPageLayout from '@maltas-dashboard/frontend/src/layouts/LandingPageLayout';
+import ContactUsLanding from '@maltas-dashboard/frontend/src/components/LandingPage/ContactUsLanding';
 
 export default function Contact() {
   return (

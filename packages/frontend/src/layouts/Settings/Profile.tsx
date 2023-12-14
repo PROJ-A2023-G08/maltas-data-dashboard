@@ -12,9 +12,12 @@ import IconButton from "@mui/material/IconButton";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import { User } from "../../../lib/types";
 import { useUserProfile } from "../../../lib/queries";
-import { toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
-import { useMUploadProfileImageMutation, useMUpdateUserProfileMutation } from "../../../lib/mutations";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import {
+  useMUploadProfileImageMutation,
+  useMUpdateUserProfileMutation,
+} from "../../../lib/mutations";
 
 interface ProfileProps {
   user?: User;
@@ -30,8 +33,9 @@ const Profile: React.FC<ProfileProps> = (props) => {
     label: string;
     value: string;
   }
-  const [countryValue, setCountryValue] =
-    useState<SingleValue<string>>(user?.address! || "Finland");
+  const [countryValue, setCountryValue] = useState<SingleValue<string>>(
+    user?.address! || "Finland",
+  );
   type InputType = string | { value: string; label: string };
   function getCode(input: InputType): string {
     if (typeof input === "string") {
@@ -69,7 +73,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
       phone: user?.phoneNumber || "",
       profession: user?.profession || "",
       country: user?.address || "",
-      email: user?.email ||  "",
+      email: user?.email || "",
       bio: user?.bio || "",
       city: user?.city || "",
       postCode: user?.postalCode || "",
@@ -77,50 +81,54 @@ const Profile: React.FC<ProfileProps> = (props) => {
     validationSchema: validationSchema,
     onSubmit: (values) => {
       try {
-        mutation.mutate({
-          email: values.email,
-          firstName: values.firstName,
-          lastName: values.lastName,
-          city: values.city,
-          address: values.country,
-          bio: values.bio,
-          phoneNumber: values.phone,
-          postalCode: values.postCode,
-          profession: values.profession,
-        },{
-           onSuccess: ()=>{
-             toast("Profile Updated Succesfully",{
-               position: "top-right",
-               autoClose: 5000,
-               closeOnClick: true,
-               type: "success"
-             });
-      
-           }
-         })
-         
-       }catch(error){
-         toast("Something went wrong, please contact support if it persists.",{
-           position: "top-right",
-           autoClose: 5000,
-           closeOnClick: true,
-           type: "error",
-         });
-       }
+        mutation.mutate(
+          {
+            email: values.email,
+            firstName: values.firstName,
+            lastName: values.lastName,
+            city: values.city,
+            address: values.country,
+            bio: values.bio,
+            phoneNumber: values.phone,
+            postalCode: values.postCode,
+            profession: values.profession,
+          },
+          {
+            onSuccess: () => {
+              toast("Profile Updated Succesfully", {
+                position: "top-right",
+                autoClose: 5000,
+                closeOnClick: true,
+                type: "success",
+              });
+            },
+          },
+        );
+      } catch (error) {
+        toast("Something went wrong, please contact support if it persists.", {
+          position: "top-right",
+          autoClose: 5000,
+          closeOnClick: true,
+          type: "error",
+        });
+      }
     },
   });
 
   return (
     <>
       <div>
-        <ProfileImageUpload userEmail={user?.email} existingImage={user?.imageUrl} />
-       
+        <ProfileImageUpload
+          userEmail={user?.email}
+          existingImage={user?.imageUrl}
+        />
       </div>
       <form onSubmit={formik.handleSubmit} className="p-6">
-      <div className="text-primary pb-2">{user?.email || ""}</div>
+        <div className="text-primary pb-2">{user?.email || ""}</div>
         <div className="grid gap-4 mb-4 md:grid-cols-2">
           <div>
             <label
+              data-testid="firstName-field"
               htmlFor="firstName"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
@@ -146,6 +154,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
 
           <div>
             <label
+              data-testid="firstName-field"
               htmlFor="lastName"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
@@ -169,7 +178,6 @@ const Profile: React.FC<ProfileProps> = (props) => {
             ) : null}
           </div>
 
-         
           <div>
             <label
               htmlFor="phone"
@@ -234,9 +242,12 @@ const Profile: React.FC<ProfileProps> = (props) => {
               name="country"
               options={options as GroupBase<string>[]}
               value={countryValue}
-              onChange={(value)=>{
+              onChange={(value) => {
                 changeHandler(value);
-                formik.setFieldValue("country", countryList().getLabel(getCode(value as InputType)));
+                formik.setFieldValue(
+                  "country",
+                  countryList().getLabel(getCode(value as InputType)),
+                );
               }}
             />
           </div>
@@ -248,7 +259,6 @@ const Profile: React.FC<ProfileProps> = (props) => {
               Profession
             </label>
             <input
-           
               id="profession"
               name="profession"
               onChange={formik.handleChange}
@@ -259,7 +269,6 @@ const Profile: React.FC<ProfileProps> = (props) => {
                 css.input,
               )}
               placeholder="Doctor"
-              
             />
             {formik.touched.profession && formik.errors.profession ? (
               <div className="text-red-500">{formik.errors.profession}</div>
@@ -288,9 +297,9 @@ const Profile: React.FC<ProfileProps> = (props) => {
             {formik.touched.postCode && formik.errors.postCode ? (
               <div className="text-red-500">{formik.errors.postCode}</div>
             ) : null}
-          </div> 
+          </div>
           <div>
-          <label
+            <label
               htmlFor="city"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
@@ -313,8 +322,6 @@ const Profile: React.FC<ProfileProps> = (props) => {
               <div className="text-red-500">{formik.errors.city}</div>
             ) : null}
           </div>
-          
-
         </div>
         <div className="mb-6">
           <label
@@ -340,7 +347,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
             <div className="text-red-500">{formik.errors.bio}</div>
           ) : null}
         </div>
-        
+
         <button
           type="submit"
           className="text-white bg-primary hover:bg-blue-400 focus:ring-4 focus:outline-none font-medium rounded-md text-sm w-full sm:w-36 px-5 py-3 text-center   border-none"
@@ -355,13 +362,13 @@ const Profile: React.FC<ProfileProps> = (props) => {
 export default Profile;
 
 interface ProfileImageUploadProps {
-  existingImage?: string; 
-  userEmail?:string;
+  existingImage?: string;
+  userEmail?: string;
 }
 
 export const ProfileImageUpload: React.FC<ProfileImageUploadProps> = ({
   existingImage,
-  userEmail
+  userEmail,
 }) => {
   const mutationImage = useMUploadProfileImageMutation();
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
@@ -369,18 +376,16 @@ export const ProfileImageUpload: React.FC<ProfileImageUploadProps> = ({
     existingImage || null,
   );
 
-  useEffect(()=>{
-    if(existingImage){
+  useEffect(() => {
+    if (existingImage) {
       setPreviewImage(existingImage);
     }
-  },[existingImage])
-
+  }, [existingImage]);
 
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files && event.target.files[0];
 
     if (file) {
-     
       setSelectedImage(file);
       const previewURL = URL.createObjectURL(file);
       setPreviewImage(previewURL);
@@ -397,7 +402,7 @@ export const ProfileImageUpload: React.FC<ProfileImageUploadProps> = ({
       };
 
       reader.onerror = (event) => {
-        reject(new Error('Error reading file: ' + event.target?.error));
+        reject(new Error("Error reading file: " + event.target?.error));
       };
 
       reader.readAsDataURL(file);
@@ -405,49 +410,48 @@ export const ProfileImageUpload: React.FC<ProfileImageUploadProps> = ({
   };
 
   const handleUpload = async () => {
-    
     if (selectedImage) {
-        try {
-          const dataURL = await  readFileAsDataURL(selectedImage);
-       
-          const blob = await fetch(dataURL).then((res) => res.blob());
-          const sizeInBytes = blob.size;
-          const sizeInKB = sizeInBytes / 1024;
-          //const sizeInMB = sizeInKB / 1024;
-          if(sizeInKB > 60){
-            toast("Sorry you cannat upload images greater than 60kb",{
-              position: "top-right",
-              autoClose: 5000,
-              closeOnClick: true,
-              type: "error",
-            });
-            return;
-          }
+      try {
+        const dataURL = await readFileAsDataURL(selectedImage);
 
-      
-        await mutationImage.mutateAsync({imageUrl: dataURL, email: userEmail!},{
-            onSuccess: ()=>{
-              toast("Profile Image Updated Succesfully",{
-                position: "top-right",
-                autoClose: 5000,
-                closeOnClick: true,
-                type: "success"
-              });
-              handleRemoveImage();
-            }
-          })
-          
-        }catch(error){
-          toast("Something went wrong, please contact support if it persists.",{
+        const blob = await fetch(dataURL).then((res) => res.blob());
+        const sizeInBytes = blob.size;
+        const sizeInKB = sizeInBytes / 1024;
+        //const sizeInMB = sizeInKB / 1024;
+        if (sizeInKB > 60) {
+          toast("Sorry you cannat upload images greater than 60kb", {
             position: "top-right",
             autoClose: 5000,
             closeOnClick: true,
             type: "error",
           });
+          return;
         }
-      };   
-    }
 
+        await mutationImage.mutateAsync(
+          { imageUrl: dataURL, email: userEmail! },
+          {
+            onSuccess: () => {
+              toast("Profile Image Updated Succesfully", {
+                position: "top-right",
+                autoClose: 5000,
+                closeOnClick: true,
+                type: "success",
+              });
+              handleRemoveImage();
+            },
+          },
+        );
+      } catch (error) {
+        toast("Something went wrong, please contact support if it persists.", {
+          position: "top-right",
+          autoClose: 5000,
+          closeOnClick: true,
+          type: "error",
+        });
+      }
+    }
+  };
 
   const handleRemoveImage = () => {
     setSelectedImage(null);
@@ -459,7 +463,7 @@ export const ProfileImageUpload: React.FC<ProfileImageUploadProps> = ({
       <Avatar
         alt="Profile Image"
         src={previewImage || ""}
-        sx={{ width: 120, height: 120, margin: 0,  }}
+        sx={{ width: 120, height: 120, margin: 0 }}
       />
       <input
         accept="image/*"
@@ -475,26 +479,25 @@ export const ProfileImageUpload: React.FC<ProfileImageUploadProps> = ({
       </label>
       <span className="ml-4 text-gray-500">max 60kb</span>
       <div className="flex">
-      {selectedImage && (
-        <Button variant="contained" color="primary" onClick={handleUpload}>
-          Upload Image
-        </Button>
-      )}
+        {selectedImage && (
+          <Button variant="contained" color="primary" onClick={handleUpload}>
+            Upload Image
+          </Button>
+        )}
 
-      {selectedImage && (
-        <Button
-          sx={{
-            marginLeft: "10px",
-          }}
-          variant="outlined"
-          color="error"
-          onClick={handleRemoveImage}
-        >
-          Remove Image
-        </Button>
-      )}
+        {selectedImage && (
+          <Button
+            sx={{
+              marginLeft: "10px",
+            }}
+            variant="outlined"
+            color="error"
+            onClick={handleRemoveImage}
+          >
+            Remove Image
+          </Button>
+        )}
       </div>
     </div>
   );
 };
-

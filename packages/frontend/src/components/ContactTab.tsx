@@ -25,7 +25,7 @@ const ContactTab = () => {
       const formData = new FormData(form.current);
       let isValid = true;
 
-      formData.forEach((value, key) => {
+      formData.forEach((value: any) => {
         if (!value) {
           isValid = false;
         }
@@ -64,7 +64,10 @@ const ContactTab = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 w-1/2 pt-20">
+    <div
+      className="container mx-auto p-4 w-1/2 pt-20"
+      data-testid="contact-tab"
+    >
       <h1 className="text-4xl font-bold mb-4 text-start">
         {t("contact.Header")}
       </h1>
@@ -106,6 +109,7 @@ const ContactTab = () => {
           <button
             type="submit"
             value="Send"
+            data-testid="send-button"
             className="w-1/4 h-1/8 bg-secondary transition-colors duration-150 border-hidden rounded-lg focus:shadow-outline hover:bg-selection"
           >
             <p className="text-xl">{t("contact.Send")}</p>

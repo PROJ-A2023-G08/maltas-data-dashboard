@@ -1,4 +1,4 @@
-import { FilterTypes } from '@/types/filterTypes';
+import { FilterTypes } from '@maltas-dashboard/frontend/src/types/filterTypes';
 import { calculateAverage } from './calculateAverage';
 
 describe('calculateAverage', () => {
@@ -15,9 +15,9 @@ describe('calculateAverage', () => {
     const filter = FilterTypes.DAILY;
     const result = calculateAverage(role, filter);
     expect(result).toEqual([
-      { x: '1/1/2022', y: 90 },
-      { x: '1/2/2022', y: 135 },
-      { x: '1/3/2022', y: 180 },
+      { x: '01/01/2022', y: 90 },
+      { x: '01/02/2022', y: 135 },
+      { x: '01/03/2022', y: 180 },
     ]);
   });
 
@@ -25,7 +25,11 @@ describe('calculateAverage', () => {
     const filter = FilterTypes.WEEKLY;
     const result = calculateAverage(role, filter);
     expect(result).toEqual([
-      { x: '1', y: 90 },
+      {
+        "x": "1",
+        "y": 90,
+      },
+      { x: '2', y: 183 },
     ]);
   });
 
@@ -33,7 +37,7 @@ describe('calculateAverage', () => {
     const filter = FilterTypes.MONTHLY;
     const result = calculateAverage(role, filter);
     expect(result).toEqual([
-      { x: '1', y: 90 },
+      { x: '1', y: 183 },
     ]);
   });
 

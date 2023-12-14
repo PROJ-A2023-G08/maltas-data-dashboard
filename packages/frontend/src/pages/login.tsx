@@ -1,8 +1,9 @@
 import { Container, Typography, Box, Card, CardContent } from "@mui/material";
 import { useRouter } from "next/router";
-import LoginForm, { LoginBasic } from "@/layouts/LoginForm";
+import LoginForm, { LoginBasic } from "@maltas-dashboard/frontend/src/layouts/LoginForm";
 import Image from "next/image";
 import useAuth from "../../lib/util/useAuth";
+import React from "react";
 
 const LoginPage: React.FC = () => {
   const router = useRouter();

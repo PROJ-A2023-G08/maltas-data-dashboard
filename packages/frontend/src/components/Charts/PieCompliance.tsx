@@ -1,4 +1,4 @@
-import { MeasurementContext, Status } from "@/contexts/MeasurementProvider.context";
+import { MeasurementContext, Status } from "@maltas-dashboard/frontend/src/contexts/MeasurementProvider.context";
 import dynamic from "next/dynamic";
 import React, { useContext } from "react";
 const ResponsivePie = dynamic(

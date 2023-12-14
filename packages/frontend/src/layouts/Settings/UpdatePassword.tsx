@@ -9,7 +9,7 @@ import { User } from "../../../lib/types";
 import { useMUpdatePasswordMutation } from "../../../lib/mutations";
 import { useUserProfile } from "../../../lib/queries";
 import useAuth from "../../../lib/util/useAuth";
-import Loading from "@/components/Loading/Loading";
+import Loading from "@maltas-dashboard/frontend/src/components/Loading/Loading";
 
 interface UpdatePasswordProps {
   user?: User;
