@@ -1,3 +1,6 @@
+# Maltas Data Dashboard
+![Build Status](https://github.com/PROJ-A2023-G08/maltas-data-dashboard/actions/workflows/ci.js.yml/badge.svg)
+
 ## Introduction
 
 This document outlines the architecture of a `maltas-data-dashboard` project using a monorepo approach to house both the frontend and backend applications. The frontend is built with Next.js and TypeScript, while the backend is an Express application running on Node.js, connected to a MongoDB database.
