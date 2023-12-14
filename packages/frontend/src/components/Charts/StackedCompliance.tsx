@@ -1,14 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext } from "react";
 import dynamic from "next/dynamic";
-import { MeasurementContext } from '@/contexts/MeasurementProvider.context';
+import { MeasurementContext } from "../../contexts/MeasurementProvider.context";
 
 const ResponsiveBar = dynamic(
-    () => import("@nivo/bar").then((m) => m.ResponsiveBar),
-    { ssr: false },
+  () => import("@nivo/bar").then((m) => m.ResponsiveBar),
+  { ssr: false },
 );
 
 type StackedComplianceChart = {
-    month: string;
+  month: string;
 } & RoleCount;
 
 type RoleCount = {

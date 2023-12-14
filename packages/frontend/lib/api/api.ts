@@ -1,7 +1,7 @@
 import axios, { AxiosResponse, AxiosInstance } from 'axios';
 import { Dispatch, SetStateAction } from 'react';
-import { RegisterBasics } from '@/layouts/RegisterForm';
-import { LoginBasic } from '@/layouts/LoginForm';
+import { RegisterBasics } from '@maltas-dashboard/frontend/src/layouts/RegisterForm';
+import { LoginBasic } from '@maltas-dashboard/frontend/src/layouts/LoginForm';
 import { User, UpdatePasswordResult, UploadProfileImageResult, AdminDeleteUserResult, AdminGetAllUsersResult, AdminGetSingleUserResult, UpdateUserRoleResult } from '../types';
 import { UpdatePasswordQueryParams, UploadProfileImageQueryParams, UpdateUserQueryParams, AdminDeleteUserQueryParams, AdminGetSingleUserQueryParams, AdminUpdateUserRoleQueryParams } from '../types/queryTypes';
 

@@ -15,7 +15,7 @@ import {
   useMDeleteUserMutation,
   useMUpdateUserRoleMutation,
 } from "../../../lib/mutations";
-import Loading from "@/components/Loading/Loading";
+import Loading from "@maltas-dashboard/frontend/src/components/Loading/Loading";
 import {
   useAdminGetSingleUser,
   useAdminGetAllUsers,

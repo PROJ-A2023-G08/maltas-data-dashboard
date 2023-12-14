@@ -1,11 +1,14 @@
-import { ChartData } from "@/types/chartData";
-import { FilterTypes } from "@/types/filterTypes";
+import { ChartData } from "@maltas-dashboard/frontend/src/types/chartData";
+import { FilterTypes } from "../types/filterTypes";
 import { Measurement } from "@maltas-dashboard/common/types/Types";
 import format from "date-fns/format";
 import getWeek from "date-fns/getWeek";
 import parseISO from "date-fns/parseISO";
 
-type OmittedMeasurement = Omit<Measurement, "end_time_iso" | "status" | "role_id" | "device_id" | "measurement_id">;
+type OmittedMeasurement = Omit<
+  Measurement,
+  "end_time_iso" | "status" | "role_id" | "device_id" | "measurement_id"
+>;
 
 export const calculateAverage = (role: OmittedMeasurement[], filter: FilterTypes): ChartData[] => {
     const averageRole: ChartData[] = [];

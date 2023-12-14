@@ -1,7 +1,7 @@
 import React from "react";
-import "@/styles/globals.css";
+import "@maltas-dashboard/frontend/src/styles/globals.css";
 import type { AppProps } from "next/app";
-import theme from "@/styles/theme";
+import theme from "@maltas-dashboard/frontend/src/styles/theme";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { CssBaseline, ThemeProvider } from "@mui/material";

@@ -13,12 +13,13 @@ const Help = () => {
 
   return (
     <div>
-      <div className="flex justify-center -mb-12 mt-40">
+      <div className="flex justify-center -mb-12 mt-40" data-testid="help-div">
         <button
           onClick={() => toggleTab("faq")}
           className={`mr-2 pt-2 pb-2 pl-20 pr-20 ${
             activeTab === "faq" ? "bg-black text-white " : "bg-white"
           } rounded-md hover:bg-gray-600 focus:outline-none`}
+          data-testid="FAQ-id"
         >
           {t("uiElements.FAQ")}
         </button>
@@ -27,6 +28,7 @@ const Help = () => {
           className={`mr-2 pt-2 pb-2 pl-20 pr-20 ${
             activeTab === "contact" ? "bg-black text-white" : "bg-white"
           } rounded-md hover:bg-gray-600 focus:outline-none`}
+          data-testid="contact-button"
         >
           {t("uiElements.Contact")}
         </button>

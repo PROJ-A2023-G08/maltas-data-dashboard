@@ -4,7 +4,7 @@ import Data1 from "../../public/data1.json";
 import StackedCompliance from "./Charts/StackedCompliance";
 import LineAverage from "./Charts/LineAverage";
 import { Box, Grid, Card, CardContent, Typography } from "@mui/material";
-import { MeasurementContext } from "@/contexts/MeasurementProvider.context";
+import { MeasurementContext } from "../contexts/MeasurementProvider.context";
 import { useContext, useEffect, useState } from "react";
 import { subDays } from 'date-fns'
 import { PieCompliance } from "./Charts/PieCompliance";
@@ -16,7 +16,7 @@ const Home = () => {
   return (
     <>
       <h1>Hi, Welcome</h1>
-      <Grid container spacing={3}>
+      <Grid container spacing={3} data-testid="home-div">
         <Grid item xs={2} md={2} >
           <Card sx={{ height: '400px' }}>
             <CardContent>
