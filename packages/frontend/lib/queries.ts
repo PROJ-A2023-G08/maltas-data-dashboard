@@ -11,7 +11,7 @@ import {
   qkAllUsers,
   qkGetSingleUserByAdmin,
 } from "./api/queryKeys";
-import { AdminGetSingleUserQueryParams } from "./types/queryTypes";
+import { AdminGetSingleUserQueryParams, GetMeasurement } from "./types/queryTypes";
 
 export const useUserProfile = (options?: UseQueryOptions<User>) => {
   const { accessToken, fastAccessToken } = useAuth();
@@ -41,6 +41,17 @@ export const useAdminGetSingleUser = (
   return useQuery<AdminGetSingleUserResult>(
     [qkGetSingleUserByAdmin, accessToken],
     () => api.getSingleUser(fastAccessToken || accessToken!, data),
+    options,
+  );
+};
+
+export const useGetCSVData = (
+  options?: UseQueryOptions<GetMeasurement>,
+) => {
+  const { accessToken, fastAccessToken } = useAuth();
+  return useQuery<GetMeasurement>(
+    ['csv', accessToken],
+    () => api.getCSVData(fastAccessToken || accessToken!),
     options,
   );
 };

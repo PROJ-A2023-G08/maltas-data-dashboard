@@ -1,11 +1,10 @@
-import axios, { AxiosResponse, AxiosInstance } from 'axios';
-import { Dispatch, SetStateAction } from 'react';
-import { RegisterBasics } from '@maltas-dashboard/frontend/src/layouts/RegisterForm';
 import { LoginBasic } from '@maltas-dashboard/frontend/src/layouts/LoginForm';
-import { User, UpdatePasswordResult, UploadProfileImageResult, AdminDeleteUserResult, AdminGetAllUsersResult, AdminGetSingleUserResult, UpdateUserRoleResult } from '../types';
-import { UpdatePasswordQueryParams, UploadProfileImageQueryParams, UpdateUserQueryParams, AdminDeleteUserQueryParams, AdminGetSingleUserQueryParams, AdminUpdateUserRoleQueryParams } from '../types/queryTypes';
+import { RegisterBasics } from '@maltas-dashboard/frontend/src/layouts/RegisterForm';
+import axios, { AxiosInstance, AxiosResponse } from 'axios';
+import { AdminDeleteUserResult, AdminGetAllUsersResult, AdminGetSingleUserResult, UpdatePasswordResult, UpdateUserRoleResult, UploadProfileImageResult, User } from '../types';
+import { AdminDeleteUserQueryParams, AdminGetSingleUserQueryParams, AdminUpdateUserRoleQueryParams, GetMeasurement, UpdatePasswordQueryParams, UpdateUserQueryParams, UploadProfileImageQueryParams } from '../types/queryTypes';
 
-const API_BASE_URL = 'http://localhost:5000';// we are going to change this base on host in future
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL ;
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -26,7 +25,7 @@ interface RequestOptions<T> {
 
 const createApiWithToken = (token?: string): AxiosInstance => {
   const config: ApiConfig = {
-    baseURL: API_BASE_URL,
+    baseURL: API_BASE_URL || '',
     headers: {
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json',
@@ -106,4 +105,9 @@ export const getAllUsers = async (token: string): Promise<AdminGetAllUsersResult
 export const deleteUser = async (token: string, data: AdminDeleteUserQueryParams): Promise<AxiosResponse<AdminDeleteUserResult>> =>{
   return  makeRequest<AdminDeleteUserResult>(createApiWithToken(token), { method: 'put', url: `/api/users/singleUser/${data.id}`, data });
 }
+
+export const getCSVData = async (token: string): Promise<GetMeasurement> =>{
+  return  makeRequest<GetMeasurement>(createApiWithToken(token), { method: 'get', url: '/api/data/csv-data', data: {} });
+}
+
 

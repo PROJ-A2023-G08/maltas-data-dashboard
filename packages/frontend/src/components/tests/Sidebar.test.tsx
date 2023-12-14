@@ -11,6 +11,8 @@ import Dashboard from "../../components/Dashboard";
 import Help from "../Help";
 import Home from "../Home";
 import Sidebar from "../Sidebar";
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 
 jest.mock("../../../lib/util/useAuth");
 jest.mock("../../../lib/queries");
@@ -46,7 +48,7 @@ beforeEach(() => {
     data: userData,
   });
 
-  render(<Sidebar setActiveComponent={() => {}} />);
+  render(<Sidebar setActiveComponent={() => { }} />);
 });
 
 describe("Sidebar rendering tests", () => {
@@ -184,7 +186,9 @@ describe("Correct components loads when clicked", () => {
     fireEvent.click(dashButton[1]);
     expect(setActiveComponentMock).toHaveBeenCalledTimes(2);
 
-    const { getByTestId } = render(<Dashboard />);
+    const { getByTestId } = render(
+      <LocalizationProvider dateAdapter={AdapterDateFns}><Dashboard /></LocalizationProvider>
+    );
 
     await waitFor(() => {
       const dashView = getByTestId("dashboard-div");
