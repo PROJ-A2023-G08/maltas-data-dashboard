@@ -1,6 +1,7 @@
 # Maltas Data Dashboard
-![Build Status](https://github.com/PROJ-A2023-G08/maltas-data-dashboard/actions/workflows/ci.js.yml/badge.svg)
-[![Coverage Status](https://coveralls.io/repos/github/PROJ-A2023-G08/maltas-data-dashboard/badge.svg?branch=dev)](https://coveralls.io/github/PROJ-A2023-G08/maltas-data-dashboard?branch=dev)
+| Build                                                                                                          | Coverage                                                                                                                                                                                       |
+|----------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ![Build Status](https://github.com/PROJ-A2023-G08/maltas-data-dashboard/actions/workflows/ci.js.yml/badge.svg) | [![Coverage Status](https://coveralls.io/repos/github/PROJ-A2023-G08/maltas-data-dashboard/badge.svg?branch=dev)](https://coveralls.io/github/PROJ-A2023-G08/maltas-data-dashboard?branch=dev) |
 
 ## Introduction
 
